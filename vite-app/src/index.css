@@ -1,0 +1,22 @@
+:root {
+  --CHAOS-BLACK: #0f0f0f;
+  --IMPERIAL-PRIMER: #232d3f;
+  --SACRAMENTO-STATE-GREEN: #005b41;
+  --VIRIDIS: #008170;
+
+
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: aliceblue;
+}
+
+#root {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+  background-color: var(--CHAOS-BLACK);
+}
