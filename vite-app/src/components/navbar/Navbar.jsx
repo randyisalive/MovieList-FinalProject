@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import Logout from "../../pages/authentication/Logout";
 
 function Navbar() {
   return (
@@ -18,6 +19,7 @@ function Navbar() {
                 <li>
                   <Link to="/about">About</Link>
                 </li>
+                <button onClick={() => Logout()}>Log out</button>
               </ul>
             </div>
           </div>

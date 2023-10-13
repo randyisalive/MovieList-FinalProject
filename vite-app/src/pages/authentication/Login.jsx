@@ -1,34 +1,13 @@
 import { Button } from "bootstrap";
 import { Card } from "primereact/card";
 import { InputText } from "primereact/inputtext";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import "./Login.css";
-import getAllUser from "../../functionComponent/authentication/getAllUser";
+import handleLogin from "./LoginFunction";
 
 function Login() {
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
-
-  function handleLogin() {
-    const username = usernameRef.current.value;
-    const password = passwordRef.current.value;
-
-    if (username === "" || password === "") {
-      return null;
-    }
-
-    // get all user data
-    const data = getAllUser();
-
-    // validate username and password
-
-    // set cookies
-
-    //redirect to home
-
-    // console.log
-    console.log(username, password);
-  }
 
   return (
     <>
@@ -75,7 +54,7 @@ function Login() {
             <button
               className="btn btn-warning"
               type="submit"
-              onClick={() => handleLogin()}
+              onClick={() => handleLogin(usernameRef, passwordRef)}
             >
               Login
             </button>

@@ -8,7 +8,6 @@ userServices = Blueprint('userServices', __name__)
 def getAllUser():
     db = db_connection()
     cur = db.cursor()
-    cur.execute("SELECT * FROM user")
+    cur.execute("SELECT * FROM users")
     users = cur.fetchall()
     return jsonify(users)
-    
