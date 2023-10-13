@@ -1,4 +1,5 @@
-from flask import Blueprint, jsonify, request, render_template
+from flask import Blueprint, render_template, redirect
+from db import db_connection
 
 
 home = Blueprint('home', __name__)
