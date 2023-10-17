@@ -4,6 +4,9 @@ import Home from "./pages/home/Home";
 import Login from "./pages/authentication/Login";
 import Navbar from "./components/navbar/Navbar";
 import { isLogin } from "./functionComponent/authentication/CookiesFunction";
+import Movies from "./pages/movies/Movies";
+import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
+import "primereact/resources/primereact.min.css"; //core css
 
 function App() {
   return (
@@ -13,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/movies" element={<Movies />} />
         </Routes>
       </Router>
     </>
