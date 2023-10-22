@@ -25,7 +25,7 @@ function TvShowsDropdown() {
             <ul className="dropdown-menu dropdown-menu-light">
               <li>
                 <a className="dropdown-item" href="#">
-                  Action
+                  All TV Shows
                 </a>
               </li>
               <li>

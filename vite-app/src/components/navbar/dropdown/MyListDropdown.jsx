@@ -1,4 +1,6 @@
-function MovieDropdown() {
+import { Link } from "react-router-dom";
+
+function MyListDropdown() {
   return (
     <div className="d-flex">
       <button
@@ -20,13 +22,13 @@ function MovieDropdown() {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Movies
+              My List
             </button>
             <ul className="dropdown-menu dropdown-menu-light">
               <li>
-                <a className="dropdown-item" href="#">
-                  All Movies
-                </a>
+                <Link className="dropdown-item" to={"mylist/1"}>
+                  My List
+                </Link>
               </li>
               <li>
                 <a className="dropdown-item" href="#">
@@ -46,4 +48,4 @@ function MovieDropdown() {
   );
 }
 
-export default MovieDropdown;
+export default MyListDropdown;

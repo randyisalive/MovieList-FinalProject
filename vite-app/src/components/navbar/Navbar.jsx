@@ -5,6 +5,7 @@ import { InputText } from "primereact/inputtext";
 import TitlePage from "../universal/TitlePage";
 import Navigation from "./Navigation";
 import NavbarDropdown from "./dropdown/NavbarDropdown";
+import logOut from "../../functionComponent/authentication/logOut";
 
 function Navbar() {
   return (
@@ -19,7 +20,9 @@ function Navbar() {
           <div className="d-flex gap-3">
             <button className="btn btn-secondary">Login</button>
             <button className="btn btn-primary">Sign Up</button>
-            <button className="btn btn-danger">Logout</button>
+            <button className="btn btn-danger" onClick={() => logOut()}>
+              Logout
+            </button>
           </div>
         </div>
       </nav>

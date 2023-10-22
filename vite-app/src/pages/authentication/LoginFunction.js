@@ -1,4 +1,4 @@
-import getAllUser from "../../functionComponent/authentication/getAllUser";
+import getAllUser from "../../functionComponent/users/getAllUser";
 import {
   generateToken,
   setCookies,

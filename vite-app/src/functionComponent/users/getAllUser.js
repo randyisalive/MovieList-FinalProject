@@ -1,4 +1,4 @@
-import { getAllUserAPI } from "./API";
+import { getAllUserAPI } from "../API";
 
 const api = getAllUserAPI();
 

@@ -7,6 +7,7 @@ import { isLogin } from "./functionComponent/authentication/CookiesFunction";
 import Movies from "./pages/movies/Movies";
 import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
+import MyList from "./pages/mylist/MyList";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/movies" element={<Movies />} />
+          <Route path="/mylist/:id" element={<MyList />} />
         </Routes>
       </Router>
     </>
