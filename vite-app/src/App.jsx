@@ -7,19 +7,24 @@ import { isLogin } from "./functionComponent/authentication/CookiesFunction";
 import Movies from "./pages/movies/Movies";
 import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
+import "../src/style.css";
 import MyList from "./pages/mylist/MyList";
 
 function App() {
   return (
     <>
       <Router>
-        {isLogin() ? <Navbar /> : null}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/mylist/:id" element={<MyList />} />
-        </Routes>
+        <body className="font-montserrat text-sm bg-white dark:bg-zinc-900 ">
+          <div className="flex min-h-screen  2xl:max-w-screen-2xl 2xl:mx-auto 2xl:border-x-2 2xl:border-gray-200 dark:2xl:border-zinc-700 ">
+            {isLogin() ? <Navbar /> : null}
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/movies" element={<Movies />} />
+              <Route path="/mylist/:id" element={<MyList />} />
+            </Routes>
+          </div>
+        </body>
       </Router>
     </>
   );
