@@ -7,11 +7,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./index.css";
 import { PrimeReactProvider, PrimeReactContext } from "primereact/api";
+import { Context } from "./Context.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <PrimeReactProvider>
-      <App />
+      <Context />
     </PrimeReactProvider>
   </React.StrictMode>
 );

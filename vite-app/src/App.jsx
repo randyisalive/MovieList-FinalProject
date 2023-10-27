@@ -9,6 +9,8 @@ import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
 import "../src/style.css";
 import MyList from "./pages/mylist/MyList";
+import Community from "./pages/community/Community";
+import Profile from "./pages/profile/Profile";
 
 function App() {
   return (
@@ -20,8 +22,10 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/community" element={<Community />} />
               <Route path="/movies" element={<Movies />} />
-              <Route path="/mylist/:id" element={<MyList />} />
+              <Route path="/mylist" element={<MyList />} />
+              <Route path="/profile" element={<Profile />} />
             </Routes>
           </div>
         </body>
