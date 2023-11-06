@@ -1,16 +1,22 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
 import "./App.css";
 import Home from "./pages/home/Home";
 import Login from "./pages/authentication/Login";
 import Navbar from "./components/navbar/Navbar";
 import { isLogin } from "./functionComponent/authentication/CookiesFunction";
-import Movies from "./pages/movies/Movies";
 import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
 import "../src/style.css";
 import MyList from "./pages/mylist/MyList";
 import Community from "./pages/community/Community";
 import Profile from "./pages/profile/Profile";
+import { isValid } from "./Cookies";
+import AllMovies from "./pages/all-movies/AllMovies";
 
 function App() {
   return (
@@ -23,7 +29,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/community" element={<Community />} />
-              <Route path="/movies" element={<Movies />} />
+              <Route path="/all-movies" element={<AllMovies />} />
               <Route path="/mylist" element={<MyList />} />
               <Route path="/profile" element={<Profile />} />
             </Routes>

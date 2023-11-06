@@ -26,9 +26,8 @@ export function generateToken() {
   return token;
 }
 
-export async function setCookies(user_id, username, token) {
+export async function setCookies(user_id, token) {
   Cookies.set("user_id", user_id);
-  Cookies.set("username", username);
   Cookies.set("auth_token", token);
 }
 

@@ -23,7 +23,7 @@ function handleLogin(usernameRef, passwordRef) {
         const token = generateToken();
         const userId = data[i][0];
         addTokenDatabase(userId, token);
-        setCookies(userId, username, token).then(() => {
+        setCookies(userId, token).then(() => {
           window.location.href = "/"; //redirect to home
         });
       }

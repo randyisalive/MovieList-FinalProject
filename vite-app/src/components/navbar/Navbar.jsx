@@ -83,9 +83,16 @@ function Navbar() {
             </svg>
             <span>Community</span>
           </Link>
-          <a
-            className=" flex items-center space-x-2 py-1  group hover:border-r-4 hover:border-r-red-600 hover:font-semibold dark:hover:text-white"
-            href="#"
+          <Link
+            className={
+              "flex items-center space-x-2 py-1 group hover:border-r-4 hover:border-r-red-600 hover:font-semibold dark:hover:text-white " +
+              (link === "All Movies" ? selectedLink() : null)
+            }
+            onClick={() => {
+              setLink("All Movies");
+            }}
+            to="/all-movies"
+            style={{ textDecoration: "none" }}
           >
             <svg
               className="h-5 w-5 group-hover:fill-red-600"
@@ -97,8 +104,8 @@ function Navbar() {
                 <path d="M8 16l5.991-2 2-6 -6 2Z"></path>
               </g>
             </svg>
-            <span>Discovery</span>
-          </a>
+            <span>All Movies</span>
+          </Link>
           <a
             className=" flex items-center space-x-2 py-1  group hover:border-r-4 hover:border-r-red-600 hover:font-semibold dark:hover:text-white "
             href="#"

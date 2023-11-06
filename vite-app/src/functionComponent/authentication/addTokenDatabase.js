@@ -1,14 +1,13 @@
-const apiTarget = "http://127.0.0.1:5000/token/addToken";
+import { addTokenApi } from "../API";
 
 async function addTokenDatabase(user_id, token) {
-  const date = new Date(); // get date
   try {
-    fetch(apiTarget, {
+    fetch(addTokenApi, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ user_id, token, date }),
+      body: JSON.stringify({ user_id, token }),
     });
   } catch (e) {
     console.error(e);
