@@ -1,6 +1,7 @@
-import { getAllMovieApi } from "../API";
+import { getAllMovieApi } from "../functionComponent/API";
 
-async function getAllMovie() {
+// get all movies function
+export async function getAllMovie() {
   try {
     const response = await fetch(getAllMovieApi);
     const data = await response.json();
@@ -9,5 +10,3 @@ async function getAllMovie() {
     console.error(e);
   }
 }
-
-export default getAllMovie;
