@@ -5,7 +5,6 @@ import { Image } from "primereact/image";
 import { Button } from "primereact/button";
 import { Link } from "react-router-dom";
 import { AutoComplete } from "primereact/autocomplete";
-import { addList } from "../../api/mylist_api";
 import UseMyListData from "../../functionComponent/mylist/UseMyListData";
 import { getAllMovie } from "../../api/movies_api";
 
@@ -25,7 +24,7 @@ function AllMovies() {
       <>
         <Image
           src={`../../../movies_data/${id}/${image}`}
-          width="100"
+          width="300"
           preview
         />
       </>
@@ -57,11 +56,10 @@ function AllMovies() {
           value={movies}
           paginator
           rows={10}
-          rowsPerPageOptions={[20, 40, 60]}
           tableStyle={{ minWidth: "50rem" }}
         >
           <Column
-            header=""
+            header="Picture"
             body={(item) => {
               return imageTemplate(item.id, item.image);
             }}

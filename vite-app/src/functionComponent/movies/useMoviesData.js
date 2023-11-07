@@ -12,7 +12,6 @@ function UseMoviesData() {
     getAllMovie().then((data) => {
       setMovies(data);
       setIsLoading(false);
-      console.log(data);
     });
   }, []);
 
