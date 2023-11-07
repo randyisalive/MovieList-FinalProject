@@ -1,6 +1,8 @@
+import UseMoviesData from "../../../functionComponent/movies/useMoviesData";
 import SimilarMovies from "./SimilarMovies";
 
 function Main() {
+  const { movies } = UseMoviesData();
   return (
     <main className=" flex-1 py-10  px-5 sm:px-10 ">
       <header className=" font-bold text-lg flex items-center  gap-x-3 md:hidden mb-12 ">
