@@ -4,10 +4,12 @@ import { DataTable } from "primereact/datatable";
 import UseMyListData from "../../functionComponent/mylist/UseMyListData";
 import { Image } from "primereact/image";
 import { Link } from "react-router-dom";
+import useUsersData from "../../functionComponent/users/useUsersData";
 
 function MyList() {
   const { list, getList, toggleWatchList, deleteMyList } = UseMyListData();
-  console.log(list);
+  const { GetUser } = useUsersData();
+  console.log(GetUser());
 
   const imageTemplate = (movie_id, movie_image) => {
     return (
@@ -21,7 +23,7 @@ function MyList() {
     );
   };
 
-  const BtnList = (list_id, list_status, movie_title) => {
+  const BtnList = (list_id, list_status) => {
     return (
       <>
         {list_status === 1 ? (
@@ -37,9 +39,6 @@ function MyList() {
               <i className="pi pi-trash"></i>
               Delete
             </button>
-            <Link to={`/movies/${movie_title}`}>
-              <button className="btn btn-warning">Detail</button>
-            </Link>
           </div>
         ) : (
           <button
@@ -58,15 +57,38 @@ function MyList() {
   };
   return (
     <>
-      <MDBContainer>
+      <MDBContainer className="mt-5">
+        <div className="bg-danger text-white h-25 card mb-5 d-flex justify-content-center align-items-center">
+          <p className="h1">{`${GetUser().username} List`}</p>
+        </div>
         <DataTable value={list}>
           <Column
+            header="Image"
             body={(item) => imageTemplate(item.movie_id, item.movie_image)}
           />
-          <Column header="Movie" field="movie_title" />
+          <Column
+            header="Movie Title"
+            body={(item) => {
+              return (
+                <>
+                  <Link
+                    className="a text-primary"
+                    to={`/movies/${item.movie_id}/${item.movie_title}`}
+                  >
+                    <p>{item.movie_title}</p>
+                  </Link>
+                </>
+              );
+            }}
+          />
           <Column
             body={(item) =>
-              BtnList(item.list_id, item.list_status, item.movie_title)
+              BtnList(
+                item.list_id,
+                item.list_status,
+                item.movie_title,
+                item.movie_id
+              )
             }
           />
         </DataTable>

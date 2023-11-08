@@ -12,6 +12,9 @@ export const updateStatusMyListApi = PROXY + "mylist/updateStatus";
 export const addListAPi = PROXY + "mylist/add";
 export const deleteListApi = PROXY + "mylist/delete";
 
+//genres api
+export const getGenreByMovieIdApi = PROXY + "genres/get";
+
 // tokens api
 export const addTokenApi = PROXY + "tokens/add";
 
@@ -20,6 +23,10 @@ export const getAllMovieApi = PROXY + "movies/get";
 export const addMoviesApi = PROXY + "movies/add";
 export const getMovieByTitleApi = PROXY + "movies/getTitle";
 
+// cast api
+export const getActorsByMovieApi = PROXY + "cast/getByMovieId";
+
 //auth api
 export const loginApi = PROXY + "auth/login";
 export const generateHashPasswordApi = PROXY + "auth/generate";
+export const getUserByIdApi = PROXY + "auth/get";

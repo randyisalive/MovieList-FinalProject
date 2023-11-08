@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from services.users_services import getAllUser
+from services.users_services import getAllUser, getUserById
 from bcrypt_services import verify_password, generate_hash
 from .tokens_api import addToken
 import secrets
@@ -39,3 +39,17 @@ def generate():
         hashed_password = generate_hash(password)
         return jsonify({"Password": hashed_password.decode("utf-8")})
     return jsonify({"utl: ": "/api/auth/generate"})
+
+
+@auth_api.route("/get", methods=["POST", "GET"])
+def get():
+    if request.method == "POST":
+        data = request.get_json()
+        id = data["id"]
+        user = getUserById(id)
+        if user:
+            user_list = {"id": user[0], "username": user[1], "password": user[2]}
+            return jsonify(user_list)
+        else:
+            return jsonify({"Messages": "no user found"})
+    return jsonify({"URL: ": "/api/auth/get"})

@@ -7,7 +7,7 @@ def getAllMovies():
     cur = db.cursor()
     try:
         cur.execute(
-            "SELECT * FROM movies FULL OUTER JOIN list ON movies.id = list.movie_id"
+            "SELECT * FROM movies FULL OUTER JOIN list ON movies.id = list.movie_id ORDER BY title ASC"
         )
         movies = cur.fetchall()
         return movies

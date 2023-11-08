@@ -15,9 +15,9 @@ import "../src/style.css";
 import MyList from "./pages/mylist/MyList";
 import Community from "./pages/community/Community";
 import Profile from "./pages/profile/Profile";
-import { isValid } from "./Cookies";
 import AllMovies from "./pages/movies/AllMovies";
 import DetailMovies from "./pages/movies/DetailMovies";
+import AllActors from "./pages/movies/AllActors";
 
 function App() {
   return (
@@ -31,7 +31,11 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/community" element={<Community />} />
               <Route path="/movies" element={<AllMovies />} />
-              <Route path="/movies/:title" element={<DetailMovies />} />
+              <Route path="/movies/:id/:title" element={<DetailMovies />} />
+              <Route
+                path="/movies/:id/:title/all-actors"
+                element={<AllActors />}
+              />
               <Route path="/mylist" element={<MyList />} />
               <Route path="/profile" element={<Profile />} />
             </Routes>

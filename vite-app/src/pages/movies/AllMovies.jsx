@@ -44,7 +44,7 @@ function AllMovies() {
               onChange={(e) => setSelectedMovie(e.value)}
             />
           </div>
-          <Link to={`/movies/${selectedMovie.title}`}>
+          <Link to={`/movies/${selectedMovie.id}/${selectedMovie.title}`}>
             <Button
               label="Search"
               icon="pi pi-search"
@@ -64,7 +64,21 @@ function AllMovies() {
               return imageTemplate(item.id, item.image);
             }}
           />
-          <Column field="title" header="Title" />
+          <Column
+            header="Title"
+            body={(item) => {
+              return (
+                <>
+                  <Link
+                    to={`/movies/${item.id}/${item.title}`}
+                    className="text-primary"
+                  >
+                    {item.title}
+                  </Link>
+                </>
+              );
+            }}
+          />
           <Column field="description" header="Description" />
           <Column field="rating" header="Rating" />
           <Column
@@ -72,7 +86,10 @@ function AllMovies() {
               return (
                 <>
                   <div className="d-flex gap-2">
-                    <Link to={`/movies/${item.title}`} className="d-flex gap-2">
+                    <Link
+                      to={`/movies/${item.id}/${item.title}`}
+                      className="d-flex gap-2"
+                    >
                       <Button className="btn btn-warning" label="Details" />
                     </Link>
                     {item.status === 1 ? (

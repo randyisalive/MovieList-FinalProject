@@ -20,8 +20,10 @@ function Login() {
           }}
         >
           <MDBCard>
-            <MDBCardHeader>
-              <MDBCardTitle>Login</MDBCardTitle>
+            <MDBCardHeader className="bg-danger">
+              <MDBCardTitle className=" d-flex">
+                <h1 className="h3 m-0 p-0">Login</h1>
+              </MDBCardTitle>
             </MDBCardHeader>
             <MDBCardBody className="d-flex flex-column gap-3">
               <div className="d-flex gap-3 align-items-center">
@@ -42,7 +44,7 @@ function Login() {
                   onChange={formHandler}
                 />
               </div>
-              <div className="d-flex bg-warning justify-content-center">
+              <div className="d-flex justify-content-center">
                 Forgot Password | Contact Us
               </div>
               <div className="d-flex justify-content-center">
