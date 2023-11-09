@@ -26,6 +26,22 @@ def getMovieByTitle(title):
         logging.error(e)
 
 
+def getMoviesByGenre(genre_id):
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        cur.execute(
+            "SELECT * FROM movies INNER JOIN genres ON genres.id = movies.genre_id WHERE movies.genre_id = ? LIMIT 10",
+            (genre_id,),
+        )
+        movies = cur.fetchall()
+        cur.close()
+        db.close()
+        return movies
+    except Exception as e:
+        logging.error(e)
+
+
 def addMovies(title, rating, description, image):
     db = db_connection()
     cur = db.cursor()

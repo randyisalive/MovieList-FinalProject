@@ -1,10 +1,27 @@
-{% extends 'base.html' %}
-{% block title %}
-<title>Movie List</title>
+{% extends 'base.html' %} {% block title %}
+<title>Movie List - Admin</title>
 
-{% endblock %}
-{% block body %}
-{% include 'navbar.html' %}
+{% endblock %} {% block body %}
+<div class="row">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <a href="/add-actors">
+          <button class="btn btn-primary">Add Actors</button>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi
+        laborum deserunt beatae quia impedit voluptas porro! Quas impedit
+        reprehenderit dolores harum eius expedita id, repellendus at molestiae,
+        libero dolor ullam?
+      </div>
+    </div>
+  </div>
 
-
-{% endblock %}
+  {% endblock %}
+</div>

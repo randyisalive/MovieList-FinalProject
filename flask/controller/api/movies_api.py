@@ -15,8 +15,8 @@ def get():
             "rating": movie[2],
             "description": movie[3],
             "image": movie[4],
-            "list_id": movie[5],
-            "status": movie[7],
+            "list_id": movie[6],
+            "status": movie[8],
         }
         for movie in movies
     ]
@@ -34,6 +34,7 @@ def getTitle():
         "rating": movie[2],
         "description": movie[3],
         "image": movie[4],
+        "genres_id": movie[5],
     }
     return jsonify(movie_list)
 

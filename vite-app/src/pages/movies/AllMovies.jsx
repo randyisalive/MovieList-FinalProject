@@ -114,6 +114,7 @@ function AllMovies() {
                               setMovies(data);
                             });
                           });
+                          console.log(item);
                         }}
                       >
                         <i className="pi pi-plus"></i>

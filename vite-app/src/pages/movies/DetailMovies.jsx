@@ -11,15 +11,16 @@ import {
   MDBRow,
 } from "mdb-react-ui-kit";
 
-import { Card } from "primereact/card";
+import { Rating } from "primereact/rating";
 
 import { Image } from "primereact/image";
 import useCastsData from "../../functionComponent/casts/useCastsData";
 import useGenresData from "../../functionComponent/genres/useGenresData";
+import MoviesByGenre from "../../components/movies/MoviesByGenre";
 
 function DetailMovies() {
   const { id, title } = useParams();
-  const { GetMoviesDetail, detail } = UseMoviesData();
+  const { GetMoviesDetail, detail, rating } = UseMoviesData();
   const { GetCastByMovieId } = useCastsData(id);
   const { Genres } = useGenresData();
   GetMoviesDetail(title);
@@ -67,7 +68,7 @@ function DetailMovies() {
                             <p className="h4 p-0 m-0 text-white">CAST & CREW</p>
                           </div>
                           <div className="d-flex align-items-center">
-                            <Link className="" to={"all-actors"}>
+                            <Link className="text-white" to={"all-actors"}>
                               View More
                             </Link>
                           </div>
@@ -101,7 +102,7 @@ function DetailMovies() {
                       {Genres === null ? null : (
                         <MDBCard className="mt-3">
                           <MDBCardBody>
-                            <MDBCardText>
+                            <MDBCardText className="d-flex flex-column gap-3">
                               <div className="d-flex">
                                 <b>Genre: </b>
                                 <ul className="gap-2 ms-2">
@@ -116,6 +117,20 @@ function DetailMovies() {
                                       })}
                                 </ul>
                               </div>
+                              <div className="d-flex align-items-center gap-2">
+                                <b>Rating: </b>
+                                <Rating
+                                  cancel={false}
+                                  value={rating}
+                                  stars={10}
+                                  readOnly
+                                />
+                                {rating <= 5 ? (
+                                  <p className="text-danger"> {rating}</p>
+                                ) : (
+                                  <p className="text-primary"> {rating}</p>
+                                )}
+                              </div>
                             </MDBCardText>
                           </MDBCardBody>
                         </MDBCard>
@@ -127,6 +142,7 @@ function DetailMovies() {
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>
+        <MoviesByGenre title={title} />
       </MDBContainer>
     </>
   );

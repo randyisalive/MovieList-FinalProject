@@ -14,6 +14,7 @@ export const deleteListApi = PROXY + "mylist/delete";
 
 //genres api
 export const getGenreByMovieIdApi = PROXY + "genres/get";
+export const getMoviesByGenresApi = PROXY + "genres/getSimilar";
 
 // tokens api
 export const addTokenApi = PROXY + "tokens/add";
