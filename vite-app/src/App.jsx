@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useNavigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Form } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/home/Home";
 import Login from "./pages/authentication/Login";
@@ -18,6 +13,9 @@ import Profile from "./pages/profile/Profile";
 import AllMovies from "./pages/movies/AllMovies";
 import DetailMovies from "./pages/movies/DetailMovies";
 import AllActors from "./pages/movies/AllActors";
+import MovieDiscussion from "./pages/community/MovieDiscussion";
+import ReviewMovies from "./components/movies/ReviewsMovies";
+import ReviewsMoviesForm from "./pages/reviews/ReviewsMoviesForm";
 
 function App() {
   return (
@@ -30,11 +28,19 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/community" element={<Community />} />
+              <Route
+                path="/community/Movie Discussion"
+                element={<MovieDiscussion />}
+              />
               <Route path="/movies" element={<AllMovies />} />
               <Route path="/movies/:id/:title" element={<DetailMovies />} />
               <Route
                 path="/movies/:id/:title/all-actors"
                 element={<AllActors />}
+              />
+              <Route
+                path="/reviews/:movie_id/:movie_title"
+                element={<ReviewsMoviesForm />}
               />
               <Route path="/mylist" element={<MyList />} />
               <Route path="/profile" element={<Profile />} />

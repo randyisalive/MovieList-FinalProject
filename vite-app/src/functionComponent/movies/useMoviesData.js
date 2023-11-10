@@ -17,7 +17,6 @@ function UseMoviesData() {
       setMovies(data);
       setIsLoading(false);
     });
-    console.log(movies);
   }, []);
 
   const searchMovies = (event) => {
@@ -39,11 +38,9 @@ function UseMoviesData() {
       getMovieByTitle(title).then((data) => {
         setDetail(data);
         setRating(parseFloat(data.rating));
-        console.log(data);
         if (data) {
           getMoviesByGenre(data.genres_id).then((data) => {
             setSimilar(data);
-            console.log(data);
           });
         }
       });

@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import UseMoviesData from "../../functionComponent/movies/useMoviesData";
 import {
+  MDBBtn,
   MDBCard,
   MDBCardBody,
   MDBCardHeader,
@@ -17,6 +18,7 @@ import { Image } from "primereact/image";
 import useCastsData from "../../functionComponent/casts/useCastsData";
 import useGenresData from "../../functionComponent/genres/useGenresData";
 import MoviesByGenre from "../../components/movies/MoviesByGenre";
+import ReviewMovies from "../../components/movies/ReviewsMovies";
 
 function DetailMovies() {
   const { id, title } = useParams();
@@ -31,12 +33,17 @@ function DetailMovies() {
           <MDBCardBody>
             <MDBCardText>
               <MDBRow>
-                <MDBCol className="col-xl-3 ">
+                <MDBCol className="col-xl-3 flex-column d-flex align-items-center justify-content-center gap-5">
                   <Image
                     width="250"
                     src={`../../../movies_data/${detail.id}/${detail.image}`}
                     preview
                   />
+                  <Link to={`/reviews/${id}/${title}`}>
+                    <button className="btn btn-primary">
+                      Review This Movie
+                    </button>
+                  </Link>
                 </MDBCol>
                 <MDBCol className="d-flex flex-column gap-3">
                   <MDBRow>
@@ -142,6 +149,7 @@ function DetailMovies() {
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>
+        <ReviewMovies />
         <MoviesByGenre title={title} />
       </MDBContainer>
     </>

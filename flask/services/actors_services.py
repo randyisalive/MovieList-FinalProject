@@ -15,13 +15,13 @@ def getAllActors():
         logging.error(e)
 
 
-def addActors(FirstName, LastName, description, birthday, birthplace, image):
+def addActors(FirstName, LastName, description, birthday, birthplace):
     db = db_connection()
     cur = db.cursor()
     try:
-        params = (FirstName, LastName, description, birthday, birthplace, image)
+        params = (FirstName, LastName, description, birthday, birthplace)
         cur.execute(
-            "INSERT INTO actors (FirstName, LastName, description, birthday, birthplace, image) VALUES (?,?,?,?,?,?)",
+            "INSERT INTO actors (FirstName, LastName, description, birthday, birthplace) VALUES (?,?,?,?,?)",
             params,
         )
         db.commit()

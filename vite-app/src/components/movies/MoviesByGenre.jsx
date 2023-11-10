@@ -1,4 +1,5 @@
 import {
+  MDBBadge,
   MDBCard,
   MDBCardBody,
   MDBCardHeader,
@@ -9,7 +10,6 @@ import {
 } from "mdb-react-ui-kit";
 import { Image } from "primereact/image";
 import UseMoviesData from "../../functionComponent/movies/useMoviesData";
-import { Link } from "react-router-dom";
 
 function MoviesByGenre(props) {
   const { GetMoviesDetail, RandomizeArrayAndLimit } = UseMoviesData();
@@ -21,7 +21,9 @@ function MoviesByGenre(props) {
       <MDBCard className="mt-3 mb-3">
         <MDBCardHeader className="bg-white">
           <MDBCardTitle>
-            <h3 className="h3">Similar Movies</h3>
+            <h3 className="h3">
+              <MDBBadge className="bg-danger">SIMILAR MOVIES</MDBBadge>
+            </h3>
           </MDBCardTitle>
         </MDBCardHeader>
         <MDBCardBody>

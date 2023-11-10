@@ -86,12 +86,6 @@ function AllMovies() {
               return (
                 <>
                   <div className="d-flex gap-2">
-                    <Link
-                      to={`/movies/${item.id}/${item.title}`}
-                      className="d-flex gap-2"
-                    >
-                      <Button className="btn btn-warning" label="Details" />
-                    </Link>
                     {item.status === 1 ? (
                       <button
                         className="btn btn-primary"

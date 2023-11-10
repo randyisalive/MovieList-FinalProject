@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import { Menubar } from "primereact/menubar";
 import { InputText } from "primereact/inputtext";
@@ -10,7 +10,9 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../Context";
 
 function Navbar() {
-  const { link, setLink } = useContext(UserContext);
+  const location = useLocation();
+  const path = location.pathname;
+  console.log(path);
 
   const selectedLink = () => {
     const text = " font-semibold  border-r-4 border-r-red-600";
@@ -39,16 +41,15 @@ function Navbar() {
           <Link
             className={
               "flex items-center space-x-2 py-1 dark:text-white pr-20 group hover:border-r-4 hover:border-r-red-600 hover:font-semibold dark:hover:text-white" +
-              (link === "Home" ? selectedLink() : null)
+              (path === "/" ? selectedLink() : null)
             }
             to="/"
-            onClick={() => setLink("Home")}
             style={{ textDecoration: "none" }}
           >
             <svg
               className={
                 "h-5 w-5 group-hover:fill-red-600" +
-                (link === "Home" ? selectedIcon() : null)
+                (path === "/" ? selectedIcon() : null)
               }
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -60,18 +61,15 @@ function Navbar() {
           <Link
             className={
               "flex items-center space-x-2 py-1 dark:text-white pr-20 group hover:border-r-4 hover:border-r-red-600 hover:font-semibold dark:hover:text-white" +
-              (link === "Community" ? selectedLink() : null)
+              (path === "/community" ? selectedLink() : null)
             }
             to="/community"
-            onClick={() => {
-              setLink("Community");
-            }}
             style={{ textDecoration: "none" }}
           >
             <svg
               className={
                 "h-5 w-5 group-hover:fill-red-600" +
-                (link === "Community" ? selectedIcon() : null)
+                (path === "/community" ? selectedIcon() : null)
               }
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -86,18 +84,15 @@ function Navbar() {
           <Link
             className={
               "flex items-center space-x-2 py-1 group hover:border-r-4 hover:border-r-red-600 hover:font-semibold dark:hover:text-white " +
-              (link === "All Movies" ? selectedLink() : null)
+              (path === "/movies" ? selectedLink() : null)
             }
-            onClick={() => {
-              setLink("Movies");
-            }}
             to="/movies"
             style={{ textDecoration: "none" }}
           >
             <svg
               className={
                 "h-5 w-5 group-hover:fill-red-600 " +
-                (link === "Movies" ? selectedIcon() : null)
+                (path === "/movies" ? selectedIcon() : null)
               }
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -132,16 +127,16 @@ function Navbar() {
           <Link
             className={
               "flex items-center space-x-2 py-1 dark:text-white pr-20 group hover:border-r-4 hover:border-r-red-600 hover:font-semibold dark:hover:text-white" +
-              (link === "Profile" ? selectedLink() : null)
+              (path === "/profile" ? selectedLink() : null)
             }
             to="/profile"
-            onClick={() => setLink("Profile")}
+            p
             style={{ textDecoration: "none" }}
           >
             <svg
               className={
                 "h-5 w-5 group-hover:fill-red-600" +
-                (link === "Profile" ? selectedIcon() : null)
+                (path === "/profile" ? selectedIcon() : null)
               }
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -169,16 +164,16 @@ function Navbar() {
           <Link
             className={
               "flex items-center space-x-2 py-1 dark:text-white pr-20 group hover:border-r-4 hover:border-r-red-600 hover:font-semibold dark:hover:text-white" +
-              (link === "mylist" ? selectedLink() : null)
+              (path === "/mylist" ? selectedLink() : null)
             }
             to="/mylist"
             style={{ textDecoration: "none" }}
-            onClick={() => setLink("mylist")}
+            p
           >
             <svg
               className={
                 "h-5 w-5 group-hover:fill-red-600" +
-                (link === "mylist" ? selectedIcon() : null)
+                (path === "/mylist" ? selectedIcon() : null)
               }
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -194,31 +189,7 @@ function Navbar() {
           <div className="mt-8 text-gray-400/70  font-medium uppercase">
             General
           </div>
-          <a
-            className=" flex items-center space-x-2 py-1  group hover:border-r-4 hover:border-r-red-600 hover:font-semibold dark:hover:text-white "
-            href="#"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 group-hover:stroke-red-600"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-              />
-            </svg>
-            <span>Settings</span>
-          </a>
+
           <a
             className=" flex items-center space-x-2 py-1  group hover:border-r-4 hover:border-r-red-600 hover:font-semibold dark:hover:text-white"
             href="#"
