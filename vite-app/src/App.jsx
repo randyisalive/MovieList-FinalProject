@@ -16,6 +16,7 @@ import AllActors from "./pages/movies/AllActors";
 import MovieDiscussion from "./pages/community/MovieDiscussion";
 import ReviewMovies from "./components/movies/ReviewsMovies";
 import ReviewsMoviesForm from "./pages/reviews/ReviewsMoviesForm";
+import ReviewsMoviesDetails from "./pages/reviews/ReviewsMoviesDetails";
 
 function App() {
   return (
@@ -32,6 +33,10 @@ function App() {
                 path="/community/Movie Discussion"
                 element={<MovieDiscussion />}
               />
+              <Route
+                path="/community/Movie Discussion/:id/:movie_id/:title"
+                element={<ReviewsMoviesDetails />}
+              />
               <Route path="/movies" element={<AllMovies />} />
               <Route path="/movies/:id/:title" element={<DetailMovies />} />
               <Route
@@ -39,7 +44,7 @@ function App() {
                 element={<AllActors />}
               />
               <Route
-                path="/reviews/:movie_id/:movie_title"
+                path="/reviews/:id/:title"
                 element={<ReviewsMoviesForm />}
               />
               <Route path="/mylist" element={<MyList />} />

@@ -23,6 +23,7 @@ export const addTokenApi = PROXY + "tokens/add";
 export const getAllMovieApi = PROXY + "movies/get";
 export const addMoviesApi = PROXY + "movies/add";
 export const getMovieByTitleApi = PROXY + "movies/getTitle";
+export const getMovieByIdApi = PROXY + "movies/getId";
 
 // cast api
 export const getActorsByMovieApi = PROXY + "cast/getByMovieId";
@@ -34,3 +35,5 @@ export const getUserByIdApi = PROXY + "auth/get";
 
 // community api
 export const getDiscussionApi = PROXY + "community/discussion/get";
+export const reviewsFormApi = PROXY + "community/discussion/form/reviews";
+export const deleteDiscussionApi = PROXY + "community/discussion/delete";

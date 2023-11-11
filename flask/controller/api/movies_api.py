@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from services.movies import getAllMovies, addMovies, getMovieByTitle
+from services.movies import getAllMovies, addMovies, getMovieByTitle, getMovieById
 
 movies_api = Blueprint("movies_api", __name__)
 
@@ -53,3 +53,21 @@ def add():
             print(datas["title"][0])
         return jsonify({"added movies": datas})
     return jsonify({"Messages": "Movie added"})
+
+
+@movies_api.route("/getId", methods=["POST", "GET"])
+def getId():
+    if request.method == "POST":
+        data = request.get_json()
+        item = getMovieById(data)
+        movie_list = {
+            "id": item[0],
+            "title": item[1],
+            "rating": item[2],
+            "description": item[3],
+            "image": item[4],
+            "genre_id": item[5],
+        }
+
+        return jsonify(movie_list)
+    return jsonify({"URL: ": "/api/movies/getId"})

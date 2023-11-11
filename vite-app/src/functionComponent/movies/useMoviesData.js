@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getAllMovie, getMovieByTitle } from "../../api/movies_api";
 import getMoviesByGenre from "./getMoviesByGenre";
 import { useParams } from "react-router-dom";
+import getMoviesById from "./getMoviesById";
 
 function UseMoviesData() {
   const [movies, setMovies] = useState([]); // state of all movies
@@ -62,6 +63,17 @@ function UseMoviesData() {
     return randomizedArray;
   }
 
+  function GetSingleMovieById(id) {
+    const [singleMovie, setSingleMovie] = useState([]);
+    useEffect(() => {
+      getMoviesById(id).then((data) => {
+        setSingleMovie(data);
+      });
+    }, []);
+
+    return singleMovie;
+  }
+
   return {
     movies,
     setMovies,
@@ -73,6 +85,7 @@ function UseMoviesData() {
     filteredMovies,
     setFilteredMovies,
     GetMoviesDetail,
+    GetSingleMovieById,
     rating,
     similar,
     RandomizeArrayAndLimit,

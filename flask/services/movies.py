@@ -15,6 +15,18 @@ def getAllMovies():
         logging.error(e)
 
 
+def getMovieById(data):
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        id = data["id"]
+        cur.execute("SELECT * FROM movies WHERE id = ?", (id,))
+        movie = cur.fetchone()
+        return movie
+    except Exception as e:
+        logging.error(e)
+
+
 def getMovieByTitle(title):
     db = db_connection()
     cur = db.cursor()
