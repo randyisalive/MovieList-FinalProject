@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import getAllUser from "./getAllUser";
-import { userIdCookie } from "../../Cookies";
 import getUserById from "./getUserById";
 
 function useUsersData() {

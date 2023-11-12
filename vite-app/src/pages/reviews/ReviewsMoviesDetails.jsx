@@ -1,6 +1,16 @@
 import { useParams } from "react-router-dom";
 import UseMoviesData from "../../functionComponent/movies/useMoviesData";
-import { MDBCardImage, MDBContainer } from "mdb-react-ui-kit";
+import {
+  MDBCard,
+  MDBCardBody,
+  MDBCardHeader,
+  MDBCardImage,
+  MDBCardText,
+  MDBCardTitle,
+  MDBCol,
+  MDBContainer,
+  MDBRow,
+} from "mdb-react-ui-kit";
 import { Card } from "primereact/card";
 import { Image } from "primereact/image";
 
@@ -14,11 +24,6 @@ function ReviewsMoviesDetails() {
     return (
       <>
         <div className="d-flex gap-3 align-items-center">
-          <MDBCardImage
-            src={`../../../movies_data/1/eLFfl7vS8dkeG1hKp5mwbm37V83.jpg`} // still broken
-            width="100"
-            preview
-          />
           <h1>{movie.title}</h1>
         </div>
       </>
@@ -28,7 +33,26 @@ function ReviewsMoviesDetails() {
   return (
     <>
       <MDBContainer className="mt-5">
-        <Card title={cardTitle}></Card>
+        <MDBCard>
+          <MDBCardHeader>
+            <MDBCardTitle>
+              <h3 className="h3">{movie.title}</h3>
+            </MDBCardTitle>
+          </MDBCardHeader>
+          <MDBCardBody>
+            <MDBCardText>
+              <MDBRow>
+                <MDBCol>
+                  <Image
+                    src={`../../../../movies_data/${movie.id}/${movie.image}`}
+                    width="150"
+                    preview
+                  />
+                </MDBCol>
+              </MDBRow>
+            </MDBCardText>
+          </MDBCardBody>
+        </MDBCard>
       </MDBContainer>
       <h1>Details of reviews here</h1>
     </>

@@ -8,7 +8,7 @@ export function getCookies() {
     user_id: user_id,
     token: token,
   };
-  return data;
+  return { user_id, token };
 }
 
 export function generateToken() {

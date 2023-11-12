@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { loginApi } from "../API";
 import {
   LoginHandler,
   generateHashPassword,
 } from "../../api/authentication_api";
 import Cookies from "js-cookie";
-import addTokenDatabase from "./addTokenDatabase";
 
 function UseLoginData() {
   const [form, setForm] = useState({});

@@ -48,7 +48,12 @@ def get():
         id = data["id"]
         user = getUserById(id)
         if user:
-            user_list = {"id": user[0], "username": user[1], "password": user[2]}
+            user_list = {
+                "id": user[0],
+                "username": user[1],
+                "password": user[2],
+                "image": user[3],
+            }
             return jsonify(user_list)
         else:
             return jsonify({"Messages": "no user found"})
