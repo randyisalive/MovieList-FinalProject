@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from services.users_services import getAllUser, getUserById
+from services.users_services import getAllUser, getUserById, addUser
 from bcrypt_services import verify_password, generate_hash
 from .tokens_api import addToken
 import secrets
@@ -39,6 +39,21 @@ def generate():
         hashed_password = generate_hash(password)
         return jsonify({"Password": hashed_password.decode("utf-8")})
     return jsonify({"utl: ": "/api/auth/generate"})
+
+
+@auth_api.route("/create", methods=["POST", "GET"])
+def create():
+    if request.method == "POST":
+        data = request.get_json()
+        username = data["username"]
+        password = data["password"]
+        retype = data["retype"]
+        if password == retype:
+            hashed_password = generate_hash(password)
+            addUser(username, hashed_password)
+            return jsonify({"Message": "USER CREATED"})
+        pass
+    return jsonify({"URL: ": "/api/auth/create"})
 
 
 @auth_api.route("/get", methods=["POST", "GET"])

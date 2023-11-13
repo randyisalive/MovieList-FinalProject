@@ -11,4 +11,4 @@ def generate_hash(input_password):
     password = input_password.encode("utf-8")
     salt = bcrypt.gensalt()
     hashed_password = bcrypt.hashpw(password, salt)
-    return hashed_password
+    return hashed_password.decode("utf-8")

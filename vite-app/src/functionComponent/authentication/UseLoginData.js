@@ -4,6 +4,8 @@ import {
   generateHashPassword,
 } from "../../api/authentication_api";
 import Cookies from "js-cookie";
+import getAllUser from "../users/getAllUser";
+import createUser from "./createUser";
 
 function UseLoginData() {
   const [form, setForm] = useState({});
@@ -40,7 +42,15 @@ function UseLoginData() {
     }, []);
   }
 
-  return { LoginBtnHandler, formHandler, GeneratePassword };
+  function CreateUser() {
+    console.log(form);
+    createUser(form.username, form.password, form.retype).then((data) => {
+      console.log(data);
+      window.location.href = "/login";
+    });
+  }
+
+  return { LoginBtnHandler, formHandler, GeneratePassword, CreateUser };
 }
 
 export default UseLoginData;

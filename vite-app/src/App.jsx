@@ -14,9 +14,9 @@ import AllMovies from "./pages/movies/AllMovies";
 import DetailMovies from "./pages/movies/DetailMovies";
 import AllActors from "./pages/movies/AllActors";
 import MovieDiscussion from "./pages/community/MovieDiscussion";
-import ReviewMovies from "./components/movies/ReviewsMovies";
 import ReviewsMoviesForm from "./pages/reviews/ReviewsMoviesForm";
 import ReviewsMoviesDetails from "./pages/reviews/ReviewsMoviesDetails";
+import Create from "./pages/authentication/Create";
 
 function App() {
   return (
@@ -28,6 +28,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/create" element={<Create />} />
               <Route path="/community" element={<Community />} />
               <Route
                 path="/community/Movie Discussion"

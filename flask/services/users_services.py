@@ -24,3 +24,21 @@ def getUserById(id):
         return user
     except Exception as e:
         logging.error(e)
+
+
+def addUser(username, password):
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        cur.execute(
+            "INSERT INTO users (username, password) VALUES (?,?)",
+            (
+                username,
+                password,
+            ),
+        )
+        db.commit()
+        cur.close()
+        db.close()
+    except Exception as e:
+        logging.error(e)

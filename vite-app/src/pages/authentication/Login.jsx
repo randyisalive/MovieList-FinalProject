@@ -45,7 +45,7 @@ function Login() {
                 />
               </div>
               <div className="d-flex justify-content-center">
-                Forgot Password | Contact Us
+                <a href="/create">Forgot Password</a>| Contact Us
               </div>
               <div className="d-flex justify-content-center">
                 <button

@@ -33,6 +33,7 @@ export const getActorsByMovieApi = PROXY + "cast/getByMovieId";
 export const loginApi = PROXY + "auth/login";
 export const generateHashPasswordApi = PROXY + "auth/generate";
 export const getUserByIdApi = PROXY + "auth/get";
+export const createNewuserApi = PROXY + "auth/create";
 
 // community api
 export const getDiscussionApi = PROXY + "community/discussion/get";
