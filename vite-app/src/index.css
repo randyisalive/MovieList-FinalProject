@@ -1,0 +1,10 @@
+:root {
+  --CHAOS-BLACK: #0f0f0f;
+  --IMPERIAL-PRIMER: #232d3f;
+  --SACRAMENTO-STATE-GREEN: #005b41;
+  --VIRIDIS: #008170;
+}
+
+body {
+  font-family: var(--font-family);
+}
