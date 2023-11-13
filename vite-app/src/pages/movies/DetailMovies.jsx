@@ -19,12 +19,16 @@ import useCastsData from "../../functionComponent/casts/useCastsData";
 import useGenresData from "../../functionComponent/genres/useGenresData";
 import MoviesByGenre from "../../components/movies/MoviesByGenre";
 import ReviewMovies from "../../components/movies/ReviewsMovies";
+import useReviewsData from "../../functionComponent/reviews/useReviewsData";
 
 function DetailMovies() {
   const { id, title } = useParams();
   const { GetMoviesDetail, detail, rating } = UseMoviesData();
   const { GetCastByMovieId } = useCastsData(id);
   const { Genres } = useGenresData();
+  const { GetReviewsNewestByMovieId } = useReviewsData();
+  const data = GetReviewsNewestByMovieId(id);
+  console.log(data);
   GetMoviesDetail(title);
   return (
     <>

@@ -5,8 +5,13 @@ import {
   MDBCardHeader,
   MDBCardText,
 } from "mdb-react-ui-kit";
+import { useParams } from "react-router-dom";
+import useReviewsData from "../../functionComponent/reviews/useReviewsData";
 
 function ReviewMovies() {
+  const { id } = useParams();
+  const {} = useReviewsData();
+
   return (
     <>
       <MDBCard className="mt-5 mb-5">

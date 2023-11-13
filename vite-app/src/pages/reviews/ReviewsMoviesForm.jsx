@@ -10,11 +10,15 @@ import { Rating } from "primereact/rating";
 import useReviewsData from "../../functionComponent/reviews/useReviewsData";
 import { formSubmitHandler } from "../../api/reviews_api";
 import { useParams } from "react-router-dom";
+import UseMoviesData from "../../functionComponent/movies/useMoviesData";
+import { Image } from "primereact/image";
 
 function ReviewsMoviesForm() {
   const { HandleForm, form } = useReviewsData();
-  const { id } = useParams();
-  console.log;
+  const { GetMoviesDetail, detail } = UseMoviesData();
+  const { id, title } = useParams();
+  GetMoviesDetail(title);
+  console.log(detail);
   return (
     <>
       <MDBContainer className=" ms-3 mt-5">
@@ -24,6 +28,14 @@ function ReviewsMoviesForm() {
           </MDBCardHeader>
           <MDBCardBody>
             <form action="" onSubmit={(e) => e.preventDefault()}>
+              <div className="d-flex align-items-center gap-3">
+                <Image
+                  src={`../../../movies_data/${detail.id}/${detail.image}`}
+                  width="100"
+                />
+                <h3 className="h3">{detail.title}</h3>
+              </div>
+
               <MDBInput
                 placeholder="title..."
                 className="my-3"
@@ -38,12 +50,21 @@ function ReviewsMoviesForm() {
                 onChange={(e) => HandleForm(e, id)}
               />
             </form>
-            <Rating
-              cancel={false}
-              name="rating"
-              onChange={(e) => HandleForm(e, id)}
-              value={form.rating}
-            />
+            <div className="d-flex gap-3 align-items-center">
+              Rating:{" "}
+              <Rating
+                cancel={false}
+                name="rating"
+                stars={10}
+                onChange={(e) => HandleForm(e, id)}
+                value={form.rating}
+              />
+              {form.rating <= 5 ? (
+                <p className="text-danger"> {form.rating}</p>
+              ) : (
+                <p className="text-primary"> {form.rating}</p>
+              )}
+            </div>
           </MDBCardBody>
         </MDBCard>
         <div className="mt-4 justify-content-center d-flex">

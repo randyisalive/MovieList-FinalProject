@@ -10,6 +10,7 @@ const PROXY = "http://127.0.0.1:5000/api/";
 export const getAllListApi = PROXY + "mylist/get";
 export const updateStatusMyListApi = PROXY + "mylist/updateStatus";
 export const addListAPi = PROXY + "mylist/add";
+export const updateIsWatchedApi = PROXY + "mylist/update/watch";
 export const deleteListApi = PROXY + "mylist/delete";
 
 //genres api
@@ -37,3 +38,10 @@ export const getUserByIdApi = PROXY + "auth/get";
 export const getDiscussionApi = PROXY + "community/discussion/get";
 export const reviewsFormApi = PROXY + "community/discussion/form/reviews";
 export const deleteDiscussionApi = PROXY + "community/discussion/delete";
+export const getReviewsByMovieIdApi =
+  PROXY + "community/discussion/getByMovieId";
+export const getReviewsByIdApi = PROXY + "community/discussion/getReviewById";
+export const getCommentsApi = PROXY + "community/discussion/get-comment";
+export const addCommentReviewsApi = PROXY + "community/discussion/add-comment";
+export const updateIsReplyOpenApi = PROXY + "community/discussion/isReplyOpen";
+export const deleteCommentApi = PROXY + "community/discussion/comment/delete";

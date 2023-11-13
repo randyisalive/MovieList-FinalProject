@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import getAllListById from "./getAllListById";
 import { addList, deleteList, updateStatusMyList } from "../../api/mylist_api";
-import { getAllMovie } from "../../api/movies_api";
-import UseMoviesData from "../movies/useMoviesData";
+import updateIsWatched from "./updateIsWatched";
 
 function UseMyListData() {
   const [list, setList] = useState([]);
@@ -33,13 +32,22 @@ function UseMyListData() {
     await addList(movie_id);
   }
 
+  function toggleIsWatched(id, status) {
+    updateIsWatched(id, status).then((data) => {
+      console.log(data);
+      getAllListById().then((data) => {
+        setList(data);
+      });
+    });
+  }
+
   return {
     list,
     toggleWatchList,
     addMovieToList,
     deleteMyList,
-
     getList,
+    toggleIsWatched,
   };
 }
 

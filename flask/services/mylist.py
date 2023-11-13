@@ -7,7 +7,7 @@ def getMyListById(user_id):
     cur = db.cursor()
     try:
         cur.execute(
-            "SELECT movies.id, movies.image, movies.title, list.status, list.id FROM list INNER JOIN movies ON list.movie_id = movies.id WHERE list.user_id = ? AND list.status = 1",
+            "SELECT movies.id, movies.image, movies.title, list.status, list.id, list.isWatched FROM list INNER JOIN movies ON list.movie_id = movies.id WHERE list.user_id = ? AND list.status = 1",
             (user_id,),
         )
         mylist = cur.fetchall()
@@ -25,6 +25,24 @@ def updateMyListStatus(status, id):
             id,
         )
         cur.execute("UPDATE list SET status = ? WHERE id = ?", params)
+        db.commit()
+        cur.close()
+        db.close()
+    except Exception as e:
+        logging.error(e)
+
+
+def updateIsWatched(id, status):
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        cur.execute(
+            "UPDATE list SET isWatched = ? WHERE id = ?",
+            (
+                status,
+                id,
+            ),
+        )
         db.commit()
         cur.close()
         db.close()

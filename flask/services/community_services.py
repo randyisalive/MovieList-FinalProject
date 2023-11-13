@@ -3,6 +3,17 @@ import logging
 from date_now import getDate
 
 
+def getReviewsById(id):
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        cur.execute("SELECT * FROM movies_discussions WHERE id = ?", (id,))
+        reviews = cur.fetchone()
+        return reviews
+    except Exception as e:
+        logging.error(e)
+
+
 def getDiscussion():
     # table: movies_discussions, users, movies
     db = db_connection()
@@ -14,9 +25,31 @@ def getDiscussion():
             FROM movies_discussions
             INNER JOIN users ON movies_discussions.user_id = users.id
             INNER JOIN movies ON movies_discussions.movie_id = movies.id
-            ORDER BY date ASC
+            ORDER BY movies_discussions.date DESC
         """
         cur.execute(sql)
+        items = cur.fetchall()
+        cur.close()
+        db.close()
+        return items
+    except Exception as e:
+        logging.error(e)
+
+
+def getDiscussionByMovieId(id):
+    # table: movies_discussions, users, movies
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        sql = """
+            SELECT 
+            movies_discussions.id, movies_discussions.title, movies_discussions.body, movies_discussions.date, movies.title, users.username, users.image, users.id, movies.id
+            FROM movies_discussions
+            INNER JOIN users ON movies_discussions.user_id = users.id
+            INNER JOIN movies ON movies_discussions.movie_id = movies.id
+            WHERE movies_discussions.movie_id = ? ORDER BY movies_discussions.date ASC
+        """
+        cur.execute(sql, (id,))
         items = cur.fetchall()
         cur.close()
         db.close()
@@ -65,3 +98,64 @@ def form_reviews(data):
         db.close()
     else:
         print("NO DATA")
+
+
+def get_comment(data):
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        review_id = data["review_id"]
+        sql = "SELECT * FROM comments FULL RIGHT JOIN users ON comments.user_id = users.id WHERE review_id = ?"
+        params = (review_id,)
+        cur.execute(sql, params)
+        comments = cur.fetchall()
+        return comments
+    except Exception as e:
+        logging.error(e)
+
+
+def add_comment(body, review_id, user_id):
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        params = (
+            body,
+            review_id,
+            user_id,
+        )
+        sql = "INSERT INTO comments (body, review_id, user_id) VALUES (?,?,?)"
+        cur.execute(sql, params)
+        db.commit()
+        cur.close()
+        db.close()
+    except Exception as e:
+        logging.error(e)
+
+
+def deleteComment(id):
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        cur.execute("DELETE FROM comments WHERE id = ?", (id,))
+        db.commit()
+        cur.close()
+        db.close()
+    except Exception as e:
+        logging.error(e)
+
+
+def updateIsReplyOpen(id, data):
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        params = (
+            data,
+            id,
+        )
+        sql = "UPDATE comments SET isReplyOpen = ? WHERE id = ?"
+        cur.execute(sql, params)
+        db.commit()
+        cur.close()
+        db.close()
+    except Exception as e:
+        logging.error(e)

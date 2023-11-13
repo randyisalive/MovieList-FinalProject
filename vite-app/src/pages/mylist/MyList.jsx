@@ -7,8 +7,9 @@ import { Link } from "react-router-dom";
 import useUsersData from "../../functionComponent/users/useUsersData";
 
 function MyList() {
-  const { list, getList, toggleWatchList, deleteMyList } = UseMyListData();
+  const { list, getList, toggleIsWatched, deleteMyList } = UseMyListData();
   const { GetUser } = useUsersData();
+  console.log(list);
   console.log(GetUser());
 
   const imageTemplate = (movie_id, movie_image) => {
@@ -23,35 +24,35 @@ function MyList() {
     );
   };
 
-  const BtnList = (list_id, list_status) => {
+  const BtnList = (list_id, isWatched) => {
     return (
       <>
-        {list_status === 1 ? (
-          <div className="d-flex gap-2">
-            <button
-              className="btn btn-danger d-flex align-items-center gap-2"
-              onClick={() => {
-                deleteMyList(list_id).then(() => {
-                  getList();
-                });
-              }}
-            >
-              <i className="pi pi-trash"></i>
-              Delete
-            </button>
-          </div>
-        ) : (
+        <div className="d-flex gap-2">
+          <button
+            className="btn btn-danger d-flex align-items-center gap-2"
+            onClick={() => {
+              deleteMyList(list_id).then(() => {
+                getList();
+              });
+            }}
+          >
+            <i className="pi pi-trash"></i>
+            Delete
+          </button>
           <button
             className="btn btn-primary d-flex align-items-center gap-2"
             onClick={() => {
-              toggleWatchList(!list_status, list_id);
-              console.log("Wathclist: ", list_id);
+              toggleIsWatched(list_id, !isWatched);
             }}
           >
-            <i className="pi pi-plus"></i>
-            Watchlist
+            {isWatched === 1 ? (
+              <i className="pi pi-check"></i>
+            ) : (
+              <i className="pi pi-plus"></i>
+            )}
+            <p>Watched</p>
           </button>
-        )}
+        </div>
       </>
     );
   };
@@ -81,16 +82,7 @@ function MyList() {
               );
             }}
           />
-          <Column
-            body={(item) =>
-              BtnList(
-                item.list_id,
-                item.list_status,
-                item.movie_title,
-                item.movie_id
-              )
-            }
-          />
+          <Column body={(item) => BtnList(item.list_id, item.isWatched)} />
         </DataTable>
       </MDBContainer>
     </>
