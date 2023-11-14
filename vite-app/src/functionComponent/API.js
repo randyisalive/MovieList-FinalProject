@@ -20,6 +20,9 @@ export const getMoviesByGenresApi = PROXY + "genres/getSimilar";
 // tokens api
 export const addTokenApi = PROXY + "tokens/add";
 
+// profile api
+export const updateProfileApi = PROXY + "profile/update";
+
 // movies api
 export const getAllMovieApi = PROXY + "movies/get";
 export const addMoviesApi = PROXY + "movies/add";

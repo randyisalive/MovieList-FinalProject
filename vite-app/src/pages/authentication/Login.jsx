@@ -45,7 +45,7 @@ function Login() {
                 />
               </div>
               <div className="d-flex justify-content-center">
-                <a href="/create">Forgot Password</a>| Contact Us
+                <a href="/create">Create Account</a>| Contact Us
               </div>
               <div className="d-flex justify-content-center">
                 <button

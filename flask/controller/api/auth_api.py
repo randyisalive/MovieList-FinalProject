@@ -1,7 +1,8 @@
 from flask import Blueprint, request, jsonify
-from services.users_services import getAllUser, getUserById, addUser
+from services.users_services import getAllUser, getUserById, addUser, getUserUsername
 from bcrypt_services import verify_password, generate_hash
 from .tokens_api import addToken
+from date_now import getDate
 import secrets
 import logging
 
@@ -48,11 +49,24 @@ def create():
         username = data["username"]
         password = data["password"]
         retype = data["retype"]
-        if password == retype:
-            hashed_password = generate_hash(password)
-            addUser(username, hashed_password)
-            return jsonify({"Message": "USER CREATED"})
-        pass
+        usernames = getUserUsername()
+        # set min username length
+        min_username_length = 5
+        if len(username) <= min_username_length:
+            return jsonify(
+                {"error": "Username too short (min 5 characters)"}, {"status": False}
+            )
+        # check is username avaliable
+        for item in usernames:
+            if username == item[0]:
+                return jsonify({"error": "Username already exists"}, {"status": False})
+
+        # check if retpye == password
+        if password != retype:
+            return jsonify({"error": "Password not match"}, {"status": False})
+        hashed_password = generate_hash(password)
+        addUser(username, hashed_password, getDate())
+        return jsonify({"Message": "USER CREATED"})
     return jsonify({"URL: ": "/api/auth/create"})
 
 
@@ -68,6 +82,10 @@ def get():
                 "username": user[1],
                 "password": user[2],
                 "image": user[3],
+                "joined": user[4],
+                "biography": user[5],
+                "birthday": user[6],
+                "gender": user[7],
             }
             return jsonify(user_list)
         else:

@@ -1,5 +1,4 @@
 import {
-  MDBBtn,
   MDBCard,
   MDBCardBody,
   MDBCardHeader,
@@ -7,57 +6,19 @@ import {
   MDBCardTitle,
   MDBCol,
   MDBContainer,
-  MDBFile,
-  MDBInput,
   MDBRow,
 } from "mdb-react-ui-kit";
 import useUsersData from "../../functionComponent/users/useUsersData";
 import { Image } from "primereact/image";
 import { useState } from "react";
+import ProfileForm from "../../components/profile/ProfileForm";
 
 function Profile() {
   const { GetUser } = useUsersData();
   const [setting, setSetting] = useState(false);
-  const [form, setForm] = useState([]);
-  const formHandler = (e) => {
-    setForm(() => ({ ...form, [e.target.name]: e.target.value }));
-  };
+
   console.log(GetUser());
   const user = GetUser();
-
-  const profileSetting = () => {
-    return (
-      <>
-        <div className="d-flex flex-column gap-3">
-          <MDBInput
-            placeholder="username..."
-            name="username"
-            onChange={formHandler}
-          />
-          <MDBInput
-            placeholder="password..."
-            name="password"
-            onChange={formHandler}
-          />
-          <MDBFile />
-          <input
-            type="date"
-            className="form-control"
-            onChange={formHandler}
-            name="birtday"
-          />
-          <div className="d-flex align-items-center justify-content-center">
-            <button
-              className="btn btn-warning"
-              onClick={() => console.log(form)}
-            >
-              Update Profile
-            </button>
-          </div>
-        </div>
-      </>
-    );
-  };
 
   return (
     <>
@@ -77,7 +38,7 @@ function Profile() {
                       src={
                         user.image === "default.jpg"
                           ? `../../../actors_data/default.jpg`
-                          : `../../../users_data/${user.id}/${user.image}`
+                          : `../../../user_data/picture/${user.id}/${user.image}`
                       }
                       width="200"
                       preview
@@ -96,7 +57,7 @@ function Profile() {
                   </div>
                 </MDBCol>
                 <MDBCol className="col-xl-9 mt-3">
-                  {setting ? profileSetting() : null}
+                  {setting ? <ProfileForm /> : null}
                 </MDBCol>
               </MDBRow>
             </MDBCardText>

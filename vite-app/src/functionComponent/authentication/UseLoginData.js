@@ -8,7 +8,13 @@ import getAllUser from "../users/getAllUser";
 import createUser from "./createUser";
 
 function UseLoginData() {
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({
+    username: "",
+    password: "",
+    retype: "",
+  });
+
+  const [status, setStatus] = useState("");
 
   function formHandler(e) {
     setForm((prev) => ({
@@ -38,6 +44,7 @@ function UseLoginData() {
     useEffect(() => {
       generateHashPassword("admin").then((data) => {
         console.log(data);
+        setStatus(data["status"]);
       });
     }, []);
   }
@@ -46,11 +53,11 @@ function UseLoginData() {
     console.log(form);
     createUser(form.username, form.password, form.retype).then((data) => {
       console.log(data);
-      window.location.href = "/login";
+      setStatus(data);
     });
   }
 
-  return { LoginBtnHandler, formHandler, GeneratePassword, CreateUser };
+  return { LoginBtnHandler, formHandler, GeneratePassword, CreateUser, status };
 }
 
 export default UseLoginData;

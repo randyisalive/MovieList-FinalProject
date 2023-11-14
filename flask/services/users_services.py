@@ -26,16 +26,26 @@ def getUserById(id):
         logging.error(e)
 
 
-def addUser(username, password):
+def getUserUsername():
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        cur.execute("SELECT username FROM users")
+        usernames = cur.fetchall()
+        cur.close()
+        db.close()
+        return usernames
+    except Exception as e:
+        logging.error(e)
+
+
+def addUser(username, password, joined):
     db = db_connection()
     cur = db.cursor()
     try:
         cur.execute(
-            "INSERT INTO users (username, password) VALUES (?,?)",
-            (
-                username,
-                password,
-            ),
+            "INSERT INTO users (username, password, joined) VALUES (?,?,?)",
+            (username, password, joiner),
         )
         db.commit()
         cur.close()

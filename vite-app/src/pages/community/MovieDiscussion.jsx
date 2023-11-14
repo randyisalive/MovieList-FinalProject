@@ -91,7 +91,7 @@ function MovieDiscussion() {
                           src={
                             item.user_image === "default.jpg"
                               ? `../../../actors_data/default.jpg`
-                              : `../../../users_data/${item.user_id}/${item.user_image}`
+                              : `../../../user_data/picture/${item.user_id}/${item.user_image}`
                           }
                           alt="profile_picture"
                           width="50"

@@ -14,6 +14,7 @@ from controller.api.actors_api import actors_api
 from controller.api.genres_api import genres_api
 from controller.api.movies_reviews_api import movies_reviews_api
 from controller.api.community_api import community_api
+from controller.api.profile_api import profile_api
 
 ## api controller
 
@@ -38,6 +39,7 @@ app.register_blueprint(cast_api, url_prefix="/api/cast")
 app.register_blueprint(movies_reviews_api, url_prefix="/api/movies_reviews")
 app.register_blueprint(actors_api, url_prefix="/api/actors")
 app.register_blueprint(community_api, url_prefix="/api/community")
+app.register_blueprint(profile_api, url_prefix="/api/profile")
 # api controller #
 
 if __name__ == "__main__":

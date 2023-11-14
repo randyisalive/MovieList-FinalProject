@@ -21,6 +21,7 @@ import { useRef } from "react";
 import { Rating } from "primereact/rating";
 
 import { Toast } from "primereact/toast";
+import { userIdCookie } from "../../Cookies";
 
 function ReviewsMoviesDetails() {
   const { id, movie_id } = useParams();
@@ -179,13 +180,18 @@ function ReviewsMoviesDetails() {
                             <h6 className="h6">{item.body}</h6>
                           </MDBCol>
                           <MDBCol className="col-xl-1">
-                            <i
-                              className="pi pi-times text-danger"
-                              style={{ fontSize: "1.2rem", cursor: "pointer" }}
-                              onClick={() => {
-                                deleteCommentHandler(item.id, id);
-                              }}
-                            ></i>
+                            {item.user_id === userIdCookie ? (
+                              <i
+                                className="pi pi-times text-danger"
+                                style={{
+                                  fontSize: "1.2rem",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  deleteCommentHandler(item.id, id);
+                                }}
+                              ></i>
+                            ) : null}
                           </MDBCol>
                         </MDBRow>
                       </MDBCardText>
