@@ -17,6 +17,7 @@ import MovieDiscussion from "./pages/community/MovieDiscussion";
 import ReviewsMoviesForm from "./pages/reviews/ReviewsMoviesForm";
 import ReviewsMoviesDetails from "./pages/reviews/ReviewsMoviesDetails";
 import Create from "./pages/authentication/Create";
+import ViewList from "./pages/mylist/ViewList";
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
                 element={<ReviewsMoviesForm />}
               />
               <Route path="/mylist" element={<MyList />} />
+              <Route path="/mylist/view/user/:id" element={<ViewList />} />
               <Route path="/profile" element={<Profile />} />
             </Routes>
           </div>

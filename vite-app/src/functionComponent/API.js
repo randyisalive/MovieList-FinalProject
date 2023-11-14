@@ -12,6 +12,7 @@ export const updateStatusMyListApi = PROXY + "mylist/updateStatus";
 export const addListAPi = PROXY + "mylist/add";
 export const updateIsWatchedApi = PROXY + "mylist/update/watch";
 export const deleteListApi = PROXY + "mylist/delete";
+export const viewListApi = PROXY + "mylist/get/byId";
 
 //genres api
 export const getGenreByMovieIdApi = PROXY + "genres/get";

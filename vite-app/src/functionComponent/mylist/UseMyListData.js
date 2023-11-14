@@ -41,6 +41,14 @@ function UseMyListData() {
     });
   }
 
+  function GetListByUserId(id) {
+    const [list, setList] = useState([]);
+
+    useEffect(() => {}, []);
+
+    return list;
+  }
+
   return {
     list,
     toggleWatchList,

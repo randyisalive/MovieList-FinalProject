@@ -16,6 +16,19 @@ def getMyListById(user_id):
         return logging.error(e)
 
 
+def getListById(user_id):
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        cur.execute(
+            "SELECT movies.id, movies.image, movies.title, list.status, list.id, list.isWatched FROM list INNER JOIN movies ON list.movie_id = movies.id WHERE list.user_id = ?"
+        )
+        lists = cur.fetchall()
+        return lists
+    except Exception as e:
+        logging.error(e)
+
+
 def updateMyListStatus(status, id):
     db = db_connection()
     cur = db.cursor()

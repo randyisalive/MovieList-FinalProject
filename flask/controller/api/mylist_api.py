@@ -6,6 +6,7 @@ from services.mylist import (
     insertToList,
     deleteList,
     updateIsWatched,
+    getListById,
 )
 
 mylist_api = Blueprint("mylist_api", __name__)
@@ -76,3 +77,24 @@ def updateWatched():
         updateIsWatched(id, status)
         return jsonify({"Message": "updated isWatched!!"})
     return jsonify({"URL: ": "/api/mylist/update/watch"})
+
+
+@mylist_api.route("/get/byId", methods=["GET", "POST"])
+def getById():
+    if request.method == "POST":
+        data = request.get_json()
+        id = data["id"]
+        lists = getListById(id)
+        lists_list = [
+            {
+                "movie_id": i[0],
+                "movie_image": i[1],
+                "movie_title": i[2],
+                "list_status": i[3],
+                "list_id": i[4],
+                "list_isWatched": i[5],
+            }
+            for i in lists
+        ]
+        return jsonify(lists_list)
+    return jsonify({"URL: ": "/api/mylist/get/byId"})
