@@ -8,13 +8,27 @@ import {
 } from "mdb-react-ui-kit";
 import UseLoginData from "../../functionComponent/authentication/useLoginData";
 import { Toast } from "primereact/toast";
+import { useRef } from "react";
 
 function Create() {
-  const { formHandler, CreateUser, status } = UseLoginData();
+  const {
+    formHandler,
+    CreateUser,
+    status,
+    usernameRef,
+    passwordRef,
+    emptyRef,
+    successRef,
+  } = UseLoginData();
 
   return (
     <>
       {console.log(status)}
+      <Toast ref={usernameRef} />
+      <Toast ref={passwordRef} />
+      <Toast ref={emptyRef} />
+      <Toast ref={successRef} />
+
       <div className=" w-100 justify-content-center d-flex align-items-center">
         <MDBCard>
           <MDBCardHeader className="bg-danger text-white">

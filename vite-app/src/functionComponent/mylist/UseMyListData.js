@@ -5,6 +5,7 @@ import updateIsWatched from "./updateIsWatched";
 
 function UseMyListData() {
   const [list, setList] = useState([]);
+  const [border, setBorder] = useState(false);
 
   useEffect(() => {
     getAllListById().then((data) => {
@@ -49,6 +50,10 @@ function UseMyListData() {
     return list;
   }
 
+  function FilterList() {
+    const newArray = {};
+  }
+
   return {
     list,
     toggleWatchList,
@@ -56,6 +61,8 @@ function UseMyListData() {
     deleteMyList,
     getList,
     toggleIsWatched,
+    border,
+    setBorder,
   };
 }
 

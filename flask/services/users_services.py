@@ -45,7 +45,7 @@ def addUser(username, password, joined):
     try:
         cur.execute(
             "INSERT INTO users (username, password, joined) VALUES (?,?,?)",
-            (username, password, joiner),
+            (username, password, joined),
         )
         db.commit()
         cur.close()

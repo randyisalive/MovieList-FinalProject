@@ -97,7 +97,17 @@ function MovieDiscussion() {
                           width="50"
                           preview
                         />
-                        <p className="h6 m-0">{item.user_username}</p>
+                        <Link
+                          to={
+                            item.user_id === userIdCookie
+                              ? `/profile`
+                              : `/profile/view/${item.user_id}`
+                          }
+                        >
+                          <p className="h6 m-0 text-primary">
+                            {item.user_username}
+                          </p>
+                        </Link>
                       </div>
                     </MDBCardTitle>
                   </MDBCardHeader>

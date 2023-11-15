@@ -53,17 +53,15 @@ def create():
         # set min username length
         min_username_length = 5
         if len(username) <= min_username_length:
-            return jsonify(
-                {"error": "Username too short (min 5 characters)"}, {"status": False}
-            )
+            return jsonify({"error": "Username too short (min 5 characters)"})
         # check is username avaliable
         for item in usernames:
             if username == item[0]:
-                return jsonify({"error": "Username already exists"}, {"status": False})
+                return jsonify({"error": "Username already exists"})
 
         # check if retpye == password
         if password != retype:
-            return jsonify({"error": "Password not match"}, {"status": False})
+            return jsonify({"error": "Password not match"})
         hashed_password = generate_hash(password)
         addUser(username, hashed_password, getDate())
         return jsonify({"Message": "USER CREATED"})

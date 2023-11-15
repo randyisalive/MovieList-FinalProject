@@ -1,8 +1,7 @@
 import { userIdCookie } from "../../Cookies";
 import { getUserByIdApi } from "../API";
 
-async function getUserById() {
-  const id = userIdCookie;
+async function getUserById(id) {
   try {
     const response = await fetch(getUserByIdApi, {
       method: "POST",

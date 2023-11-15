@@ -18,6 +18,7 @@ import ReviewsMoviesForm from "./pages/reviews/ReviewsMoviesForm";
 import ReviewsMoviesDetails from "./pages/reviews/ReviewsMoviesDetails";
 import Create from "./pages/authentication/Create";
 import ViewList from "./pages/mylist/ViewList";
+import ViewProfile from "./pages/profile/ViewProfile";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
               <Route path="/mylist" element={<MyList />} />
               <Route path="/mylist/view/user/:id" element={<ViewList />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/profile/view/:id" element={<ViewProfile />} />
             </Routes>
           </div>
         </body>

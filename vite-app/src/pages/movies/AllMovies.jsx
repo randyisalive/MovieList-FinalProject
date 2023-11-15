@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import { AutoComplete } from "primereact/autocomplete";
 import UseMyListData from "../../functionComponent/mylist/UseMyListData";
 import { getAllMovie } from "../../api/movies_api";
+import { Toast } from "primereact/toast";
+import { useRef } from "react";
 
 function AllMovies() {
   const {
@@ -18,6 +20,24 @@ function AllMovies() {
     searchMovies,
   } = UseMoviesData();
   const { addMovieToList, deleteMyList } = UseMyListData();
+
+  // toast
+  const addListToastRef = useRef(null);
+  const deleteListToastRef = useRef(null);
+  const showToastAddList = () => {
+    addListToastRef.current.show({
+      severity: "success",
+      summary: "Info",
+      detail: "Added to MyList",
+    });
+  };
+  const showToastDeleteList = () => {
+    deleteListToastRef.current.show({
+      severity: "error",
+      summary: "Error",
+      detail: "Delete in MyList",
+    });
+  };
 
   const imageTemplate = (id, image) => {
     return (
@@ -33,6 +53,8 @@ function AllMovies() {
 
   return (
     <>
+      <Toast ref={addListToastRef} />
+      <Toast ref={deleteListToastRef} />
       <div className="d-flex flex-column m-4 mt-5 gap-4">
         <div className="d-flex gap-2">
           <div className="card flex justify-content-center">
@@ -93,6 +115,7 @@ function AllMovies() {
                           deleteMyList(item.list_id).then(() => {
                             getAllMovie().then((data) => {
                               setMovies(data);
+                              showToastDeleteList();
                             });
                           });
                         }}
@@ -106,6 +129,7 @@ function AllMovies() {
                           addMovieToList(item.id).then(() => {
                             getAllMovie().then((data) => {
                               setMovies(data);
+                              showToastAddList();
                             });
                           });
                           console.log(item);

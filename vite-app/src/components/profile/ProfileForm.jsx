@@ -1,5 +1,4 @@
 import { MDBFile, MDBInput, MDBTextArea } from "mdb-react-ui-kit";
-import useUsersData from "../../functionComponent/users/useUsersData";
 import UseProfileData from "../../functionComponent/profile/useProfileData";
 
 function ProfileForm() {
@@ -19,7 +18,7 @@ function ProfileForm() {
           type="date"
           className="form-control"
           onChange={formHandler}
-          name="birtday"
+          name="birthday"
           value={form.birthday}
         />
         <MDBTextArea

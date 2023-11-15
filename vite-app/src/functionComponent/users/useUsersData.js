@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import getAllUser from "./getAllUser";
 import getUserById from "./getUserById";
+import { userIdCookie } from "../../Cookies";
 
 function useUsersData() {
   const [users, setUsers] = useState([]);
@@ -13,8 +14,9 @@ function useUsersData() {
 
   function GetUser() {
     const [user, setUser] = useState([]);
+    const user_id = userIdCookie;
     useEffect(() => {
-      getUserById().then((data) => {
+      getUserById(user_id).then((data) => {
         setUser(data);
       });
     }, []);
@@ -22,7 +24,23 @@ function useUsersData() {
     return user;
   }
 
-  return { users, GetUser };
+  function ViewUserById(user_id) {
+    const [user, setUser] = useState([]);
+    useEffect(() => {
+      getUserById(user_id)
+        .then((data) => {
+          console.log(data);
+          setUser(data);
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+    }, []);
+
+    return user;
+  }
+
+  return { users, GetUser, ViewUserById };
 }
 
 export default useUsersData;
