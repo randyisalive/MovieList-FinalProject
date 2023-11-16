@@ -26,9 +26,6 @@ function DetailMovies() {
   const { GetMoviesDetail, detail, rating } = UseMoviesData();
   const { GetCastByMovieId } = useCastsData(id);
   const { Genres } = useGenresData();
-  const { GetReviewsNewestByMovieId } = useReviewsData();
-  const data = GetReviewsNewestByMovieId(id);
-  console.log(data);
   GetMoviesDetail(title);
   return (
     <>
@@ -132,14 +129,23 @@ function DetailMovies() {
                                 <b>Rating: </b>
                                 <Rating
                                   cancel={false}
-                                  value={rating}
-                                  stars={10}
+                                  value={rating / 2}
+                                  stars={5}
+                                  pt={{
+                                    // this is for coloring the stars
+                                    onIcon: {
+                                      className:
+                                        rating / 2 <= 2.5
+                                          ? "text-danger"
+                                          : "text-success",
+                                    },
+                                  }}
                                   readOnly
                                 />
-                                {rating <= 5 ? (
-                                  <p className="text-danger"> {rating}</p>
+                                {rating <= 2.5 ? (
+                                  <p className="text-danger"> {rating / 2}</p>
                                 ) : (
-                                  <p className="text-primary"> {rating}</p>
+                                  <p className="text-success"> {rating / 2}</p>
                                 )}
                               </div>
                             </MDBCardText>

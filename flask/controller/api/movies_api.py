@@ -15,8 +15,8 @@ def get():
             "rating": movie[2],
             "description": movie[3],
             "image": movie[4],
+            "isAdded": movie[5],
             "list_id": movie[6],
-            "status": movie[8],
         }
         for movie in movies
     ]

@@ -22,6 +22,7 @@ function MovieDiscussion() {
     setSelectedMovies,
     ResetFilter,
     deleteReviews,
+    truncateString,
   } = useDiscussionData();
   const { movies } = UseMoviesData();
 
@@ -127,7 +128,10 @@ function MovieDiscussion() {
                           <h3 className="h3 text-primary">{item.title}</h3>
                         </Link>
                       </div>
-                      <div className="d-flex mt-3">{item.body}</div>
+                      {/* truncate item.body string */}
+                      <div className="d-flex mt-3">
+                        {truncateString(item.body, 300)}
+                      </div>
                     </MDBCardText>
                     {item.user_id === userIdCookie ? (
                       <MDBCardText className="mt-5">

@@ -2,11 +2,14 @@ from flask import Blueprint, jsonify, request
 from db import db_connection
 from services.mylist import (
     getMyListById,
-    updateMyListStatus,
+    updateRatingById,
     insertToList,
     deleteList,
     updateIsWatched,
     getListById,
+    getRatingById,
+    getStatusById,
+    updateStatusById,
 )
 
 mylist_api = Blueprint("mylist_api", __name__)
@@ -26,7 +29,8 @@ def get():
                     "movie_title": my_list[2],
                     "list_status": my_list[3],
                     "list_id": my_list[4],
-                    "isWatched": my_list[5],
+                    "isAdded": my_list[5],
+                    "rating": my_list[6],
                 }
                 for my_list in my_lists
             ]
@@ -34,16 +38,25 @@ def get():
     return jsonify({"URL: ": "/api/mylist/get"})
 
 
-@mylist_api.route("/updateStatus", methods=["POST", "GET"])
-def updateStatus():
+@mylist_api.route("/get_rating", methods=["POST", "GET"])
+def getRating():
     if request.method == "POST":
         data = request.get_json()
-        status = data["status"]
         id = data["id"]
-        if data:
-            updateMyListStatus(status, id)
-            return jsonify({"Messages": data})
-    return jsonify({"url: ": "/api/mylist/updateStatus"})
+        rating = getRatingById(id)
+        return jsonify(rating)
+    return jsonify({"URL: ": "/api/mylist/get_rating"})
+
+
+@mylist_api.route("/update_rating", methods=["POST", "GET"])
+def updateRating():
+    if request.method == "POST":
+        data = request.get_json()
+        rating = data["rating"]
+        id = data["id"]
+        updateRatingById(id, rating)
+        return jsonify({"Message": "Updated Rating in list!"})
+    return jsonify({"URL: ": "/api/mylist/update_rating"})
 
 
 @mylist_api.route("/add", methods=["POST", "GET"])
@@ -68,15 +81,25 @@ def delete():
     return jsonify({"URL: ": "/api/mylist/delete"})
 
 
-@mylist_api.route("/update/watch", methods=["POST", "GET"])
-def updateWatched():
+@mylist_api.route("/getStatus", methods=["POST", "GET"])
+def get_status():
+    if request.method == "POST":
+        data = request.get_json()
+        id = data["id"]
+        status = getStatusById(id)
+        return jsonify(status)
+    return jsonify({"URL: ": "/api/mylist/getStatus"})
+
+
+@mylist_api.route("/updateStatus", methods=["POST", "GET"])
+def update_status():
     if request.method == "POST":
         data = request.get_json()
         id = data["id"]
         status = data["status"]
-        updateIsWatched(id, status)
-        return jsonify({"Message": "updated isWatched!!"})
-    return jsonify({"URL: ": "/api/mylist/update/watch"})
+        update_status(id, status)
+        return jsonify({"Message: ": "updated status in list"})
+    return jsonify({"URL: ": "/api/mylist/updateStatus"})
 
 
 @mylist_api.route("/get/byId", methods=["GET", "POST"])

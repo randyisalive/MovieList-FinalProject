@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import UseMoviesData from "../../functionComponent/movies/useMoviesData";
 import {
   MDBCard,
@@ -8,7 +8,6 @@ import {
   MDBCardTitle,
   MDBCol,
   MDBContainer,
-  MDBInput,
   MDBRow,
   MDBTextArea,
 } from "mdb-react-ui-kit";
@@ -17,7 +16,6 @@ import useReviewsData from "../../functionComponent/reviews/useReviewsData";
 import { Dialog } from "primereact/dialog";
 
 import { getCookies } from "../../functionComponent/authentication/CookiesFunction";
-import { useRef } from "react";
 import { Rating } from "primereact/rating";
 
 import { Toast } from "primereact/toast";
@@ -76,9 +74,18 @@ function ReviewsMoviesDetails() {
                       <h6 className="h6 m-0 p-0"> Rating: </h6>
                       <Rating
                         cancel={false}
-                        stars={10}
+                        stars={5}
                         readOnly
                         value={reviews.rating}
+                        pt={{
+                          // this is for coloring the stars
+                          onIcon: {
+                            className:
+                              reviews.rating / 2 <= 2.5
+                                ? "text-danger"
+                                : "text-success",
+                          },
+                        }}
                       />
 
                       {reviews.rating <= 5 ? (

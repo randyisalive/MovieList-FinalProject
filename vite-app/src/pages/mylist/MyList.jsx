@@ -1,9 +1,7 @@
 import {
   MDBCard,
   MDBCardBody,
-  MDBCardHeader,
   MDBCardText,
-  MDBCardTitle,
   MDBCol,
   MDBContainer,
   MDBRow,
@@ -16,14 +14,30 @@ import { Link } from "react-router-dom";
 import useUsersData from "../../functionComponent/users/useUsersData";
 import { Dialog } from "primereact/dialog";
 import { useState } from "react";
+import useMoviesData from "../../functionComponent/movies/useMoviesData";
+import { Rating } from "primereact/rating";
+import useStatusData from "../../functionComponent/status/useStatusData";
+import { Toast } from "primereact/toast";
+import getRating from "../../functionComponent/mylist/getRating";
 
 function MyList() {
-  const { list, getList, toggleIsWatched, deleteMyList, border, setBorder } =
-    UseMyListData();
+  const {
+    list,
+    getList,
+    deleteMyList,
+    border,
+    setBorder,
+    update_rating,
+    rating,
+    setRating,
+    update_status,
+  } = UseMyListData();
   const { GetUser } = useUsersData();
+  const { status } = useStatusData();
+
   console.log(list);
 
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState({});
 
   const imageTemplate = (movie_id, movie_image) => {
     return (
@@ -37,26 +51,87 @@ function MyList() {
     );
   };
 
-  const BtnList = (list_id, isWatched) => {
+  const BtnList = (list_id, movie_title, list_status) => {
+    const isVisible = visible[list_id] || false;
+
     return (
       <>
-        <button onClick={() => setVisible(true)} className="btn btn-primary">
-          Visible
+        <button
+          onClick={() => {
+            setVisible({ ...visible, [list_id]: true });
+
+            getRating(list_id).then((data) => {
+              console.log(data);
+              setRating(data);
+            });
+          }}
+          className="btn btn-primary"
+        >
+          More
         </button>
         <Dialog
-          header="Edit Movie"
-          visible={visible}
+          header={"Edit Movie"}
+          visible={isVisible}
           style={{ width: "50vw" }}
-          onHide={() => setVisible(false)}
+          onHide={() => setVisible({ ...visible, [list_id]: false })}
         >
           <div className="d-flex gap-2 flex-column">
             <div className="">
               <MDBCard className="mb-3">
                 <MDBCardBody>
                   <MDBCardText>
-                    <MDBRow>
+                    <MDBRow className="mb-3">
                       <MDBCol className="col-xl-3">Movie Title:</MDBCol>
-                      <MDBCol>asdadasd</MDBCol>
+                      <MDBCol>{movie_title}</MDBCol>
+                    </MDBRow>
+                    <MDBRow className="mb-3">
+                      <MDBCol className="col-xl-3">Watched:</MDBCol>
+                      <MDBCol>
+                        <select
+                          name=""
+                          id=""
+                          className="form-control m-0 p-0 p-1 ps-2"
+                          onChange={(e) => {
+                            update_status(list_id, e.value);
+                            console.log(e.value);
+                          }}
+                        >
+                          {status.map((item) => {
+                            return (
+                              <>
+                                <option
+                                  value={item.status}
+                                  selected={
+                                    item.status === list_status ? true : false
+                                  }
+                                >
+                                  {item.status}
+                                </option>
+                              </>
+                            );
+                          })}
+                        </select>
+                      </MDBCol>
+                    </MDBRow>
+                    <MDBRow className="mb-3">
+                      <MDBCol className="col-xl-3">Rated:</MDBCol>
+                      <MDBCol>
+                        <div className="d-flex align-items-center gap-2">
+                          <Rating
+                            cancel={false}
+                            value={rating}
+                            stars={5}
+                            onChange={(e) => update_rating(list_id, e)}
+                          />
+                          <p
+                            className={
+                              rating <= 2.5 ? "text-danger" : "text-success"
+                            }
+                          >
+                            {rating}
+                          </p>
+                        </div>
+                      </MDBCol>
                     </MDBRow>
                   </MDBCardText>
                 </MDBCardBody>
@@ -74,19 +149,6 @@ function MyList() {
                 <i className="pi pi-trash"></i>
                 Delete
               </button>
-              <button
-                className="btn btn-primary d-flex align-items-center gap-2"
-                onClick={() => {
-                  toggleIsWatched(list_id, !isWatched);
-                }}
-              >
-                {isWatched === 1 ? (
-                  <i className="pi pi-check"></i>
-                ) : (
-                  <i className="pi pi-plus"></i>
-                )}
-                <p>Watched</p>
-              </button>
             </div>
           </div>
         </Dialog>
@@ -95,6 +157,7 @@ function MyList() {
   };
   return (
     <>
+      <Toast />
       <MDBContainer className="mt-5">
         <div className="bg-danger text-white h-25 card mb-3 d-flex justify-content-center align-items-center">
           <p className="h1">{`${GetUser().username} List`}</p>
@@ -155,7 +218,11 @@ function MyList() {
               );
             }}
           />
-          <Column body={(item) => BtnList(item.list_id, item.isWatched)} />
+          <Column
+            body={(item) =>
+              BtnList(item.list_id, item.movie_title, item.list_status)
+            }
+          />
         </DataTable>
       </MDBContainer>
     </>

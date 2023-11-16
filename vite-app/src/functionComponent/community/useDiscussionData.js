@@ -30,6 +30,14 @@ function useDiscussionData() {
     await deleteDiscussion(reviews_id);
   }
 
+  function truncateString(str, limit) {
+    if (str.length > limit) {
+      return str.substring(0, limit) + "...";
+    } else {
+      return str;
+    }
+  }
+
   return {
     discussion,
     setDiscussion,
@@ -39,6 +47,7 @@ function useDiscussionData() {
     setSelectedMovies,
     ResetFilter,
     deleteReviews,
+    truncateString,
   };
 }
 

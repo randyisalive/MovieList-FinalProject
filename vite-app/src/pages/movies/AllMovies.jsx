@@ -102,13 +102,28 @@ function AllMovies() {
             }}
           />
           <Column field="description" header="Description" />
-          <Column field="rating" header="Rating" />
+          <Column
+            header="Rating"
+            body={(item) => {
+              return (
+                <>
+                  <p
+                    className={
+                      item.rating / 2 <= 2.5 ? "text-danger" : "text-success"
+                    }
+                  >
+                    {item.rating / 2}
+                  </p>
+                </>
+              );
+            }}
+          />
           <Column
             body={(item) => {
               return (
                 <>
                   <div className="d-flex gap-2">
-                    {item.status === 1 ? (
+                    {item.isAdded === 1 ? (
                       <button
                         className="btn btn-primary"
                         onClick={() => {

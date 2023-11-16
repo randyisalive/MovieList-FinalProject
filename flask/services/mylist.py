@@ -7,13 +7,74 @@ def getMyListById(user_id):
     cur = db.cursor()
     try:
         cur.execute(
-            "SELECT movies.id, movies.image, movies.title, list.status, list.id, list.isWatched FROM list INNER JOIN movies ON list.movie_id = movies.id WHERE list.user_id = ? AND list.status = 1",
+            "SELECT movies.id, movies.image, movies.title, list.status, list.id, list.isAdded, list.rating FROM list INNER JOIN movies ON list.movie_id = movies.id WHERE list.user_id = ?",
             (user_id,),
         )
         mylist = cur.fetchall()
         return mylist
     except Exception as e:
         return logging.error(e)
+
+
+def getRatingById(id):
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        cur.execute("SELECT rating FROM list WHERE id = ?", (id,))
+        rating = cur.fetchone()
+        return rating
+    except Exception as e:
+        logging.error(e)
+
+
+def updateRatingById(id, rating):
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        cur.execute(
+            "UPDATE list SET rating = ? WHERE id = ? ",
+            (
+                rating,
+                id,
+            ),
+        )
+        db.commit()
+        cur.close()
+        db.close()
+    except Exception as e:
+        logging.error(e)
+
+
+def getStatusById(id):
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        cur.execute("SELECT status FROM list WHERE id = ?", (id,))
+        status = cur.fetchone()
+        cur.close()
+        db.close()
+        return status
+    except Exception as e:
+        logging.error(e)
+
+
+def updateStatusById(id, status):
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        cur.execute(
+            "UPDATE list SET status = ? WHERE id = ?",
+            (
+                status,
+                id,
+            ),
+        )
+        db.commit()
+        cur.close()
+        db.close()
+        return status
+    except Exception as e:
+        logging.error(e)
 
 
 def getListById(user_id):

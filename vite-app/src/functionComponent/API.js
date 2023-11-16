@@ -13,6 +13,10 @@ export const addListAPi = PROXY + "mylist/add";
 export const updateIsWatchedApi = PROXY + "mylist/update/watch";
 export const deleteListApi = PROXY + "mylist/delete";
 export const viewListApi = PROXY + "mylist/get/byId";
+export const updateRatingApi = PROXY + "mylist/update_rating";
+export const getRatingApi = PROXY + "mylist/get_rating";
+export const updateMovieStatusMyListApi = PROXY + "mylist/updateStatus";
+export const getStatusMoveMylistApi = PROXY + "mylist/getStatus";
 
 //genres api
 export const getGenreByMovieIdApi = PROXY + "genres/get";
@@ -32,6 +36,9 @@ export const getMovieByIdApi = PROXY + "movies/getId";
 
 // cast api
 export const getActorsByMovieApi = PROXY + "cast/getByMovieId";
+
+// status api
+export const getALlStatusApi = PROXY + "status/get";
 
 //auth api
 export const loginApi = PROXY + "auth/login";

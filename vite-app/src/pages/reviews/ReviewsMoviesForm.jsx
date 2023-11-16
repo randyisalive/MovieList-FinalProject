@@ -55,14 +55,21 @@ function ReviewsMoviesForm() {
               <Rating
                 cancel={false}
                 name="rating"
-                stars={10}
+                stars={5}
                 onChange={(e) => HandleForm(e, id)}
                 value={form.rating}
+                pt={{
+                  // this is for coloring the stars
+                  onIcon: {
+                    className:
+                      form.rating <= 2.5 ? "text-danger" : "text-success",
+                  },
+                }}
               />
-              {form.rating <= 5 ? (
+              {form.rating <= 2.5 ? (
                 <p className="text-danger"> {form.rating}</p>
               ) : (
-                <p className="text-primary"> {form.rating}</p>
+                <p className="text-success"> {form.rating}</p>
               )}
             </div>
           </MDBCardBody>

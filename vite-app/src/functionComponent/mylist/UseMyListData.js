@@ -2,10 +2,14 @@ import { useEffect, useState } from "react";
 import getAllListById from "./getAllListById";
 import { addList, deleteList, updateStatusMyList } from "../../api/mylist_api";
 import updateIsWatched from "./updateIsWatched";
+import updateRatingById from "./updateRatingById";
+import getRating from "./getRating";
+import updateStatusMyListMovie from "./updateStatusMyListMovie";
 
 function UseMyListData() {
   const [list, setList] = useState([]);
   const [border, setBorder] = useState(false);
+  const [rating, setRating] = useState();
 
   useEffect(() => {
     getAllListById().then((data) => {
@@ -54,6 +58,21 @@ function UseMyListData() {
     const newArray = {};
   }
 
+  function update_rating(id, e) {
+    const newRating = e.value;
+    updateRatingById(id, newRating).then((data) => {
+      console.log(data);
+      setRating(newRating);
+    });
+  }
+
+  function update_status(id, status, e) {
+    const newStatus = e.target.value;
+    updateStatusMyListMovie(id, newStatus).then((data) => {
+      console.log(data);
+    });
+  }
+
   return {
     list,
     toggleWatchList,
@@ -63,6 +82,10 @@ function UseMyListData() {
     toggleIsWatched,
     border,
     setBorder,
+    update_rating,
+    setRating,
+    rating,
+    update_status,
   };
 }
 
