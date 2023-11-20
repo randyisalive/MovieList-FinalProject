@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from services.profile_services import updateProfile, updateProfileNoImage
+from services.profile_services import updateProfile, updateProfileNoImage, get_count
 import os
 
 
@@ -34,3 +34,13 @@ def update():
             updateProfileNoImage(username, biography, birthday, gender, user_id)
         return jsonify({"Message": "User updated!!"})
     return jsonify({"URL: ": "/api/profile/update"})
+
+
+@profile_api.route("/total", methods=["POST", "GET"])
+def total():
+    count_watching = get_count("Watching", 1)
+    count_completed = get_count("Completed", 1)
+    count_dropped = get_count("Dropped", 1)
+    count_plan = get_count("Plan to Watch", 1)
+    result = [count_watching[0], count_completed[0], count_dropped[0], count_plan[0]]
+    return jsonify(result)

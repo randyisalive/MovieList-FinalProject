@@ -45,3 +45,20 @@ def updateProfileNoImage(username, biography, birthday, gender, user_id):
         db.close()
     except Exception as e:
         logging.error(e)
+
+
+def get_count(status, id):
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        cur.execute(
+            "SELECT COUNT(id) FROM list WHERE status = ? AND user_id = ?",
+            (
+                status,
+                id,
+            ),
+        )
+        count = cur.fetchone()
+        return count
+    except Exception as e:
+        logging.error(e)

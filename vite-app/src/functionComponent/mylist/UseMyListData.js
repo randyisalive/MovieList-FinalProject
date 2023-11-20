@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import getAllListById from "./getAllListById";
 import { addList, deleteList, updateStatusMyList } from "../../api/mylist_api";
-import updateIsWatched from "./updateIsWatched";
 import updateRatingById from "./updateRatingById";
-import getRating from "./getRating";
-import updateStatusMyListMovie from "./updateStatusMyListMovie";
+import getCountDataInList from "./getCountDataInList";
+import getStatusById from "./getStatusById";
 
 function UseMyListData() {
   const [list, setList] = useState([]);
   const [border, setBorder] = useState(false);
   const [rating, setRating] = useState();
+  const [select, setSelect] = useState("");
+  const [filter, setFilter] = useState("");
 
   useEffect(() => {
     getAllListById().then((data) => {
@@ -19,6 +20,52 @@ function UseMyListData() {
 
   function getList() {
     getAllListById().then((data) => [setList(data)]);
+  }
+
+  function refreshList() {
+    getAllListById().then((data) => {
+      setList(data);
+    });
+  }
+
+  function filterMyList() {
+    getAllListById()
+      .then((data) => {
+        setList(data);
+      })
+      .then(() => {
+        if (filter === "All Movies") {
+          setList(data);
+        } else if (filter === "Currently Watching") {
+          setList(data);
+
+          const newArray = list.filter(
+            (item) => item.list_status === "Watching"
+          );
+          setList(newArray);
+        } else if (filter === "Watched") {
+          setList(data);
+
+          const newArray = list.filter(
+            (item) => item.list_status === "Completed"
+          );
+          setList(newArray);
+        } else if (filter === "Plan to Watched") {
+          setList(data);
+
+          const newArray = list.filter(
+            (item) => item.list_status === "Plan to Watch"
+          );
+          setList(newArray);
+        } else if (filter === "Dropped") {
+          setList(data);
+
+          const newArray = list.filter(
+            (item) => item.list_status === "Dropped"
+          );
+          setList(newArray);
+        }
+      });
   }
 
   function toggleWatchList(status, id) {
@@ -37,25 +84,25 @@ function UseMyListData() {
     await addList(movie_id);
   }
 
-  function toggleIsWatched(id, status) {
-    updateIsWatched(id, status).then((data) => {
-      console.log(data);
-      getAllListById().then((data) => {
-        setList(data);
+  function GetCountData() {
+    const [count, setCount] = useState([]);
+
+    useEffect(() => {
+      getCountDataInList().then((data) => {
+        console.log(data);
+        setCount(data);
       });
-    });
+    }, []);
+
+    return count;
   }
 
-  function GetListByUserId(id) {
-    const [list, setList] = useState([]);
-
-    useEffect(() => {}, []);
-
-    return list;
-  }
-
-  function FilterList() {
-    const newArray = {};
+  function GetStatus(id) {
+    useEffect(() => {
+      getStatusById(id).then((data) => {
+        console.log(data);
+      });
+    }, [id]);
   }
 
   function update_rating(id, e) {
@@ -66,26 +113,24 @@ function UseMyListData() {
     });
   }
 
-  function update_status(id, status, e) {
-    const newStatus = e.target.value;
-    updateStatusMyListMovie(id, newStatus).then((data) => {
-      console.log(data);
-    });
-  }
-
   return {
     list,
     toggleWatchList,
     addMovieToList,
     deleteMyList,
     getList,
-    toggleIsWatched,
     border,
     setBorder,
     update_rating,
     setRating,
     rating,
-    update_status,
+    GetCountData,
+    GetStatus,
+    select,
+    setSelect,
+    filterMyList,
+    setFilter,
+    refreshList,
   };
 }
 

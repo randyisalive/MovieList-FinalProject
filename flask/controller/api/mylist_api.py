@@ -92,12 +92,12 @@ def get_status():
 
 
 @mylist_api.route("/updateStatus", methods=["POST", "GET"])
-def update_status():
+def updateStatus():
     if request.method == "POST":
         data = request.get_json()
         id = data["id"]
         status = data["status"]
-        update_status(id, status)
+        updateStatusById(id, status)
         return jsonify({"Message: ": "updated status in list"})
     return jsonify({"URL: ": "/api/mylist/updateStatus"})
 

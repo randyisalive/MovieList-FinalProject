@@ -108,13 +108,16 @@ function ReviewsMoviesDetails() {
                 style={{ justifyContent: "space-between" }}
               >
                 <h3 className="h3">Comments</h3>
-                <div className="d-flex m-0 p-0">
+                <div className="d-flex m-0 p-0 align-items-center gap-2">
                   <button
                     onClick={() => {
                       setVisible(true);
                     }}
                   >
-                    Add Comment
+                    <i
+                      className="pi pi-comment"
+                      style={{ fontSize: "1.2rem" }}
+                    ></i>
                   </button>
                   <Dialog
                     header="Add Comment"

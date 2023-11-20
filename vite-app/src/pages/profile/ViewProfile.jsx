@@ -11,6 +11,8 @@ import { Image } from "primereact/image";
 import useUsersData from "../../functionComponent/users/useUsersData";
 import { Link, useParams } from "react-router-dom";
 
+import { Tooltip } from "primereact/tooltip";
+
 function ViewProfile() {
   const { ViewUserById } = useUsersData();
   const { id } = useParams();
@@ -26,7 +28,7 @@ function ViewProfile() {
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>
-        <MDBCard className="mt-3">
+        <MDBCard className="mt-3 mb-5">
           <MDBCardBody>
             <MDBCardText>
               <MDBRow>
@@ -64,13 +66,32 @@ function ViewProfile() {
                     </MDBCol>
                   </MDBRow>
                   <MDBRow>
-                    <MDBCol className="d-flex gap-3">
-                      <Link
-                        to={`/mylist/view/user/${user.id}`}
-                        className="btn btn-primary w-100"
+                    <MDBCol className="d-flex gap-3 justify-content-center">
+                      <>
+                        <Tooltip target=".movielist" />
+
+                        <Link
+                          to={`/mylist/view/user/${user.id}`}
+                          className="btn btn-primary movielist "
+                          data-pr-tooltip="See User MovieList"
+                          data-pr-position="bottom"
+                        >
+                          <button>Movie List</button>
+                        </Link>
+                      </>
+
+                      <Tooltip target=".add-friend" />
+
+                      <button
+                        className="btn btn-primary add-friend"
+                        data-pr-tooltip="Add To Friends"
+                        data-pr-position="bottom"
                       >
-                        <button>Movie List</button>
-                      </Link>
+                        <i
+                          className="pi pi-user-plus
+"
+                        ></i>
+                      </button>
                     </MDBCol>
                   </MDBRow>
                 </MDBCol>
@@ -79,6 +100,7 @@ function ViewProfile() {
                     style={{ minHeight: "350px" }}
                     value={user.biography}
                     readOnly
+                    disabled
                   />
                 </MDBCol>
               </MDBRow>

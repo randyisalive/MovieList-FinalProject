@@ -10,7 +10,6 @@ const PROXY = "http://127.0.0.1:5000/api/";
 export const getAllListApi = PROXY + "mylist/get";
 export const updateStatusMyListApi = PROXY + "mylist/updateStatus";
 export const addListAPi = PROXY + "mylist/add";
-export const updateIsWatchedApi = PROXY + "mylist/update/watch";
 export const deleteListApi = PROXY + "mylist/delete";
 export const viewListApi = PROXY + "mylist/get/byId";
 export const updateRatingApi = PROXY + "mylist/update_rating";
@@ -27,6 +26,7 @@ export const addTokenApi = PROXY + "tokens/add";
 
 // profile api
 export const updateProfileApi = PROXY + "profile/update";
+export const getCountDataInListApi = PROXY + "profile/total";
 
 // movies api
 export const getAllMovieApi = PROXY + "movies/get";

@@ -12,12 +12,12 @@ import useUsersData from "../../functionComponent/users/useUsersData";
 import { Image } from "primereact/image";
 import { useState } from "react";
 import ProfileForm from "../../components/profile/ProfileForm";
+import ProfileStatistics from "../../components/profile/ProfileStatistics";
 
 function Profile() {
   const { GetUser } = useUsersData();
-  const [setting, setSetting] = useState(false);
+  const [setting, setSetting] = useState(true);
 
-  console.log(GetUser());
   const user = GetUser();
 
   return (
@@ -50,14 +50,23 @@ function Profile() {
                         }
                         onClick={() => setSetting(!setting)}
                       >
-                        <i className="pi pi-cog"></i>
-                        Setting
+                        {setting ? (
+                          <>
+                            <i className="pi pi-chart-pie"></i>
+                            Statistics
+                          </>
+                        ) : (
+                          <>
+                            <i className="pi pi-cog"></i>Setting
+                          </>
+                        )}
                       </button>
                     </div>
                   </div>
                 </MDBCol>
+
                 <MDBCol className="col-xl-9 mt-3">
-                  {setting ? <ProfileForm /> : null}
+                  {setting ? <ProfileForm /> : <ProfileStatistics />}
                 </MDBCol>
               </MDBRow>
             </MDBCardText>

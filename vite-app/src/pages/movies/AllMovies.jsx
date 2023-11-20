@@ -104,6 +104,8 @@ function AllMovies() {
           <Column field="description" header="Description" />
           <Column
             header="Rating"
+            sortable
+            field="rating"
             body={(item) => {
               return (
                 <>

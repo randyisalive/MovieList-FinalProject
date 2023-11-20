@@ -13,24 +13,30 @@ import { Image } from "primereact/image";
 import { Link } from "react-router-dom";
 import useUsersData from "../../functionComponent/users/useUsersData";
 import { Dialog } from "primereact/dialog";
-import { useState } from "react";
-import useMoviesData from "../../functionComponent/movies/useMoviesData";
+import { useRef, useState } from "react";
 import { Rating } from "primereact/rating";
 import useStatusData from "../../functionComponent/status/useStatusData";
 import { Toast } from "primereact/toast";
 import getRating from "../../functionComponent/mylist/getRating";
+import { updateStatusMyList } from "../../api/mylist_api";
+import getStatusById from "../../functionComponent/mylist/getStatusById";
+
+import { Tag } from "primereact/tag";
 
 function MyList() {
   const {
     list,
     getList,
     deleteMyList,
-    border,
     setBorder,
-    update_rating,
     rating,
     setRating,
-    update_status,
+    update_rating,
+    select,
+    setSelect,
+    refreshList,
+    filterMyList,
+    setFilter,
   } = UseMyListData();
   const { GetUser } = useUsersData();
   const { status } = useStatusData();
@@ -39,19 +45,40 @@ function MyList() {
 
   const [visible, setVisible] = useState({});
 
-  const imageTemplate = (movie_id, movie_image) => {
+  const imageTemplate = (movie_id, movie_image, list_status) => {
+    const severityArray = ["success", "info", "warning", "danger"];
+
+    console.log(list_status);
+
+    const getNum = () => {
+      if (list_status === "Watching") {
+        return 1;
+      } else if (list_status === "Completed") {
+        return 0;
+      } else if (list_status === "Dropped") {
+        return 3;
+      } else if (list_status === "Plan to Watch") {
+        return 2;
+      }
+      return 4;
+    };
+
     return (
       <>
-        <Image
-          src={`../../../movies_data/${movie_id}/${movie_image}`}
-          width="100"
-          preview
-        />
+        <div className="d-flex flex-column gap-3 align-items-center">
+          <Tag value={list_status} severity={severityArray[getNum()]}></Tag>
+
+          <Image
+            src={`../../../movies_data/${movie_id}/${movie_image}`}
+            width="100"
+            preview
+          />
+        </div>
       </>
     );
   };
 
-  const BtnList = (list_id, movie_title, list_status) => {
+  const BtnList = (list_id, movie_title) => {
     const isVisible = visible[list_id] || false;
 
     return (
@@ -59,11 +86,15 @@ function MyList() {
         <button
           onClick={() => {
             setVisible({ ...visible, [list_id]: true });
-
             getRating(list_id).then((data) => {
-              console.log(data);
               setRating(data);
             });
+
+            getStatusById(list_id).then((data) => {
+              setSelect(data[0]);
+            });
+
+            console.log(select);
           }}
           className="btn btn-primary"
         >
@@ -92,18 +123,21 @@ function MyList() {
                           id=""
                           className="form-control m-0 p-0 p-1 ps-2"
                           onChange={(e) => {
-                            update_status(list_id, e.value);
-                            console.log(e.value);
+                            updateStatusMyList(e.target.value, list_id).then(
+                              (data) => {
+                                console.log(data);
+                                refreshList();
+                              }
+                            );
                           }}
                         >
                           {status.map((item) => {
                             return (
                               <>
                                 <option
+                                  key={item.status} // Add a unique key
                                   value={item.status}
-                                  selected={
-                                    item.status === list_status ? true : false
-                                  }
+                                  selected={item.status === select}
                                 >
                                   {item.status}
                                 </option>
@@ -169,14 +203,20 @@ function MyList() {
                 <p
                   className="h4 border-bottom border-primary p-1"
                   style={{ cursor: "pointer" }}
-                  onClick={() => setBorder("all")}
+                  onClick={() => {
+                    setFilter("All Movies");
+                    filterMyList();
+                  }}
                 >
                   All Movies
                 </p>
                 <p
                   className="h4 border-bottom border-primary p-1"
                   style={{ cursor: "pointer" }}
-                  onClick={() => setBorder("current")}
+                  onClick={() => {
+                    setFilter("Currently Watching");
+                    filterMyList();
+                  }}
                 >
                   Currently Watching
                 </p>
@@ -198,22 +238,32 @@ function MyList() {
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>
-        <DataTable value={list}>
+        <DataTable
+          value={list}
+          paginator
+          rows={5}
+          rowsPerPageOptions={[5, 10, 25, 50]}
+          className="mt-4"
+        >
           <Column
             header="Image"
-            body={(item) => imageTemplate(item.movie_id, item.movie_image)}
+            body={(item) =>
+              imageTemplate(item.movie_id, item.movie_image, item.list_status)
+            }
           />
           <Column
             header="Movie Title"
             body={(item) => {
               return (
                 <>
-                  <Link
-                    className="a text-primary"
-                    to={`/movies/${item.movie_id}/${item.movie_title}`}
-                  >
-                    <p>{item.movie_title}</p>
-                  </Link>
+                  <div className="d-flex">
+                    <Link
+                      className="text-primary w-0 d-flex"
+                      to={`/movies/${item.movie_id}/${item.movie_title}`}
+                    >
+                      <p className="m-0 d-flex w-0">{item.movie_title}</p>
+                    </Link>
+                  </div>
                 </>
               );
             }}
