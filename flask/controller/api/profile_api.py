@@ -1,5 +1,10 @@
 from flask import Blueprint, request, jsonify
-from services.profile_services import updateProfile, updateProfileNoImage, get_count
+from services.profile_services import (
+    updateProfile,
+    updateProfileNoImage,
+    get_count,
+    get_total_rating,
+)
 import os
 
 
@@ -44,3 +49,18 @@ def total():
     count_plan = get_count("Plan to Watch", 1)
     result = [count_watching[0], count_completed[0], count_dropped[0], count_plan[0]]
     return jsonify(result)
+
+
+@profile_api.route("/total_rating", methods=["POST", "GET"])
+def totalRating():
+    if request.method == "POST":
+        data = request.get_json()
+        id = data["id"]
+        star_1 = get_total_rating(1, id)
+        star_2 = get_total_rating(2, id)
+        star_3 = get_total_rating(3, id)
+        star_4 = get_total_rating(4, id)
+        star_5 = get_total_rating(5, id)
+        star_list = [star_1[0], star_2[0], star_3[0], star_4[0], star_5[0]]
+        return jsonify(star_list)
+    return jsonify({"URL: ": "/api/profile/total_rating"})

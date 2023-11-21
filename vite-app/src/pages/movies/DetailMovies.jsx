@@ -13,13 +13,13 @@ import {
 } from "mdb-react-ui-kit";
 
 import { Rating } from "primereact/rating";
+import { Tag } from "primereact/tag";
 
 import { Image } from "primereact/image";
 import useCastsData from "../../functionComponent/casts/useCastsData";
 import useGenresData from "../../functionComponent/genres/useGenresData";
 import MoviesByGenre from "../../components/movies/MoviesByGenre";
 import ReviewMovies from "../../components/movies/ReviewsMovies";
-import useReviewsData from "../../functionComponent/reviews/useReviewsData";
 
 function DetailMovies() {
   const { id, title } = useParams();
@@ -30,6 +30,13 @@ function DetailMovies() {
   return (
     <>
       <MDBContainer className="mt-5">
+        <MDBCard className="mb-3">
+          <MDBCardBody>
+            <MDBCardText>
+              <p className="h3 m-0">{detail.title}</p>
+            </MDBCardText>
+          </MDBCardBody>
+        </MDBCard>
         <MDBCard>
           <MDBCardBody>
             <MDBCardText>

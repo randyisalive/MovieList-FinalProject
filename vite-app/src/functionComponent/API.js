@@ -27,6 +27,7 @@ export const addTokenApi = PROXY + "tokens/add";
 // profile api
 export const updateProfileApi = PROXY + "profile/update";
 export const getCountDataInListApi = PROXY + "profile/total";
+export const getTotalRatingApi = PROXY + "profile/total_rating";
 
 // movies api
 export const getAllMovieApi = PROXY + "movies/get";
@@ -45,6 +46,11 @@ export const loginApi = PROXY + "auth/login";
 export const generateHashPasswordApi = PROXY + "auth/generate";
 export const getUserByIdApi = PROXY + "auth/get";
 export const createNewuserApi = PROXY + "auth/create";
+
+// friends api
+export const getFriendsApi = PROXY + "friends/get";
+export const requestFriendsApi = PROXY + "friends/request";
+export const getSingleFriendApi = PROXY + "friends/getSingle";
 
 // community api
 export const getDiscussionApi = PROXY + "community/discussion/get";

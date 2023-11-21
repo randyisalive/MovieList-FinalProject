@@ -12,12 +12,16 @@ import useUsersData from "../../functionComponent/users/useUsersData";
 import { Link, useParams } from "react-router-dom";
 
 import { Tooltip } from "primereact/tooltip";
+import useFriendsData from "../../functionComponent/friends/useFriendsData";
 
 function ViewProfile() {
   const { ViewUserById } = useUsersData();
   const { id } = useParams();
+  const { request_friends, CheckRequest } = useFriendsData();
   const user = ViewUserById(id);
   console.log(user);
+  const checkReq = CheckRequest(id);
+  console.log(checkReq);
   return (
     <>
       <MDBContainer className="mt-5">
@@ -81,17 +85,6 @@ function ViewProfile() {
                       </>
 
                       <Tooltip target=".add-friend" />
-
-                      <button
-                        className="btn btn-primary add-friend"
-                        data-pr-tooltip="Add To Friends"
-                        data-pr-position="bottom"
-                      >
-                        <i
-                          className="pi pi-user-plus
-"
-                        ></i>
-                      </button>
                     </MDBCol>
                   </MDBRow>
                 </MDBCol>

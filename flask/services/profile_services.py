@@ -62,3 +62,22 @@ def get_count(status, id):
         return count
     except Exception as e:
         logging.error(e)
+
+
+def get_total_rating(type, id):
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        cur.execute(
+            "SELECT COUNT(id) FROM list WHERE rating = ? AND user_id = ?",
+            (
+                type,
+                id,
+            ),
+        )
+        rating = cur.fetchone()
+        cur.close()
+        db.close()
+        return rating
+    except Exception as e:
+        logging.error(e)

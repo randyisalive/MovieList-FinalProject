@@ -19,6 +19,7 @@ import ReviewsMoviesDetails from "./pages/reviews/ReviewsMoviesDetails";
 import Create from "./pages/authentication/Create";
 import ViewList from "./pages/mylist/ViewList";
 import ViewProfile from "./pages/profile/ViewProfile";
+import Friends from "./pages/friends/Friends";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
               <Route path="/mylist/view/user/:id" element={<ViewList />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/profile/view/:id" element={<ViewProfile />} />
+              <Route path="/friends" element={<Friends />} />
             </Routes>
           </div>
         </body>

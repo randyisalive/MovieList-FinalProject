@@ -74,6 +74,7 @@ function ProfileStatistics() {
                     className="w-full md:w-30rem"
                   />
                 </div>
+                <div className="d-flex flex-column gap-2 "></div>
               </div>
             </div>
           </MDBCol>

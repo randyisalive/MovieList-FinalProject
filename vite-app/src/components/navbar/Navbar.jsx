@@ -146,11 +146,17 @@ function Navbar() {
             <span>Profile</span>
           </Link>
           <a
-            className=" flex items-center space-x-2 py-1  group hover:border-r-4 hover:border-r-red-600 hover:font-semibold dark:hover:text-white "
+            className={
+              "flex items-center space-x-2 py-1  group hover:border-r-4 hover:border-r-red-600 hover:font-semibold dark:hover:text-white " +
+              (path === "/profile" ? selectedLink() : null)
+            }
             href="#"
           >
             <svg
-              className="h-5 w-5 group-hover:fill-red-600"
+              className={
+                "h-5 w-5 group-hover:fill-red-600" +
+                (path === "/friends" ? selectedIcon() : null)
+              }
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -159,7 +165,9 @@ function Navbar() {
                 <path d="M9.5 12c2.2 0 4-1.8 4-4 0-2.21-1.8-4-4-4 -2.21 0-4 1.79-4 4 0 2.2 1.79 4 4 4Zm0-6c1.1 0 2 .89 2 2 0 1.1-.9 2-2 2 -1.11 0-2-.9-2-2 0-1.11.89-2 2-2Zm1.5 7H8c-3.31 0-6 2.69-6 6v1h2v-1c0-2.21 1.79-4 4-4h3c2.2 0 4 1.79 4 4v1h2v-1c0-3.31-2.7-6-6-6Z"></path>
               </g>
             </svg>
-            <span>Friends</span>
+            <Link to={"/friends"}>
+              <span>Friends</span>
+            </Link>
           </a>
           <Link
             className={
