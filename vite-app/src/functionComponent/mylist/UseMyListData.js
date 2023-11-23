@@ -10,13 +10,13 @@ function UseMyListData() {
   const [border, setBorder] = useState(false);
   const [rating, setRating] = useState();
   const [select, setSelect] = useState("");
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState("all");
 
   useEffect(() => {
     getAllListById().then((data) => {
-      setList(data);
+      filteringIf(data);
     });
-  }, []);
+  }, [filter]);
 
   function getList() {
     getAllListById().then((data) => [setList(data)]);
@@ -28,44 +28,31 @@ function UseMyListData() {
     });
   }
 
-  function filterMyList() {
-    getAllListById()
-      .then((data) => {
-        setList(data);
-      })
-      .then(() => {
-        if (filter === "All Movies") {
-          setList(data);
-        } else if (filter === "Currently Watching") {
-          setList(data);
+  function filteringIf(data) {
+    setList(data);
 
-          const newArray = list.filter(
-            (item) => item.list_status === "Watching"
-          );
-          setList(newArray);
-        } else if (filter === "Watched") {
-          setList(data);
+    if (filter === "all") {
+      // If 'all', no additional filtering needed
+      refreshList();
+    } else if (filter === "watching") {
+      const newArray = data.filter((item) => item.list_status === "Watching");
+      setList(newArray);
+    } else if (filter === "completed") {
+      const newArray = data.filter((item) => item.list_status === "Completed");
+      setList(newArray);
+    } else if (filter === "plan") {
+      const newArray = data.filter(
+        (item) => item.list_status === "Plan to Watch"
+      );
+      setList(newArray);
+    } else if (filter === "dropped") {
+      const newArray = data.filter((item) => item.list_status === "Dropped");
+      setList(newArray);
+    }
+  }
 
-          const newArray = list.filter(
-            (item) => item.list_status === "Completed"
-          );
-          setList(newArray);
-        } else if (filter === "Plan to Watched") {
-          setList(data);
-
-          const newArray = list.filter(
-            (item) => item.list_status === "Plan to Watch"
-          );
-          setList(newArray);
-        } else if (filter === "Dropped") {
-          setList(data);
-
-          const newArray = list.filter(
-            (item) => item.list_status === "Dropped"
-          );
-          setList(newArray);
-        }
-      });
+  function filterMyList(item) {
+    setFilter(item);
   }
 
   function toggleWatchList(status, id) {
@@ -131,6 +118,7 @@ function UseMyListData() {
     filterMyList,
     setFilter,
     refreshList,
+    setList,
   };
 }
 

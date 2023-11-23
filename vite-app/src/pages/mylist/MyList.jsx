@@ -10,7 +10,7 @@ import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
 import UseMyListData from "../../functionComponent/mylist/UseMyListData";
 import { Image } from "primereact/image";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import useUsersData from "../../functionComponent/users/useUsersData";
 import { Dialog } from "primereact/dialog";
 import { useRef, useState } from "react";
@@ -29,26 +29,24 @@ function MyList() {
     getList,
     deleteMyList,
     setBorder,
+    setList,
     rating,
     setRating,
     update_rating,
     select,
     setSelect,
+    setFilter,
     refreshList,
     filterMyList,
-    setFilter,
+    setSearchParams,
   } = UseMyListData();
   const { GetUser } = useUsersData();
   const { status } = useStatusData();
-
-  console.log(list);
 
   const [visible, setVisible] = useState({});
 
   const imageTemplate = (movie_id, movie_image, list_status) => {
     const severityArray = ["success", "info", "warning", "danger"];
-
-    console.log(list_status);
 
     const getNum = () => {
       if (list_status === "Watching") {
@@ -204,35 +202,47 @@ function MyList() {
                   className="h4 border-bottom border-primary p-1"
                   style={{ cursor: "pointer" }}
                   onClick={() => {
-                    setFilter("All Movies");
-                    filterMyList();
+                    filterMyList("all");
                   }}
                 >
                   All Movies
+                </p>
+
+                <p
+                  className="h4 border-bottom border-primary p-1"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => {
+                    filterMyList("watching");
+                  }}
+                >
+                  Watching
                 </p>
                 <p
                   className="h4 border-bottom border-primary p-1"
                   style={{ cursor: "pointer" }}
                   onClick={() => {
-                    setFilter("Currently Watching");
-                    filterMyList();
+                    filterMyList("completed");
                   }}
                 >
-                  Currently Watching
+                  Completed
                 </p>
                 <p
                   className="h4 border-bottom border-primary p-1"
                   style={{ cursor: "pointer" }}
-                  onClick={() => setBorder("watched")}
+                  onClick={() => {
+                    filterMyList("dropped");
+                  }}
                 >
-                  Wathced
+                  Dropped
                 </p>
                 <p
                   className="h4 border-bottom border-primary p-1"
                   style={{ cursor: "pointer" }}
-                  onClick={() => setBorder("plan")}
+                  onClick={() => {
+                    filterMyList("plan");
+                  }}
                 >
-                  Plan
+                  Plan to Watched
                 </p>
               </div>
             </MDBCardText>
