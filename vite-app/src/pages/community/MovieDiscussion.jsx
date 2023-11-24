@@ -12,6 +12,9 @@ import useDiscussionData from "../../functionComponent/community/useDiscussionDa
 import UseMoviesData from "../../functionComponent/movies/useMoviesData";
 import { userIdCookie } from "../../Cookies";
 import getDiscussion from "../../functionComponent/community/getDiscussion";
+import { Toast } from "primereact/toast";
+import { useRef } from "react";
+import { ConfirmDialog } from "primereact/confirmdialog";
 
 function MovieDiscussion() {
   const {
@@ -25,9 +28,20 @@ function MovieDiscussion() {
     truncateString,
   } = useDiscussionData();
   const { movies } = UseMoviesData();
+  const deleteToastRef = useRef(null);
+  const showToast = (ref) => {
+    ref.current.show({
+      severity: "error",
+      summary: "Info",
+      detail: "Discussion deleted",
+      life: 3000,
+    });
+  };
 
   return (
     <>
+      <Toast ref={deleteToastRef} />
+      <ConfirmDialog />
       <MDBContainer className="mt-5 mb-5">
         <div className="d-flex gap-3">
           <div className="d-flex align-items-center gap-3">
@@ -141,6 +155,7 @@ function MovieDiscussion() {
                             deleteReviews(item.id).then(() => {
                               getDiscussion().then((data) => {
                                 setDiscussion(data);
+                                showToast(deleteToastRef);
                               });
                             });
                           }}

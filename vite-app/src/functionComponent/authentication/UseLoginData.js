@@ -4,7 +4,6 @@ import {
   generateHashPassword,
 } from "../../api/authentication_api";
 import Cookies from "js-cookie";
-import getAllUser from "../users/getAllUser";
 import createUser from "./createUser";
 
 function UseLoginData() {
@@ -12,6 +11,7 @@ function UseLoginData() {
     username: "",
     password: "",
     retype: "",
+    email: "",
   });
 
   const [status, setStatus] = useState("");
@@ -93,26 +93,28 @@ function UseLoginData() {
       return null;
     }
 
-    createUser(form.username, form.password, form.retype).then((data) => {
-      console.log(data);
+    createUser(form.username, form.password, form.retype, form.email).then(
+      (data) => {
+        console.log(data);
 
-      // if username less than 5 character
-      if (data["error"] == "Username too short (min 5 characters)") {
-        showUsernameToast();
-        return null;
-      }
+        // if username less than 5 character
+        if (data["error"] == "Username too short (min 5 characters)") {
+          showUsernameToast();
+          return null;
+        }
 
-      // if password !== retype
-      if (data["error"] == "Password not match") {
-        showPasswordToast();
-        return null;
+        // if password !== retype
+        if (data["error"] == "Password not match") {
+          showPasswordToast();
+          return null;
+        }
+        if (data["Message"]) {
+          showSuccessToast();
+          setStatus(data);
+          window.location.href = "/login";
+        }
       }
-      if (data["Message"]) {
-        showSuccessToast();
-        setStatus(data);
-        window.location.href = "/login";
-      }
-    });
+    );
     console.log(status);
   }
 

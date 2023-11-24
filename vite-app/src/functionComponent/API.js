@@ -6,6 +6,9 @@ export function getAllUserAPI() {
 //proxy
 const PROXY = "http://127.0.0.1:5000/api/";
 
+// home api
+export const getLatestInMyListApi = PROXY + "home/newest-movies-in-list";
+
 // mylist api
 export const getAllListApi = PROXY + "mylist/get";
 export const updateStatusMyListApi = PROXY + "mylist/updateStatus";
@@ -23,6 +26,8 @@ export const getMoviesByGenresApi = PROXY + "genres/getSimilar";
 
 // tokens api
 export const addTokenApi = PROXY + "tokens/add";
+export const getTokensById = PROXY + "tokens/getById";
+export const getTokens = PROXY + "tokens/get";
 
 // profile api
 export const updateProfileApi = PROXY + "profile/update";

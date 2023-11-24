@@ -4,6 +4,8 @@ import { addList, deleteList, updateStatusMyList } from "../../api/mylist_api";
 import updateRatingById from "./updateRatingById";
 import getCountDataInList from "./getCountDataInList";
 import getStatusById from "./getStatusById";
+import useTokenData from "../token/useTokenData";
+import { deleteCookies } from "../authentication/CookiesFunction";
 
 function UseMyListData() {
   const [list, setList] = useState([]);
@@ -11,6 +13,7 @@ function UseMyListData() {
   const [rating, setRating] = useState();
   const [select, setSelect] = useState("");
   const [filter, setFilter] = useState("all");
+  const { checkIsValid } = useTokenData();
 
   useEffect(() => {
     getAllListById().then((data) => {

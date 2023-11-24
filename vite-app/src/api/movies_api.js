@@ -3,6 +3,7 @@ import {
   getAllMovieApi,
   getMovieByTitleApi,
 } from "../functionComponent/API";
+import { deleteCookies } from "../functionComponent/authentication/CookiesFunction";
 
 // get all movies function
 export async function getAllMovie() {

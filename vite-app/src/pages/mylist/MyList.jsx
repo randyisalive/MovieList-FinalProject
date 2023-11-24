@@ -10,10 +10,10 @@ import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
 import UseMyListData from "../../functionComponent/mylist/UseMyListData";
 import { Image } from "primereact/image";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useUsersData from "../../functionComponent/users/useUsersData";
 import { Dialog } from "primereact/dialog";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Rating } from "primereact/rating";
 import useStatusData from "../../functionComponent/status/useStatusData";
 import { Toast } from "primereact/toast";
@@ -28,17 +28,14 @@ function MyList() {
     list,
     getList,
     deleteMyList,
-    setBorder,
-    setList,
+
     rating,
     setRating,
     update_rating,
     select,
     setSelect,
-    setFilter,
     refreshList,
     filterMyList,
-    setSearchParams,
   } = UseMyListData();
   const { GetUser } = useUsersData();
   const { status } = useStatusData();

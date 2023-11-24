@@ -31,6 +31,11 @@ export async function setCookies(user_id, token) {
   Cookies.set("auth_token", token);
 }
 
+export async function deleteCookies() {
+  Cookies.remove("user_id");
+  Cookies.remove("auth_token");
+}
+
 export function isLogin() {
   if (user_id === undefined || token === undefined) {
     return false;

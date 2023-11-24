@@ -5,7 +5,6 @@ from services.mylist import (
     updateRatingById,
     insertToList,
     deleteList,
-    updateIsWatched,
     getListById,
     getRatingById,
     getStatusById,

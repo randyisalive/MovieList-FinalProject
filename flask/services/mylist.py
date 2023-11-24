@@ -1,5 +1,6 @@
 from db import db_connection
 import logging
+from date_now import getDate
 
 
 def getMyListById(user_id):
@@ -125,14 +126,16 @@ def updateIsWatched(id, status):
 
 
 def insertToList(movie_id, user_id):
+    date = getDate()
     db = db_connection()
     cur = db.cursor()
     try:
         params = (
             movie_id,
             user_id,
+            date,
         )
-        cur.execute("INSERT INTO list (movie_id, user_id) VALUES (?,?)", params)
+        cur.execute("INSERT INTO list (movie_id, user_id, date) VALUES (?,?,?)", params)
         db.commit()
         cur.close()
         db.close()

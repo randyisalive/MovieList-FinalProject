@@ -1,18 +1,23 @@
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
-import { Menubar } from "primereact/menubar";
-import { InputText } from "primereact/inputtext";
-import TitlePage from "../universal/TitlePage";
-import Navigation from "./Navigation";
-import NavbarDropdown from "./dropdown/NavbarDropdown";
+
 import logOut from "../../functionComponent/authentication/logOut";
-import { useContext, useState } from "react";
-import { UserContext } from "../../Context";
+import { Toast } from "primereact/toast";
+import { useRef } from "react";
 
 function Navbar() {
   const location = useLocation();
   const path = location.pathname;
   console.log(path);
+
+  const developmentToastRef = useRef(null);
+  const show = (toast) => {
+    toast.current.show({
+      severity: "severity",
+      summary: "Infor",
+      detail: "Under Development",
+    });
+  };
 
   const selectedLink = () => {
     const text = " font-semibold  border-r-4 border-r-red-600";
@@ -104,9 +109,12 @@ function Navbar() {
             </svg>
             <span>All Movies</span>
           </Link>
-          <a
+          <Link
             className=" flex items-center space-x-2 py-1  group hover:border-r-4 hover:border-r-red-600 hover:font-semibold dark:hover:text-white "
             href="#"
+            onClick={() => {
+              show(developmentToastRef);
+            }}
           >
             <svg
               className="h-5 w-5 group-hover:fill-red-600"
@@ -118,8 +126,9 @@ function Navbar() {
                 <path d="M13 7h-2v5.414l3.29 3.29 1.41-1.42 -2.71-2.71Z"></path>
               </g>
             </svg>
+            <Toast ref={developmentToastRef} />
             <span>Coming Soon</span>
-          </a>
+          </Link>
 
           <div className="mt-8 text-gray-400/70  font-medium uppercase">
             Social

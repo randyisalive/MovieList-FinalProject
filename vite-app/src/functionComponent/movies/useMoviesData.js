@@ -3,6 +3,8 @@ import { getAllMovie, getMovieByTitle } from "../../api/movies_api";
 import getMoviesByGenre from "./getMoviesByGenre";
 import { useParams } from "react-router-dom";
 import getMoviesById from "./getMoviesById";
+import useTokenData from "../token/useTokenData";
+import { deleteCookies } from "../authentication/CookiesFunction";
 
 function UseMoviesData() {
   const [movies, setMovies] = useState([]); // state of all movies
@@ -13,6 +15,8 @@ function UseMoviesData() {
   const [selectedMovie, setSelectedMovie] = useState("");
   const [filteredMovies, setFilteredMovies] = useState(null);
 
+  const { GetTokensById, checkIsValid } = useTokenData();
+  const { tokens } = GetTokensById();
   useEffect(() => {
     getAllMovie().then((data) => {
       setMovies(data);
@@ -22,6 +26,12 @@ function UseMoviesData() {
   }, []);
 
   const searchMovies = (event) => {
+    // validation
+    if (!checkIsValid()) {
+      deleteCookies().then(() => {
+        window.location.href = "/login";
+      });
+    }
     let _filteredMovies;
 
     if (!event.query.trim().length) {
@@ -37,6 +47,7 @@ function UseMoviesData() {
 
   function GetMoviesDetail(title) {
     useEffect(() => {
+      console.log("below effect: ", checkIsValid());
       getMovieByTitle(title).then((data) => {
         setDetail(data);
         setRating(parseFloat(data.rating));
@@ -67,9 +78,11 @@ function UseMoviesData() {
   function GetSingleMovieById(id) {
     const [singleMovie, setSingleMovie] = useState([]);
     useEffect(() => {
-      getMoviesById(id).then((data) => {
-        setSingleMovie(data);
-      });
+      if (!checkIsValid()) {
+        getMoviesById(id).then((data) => {
+          setSingleMovie(data);
+        });
+      }
     }, []);
 
     return singleMovie;

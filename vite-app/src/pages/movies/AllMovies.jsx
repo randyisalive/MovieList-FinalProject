@@ -9,6 +9,7 @@ import UseMyListData from "../../functionComponent/mylist/UseMyListData";
 import { getAllMovie } from "../../api/movies_api";
 import { Toast } from "primereact/toast";
 import { useRef } from "react";
+import Imbd_svg from "../../components/Imdb_svg";
 
 function AllMovies() {
   const {
@@ -109,13 +110,16 @@ function AllMovies() {
             body={(item) => {
               return (
                 <>
-                  <p
-                    className={
-                      item.rating / 2 <= 2.5 ? "text-danger" : "text-success"
-                    }
-                  >
-                    {item.rating / 2}
-                  </p>
+                  <div className="d-flex gap-2 align-items-center">
+                    <Imbd_svg />
+                    <p
+                      className={
+                        item.rating / 2 <= 2.5 ? "text-danger" : "text-success"
+                      }
+                    >
+                      {item.rating / 2}
+                    </p>
+                  </div>
                 </>
               );
             }}

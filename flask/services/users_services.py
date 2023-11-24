@@ -39,13 +39,13 @@ def getUserUsername():
         logging.error(e)
 
 
-def addUser(username, password, joined):
+def addUser(username, password, joined, email):
     db = db_connection()
     cur = db.cursor()
     try:
         cur.execute(
-            "INSERT INTO users (username, password, joined) VALUES (?,?,?)",
-            (username, password, joined),
+            "INSERT INTO users (username, password, joined, email) VALUES (?,?,?,?)",
+            (username, password, joined, email),
         )
         db.commit()
         cur.close()

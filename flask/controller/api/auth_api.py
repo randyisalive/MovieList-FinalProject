@@ -46,10 +46,12 @@ def generate():
 def create():
     if request.method == "POST":
         data = request.get_json()
-        username = data["username"]
-        password = data["password"]
-        retype = data["retype"]
+        username = data.get("username")
+        password = data.get("password")
+        retype = data.get("retype")
+        email = data.get("email")
         usernames = getUserUsername()
+        print(data)
         # set min username length
         min_username_length = 5
         if len(username) <= min_username_length:
@@ -63,7 +65,7 @@ def create():
         if password != retype:
             return jsonify({"error": "Password not match"})
         hashed_password = generate_hash(password)
-        addUser(username, hashed_password, getDate())
+        addUser(username, hashed_password, getDate(), email)
         return jsonify({"Message": "USER CREATED"})
     return jsonify({"URL: ": "/api/auth/create"})
 

@@ -55,17 +55,6 @@ function Main() {
         </div>
       </header>
 
-      <section>
-        <nav className="flex space-x-6 text-gray-400 font-medium">
-          <a href="#" className="hover:text-gray-700 dark:hover:text-white">
-            TV Series
-          </a>
-          <a href="#" className="text-gray-700 dark:text-white font-semibold">
-            Movies
-          </a>
-        </nav>
-      </section>
-
       <section className="mt-9">
         <div className="flex items-center justify-between">
           <span className="font-semibold text-gray-700 text-base dark:text-white">

@@ -17,6 +17,7 @@ from controller.api.community_api import community_api
 from controller.api.profile_api import profile_api
 from controller.api.status_api import status_api
 from controller.api.friends_api import friends_api
+from controller.api.home_api import home_api
 
 ## api controller
 
@@ -32,6 +33,7 @@ app.register_blueprint(homeServices)
 app.register_blueprint(userServices)
 
 # api controller #
+app.register_blueprint(home_api, url_prefix="/api/home")
 app.register_blueprint(genres_api, url_prefix="/api/genres")
 app.register_blueprint(auth_api, url_prefix="/api/auth")
 app.register_blueprint(tokens_api, url_prefix="/api/tokens")

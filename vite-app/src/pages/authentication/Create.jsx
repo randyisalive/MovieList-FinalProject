@@ -8,13 +8,12 @@ import {
 } from "mdb-react-ui-kit";
 import UseLoginData from "../../functionComponent/authentication/useLoginData";
 import { Toast } from "primereact/toast";
-import { useRef } from "react";
 
 function Create() {
   const {
     formHandler,
     CreateUser,
-    status,
+    form,
     usernameRef,
     passwordRef,
     emptyRef,
@@ -23,7 +22,6 @@ function Create() {
 
   return (
     <>
-      {console.log(status)}
       <Toast ref={usernameRef} />
       <Toast ref={passwordRef} />
       <Toast ref={emptyRef} />
@@ -48,6 +46,15 @@ function Create() {
                   <MDBInput
                     placeholder="username..."
                     name="username"
+                    onChange={formHandler}
+                  />
+                </div>
+                <div className="d-flex gap-3 align-items-center">
+                  <i className="pi pi-at" style={{ fontSize: "2rem" }}></i>
+                  <MDBInput
+                    placeholder="email..."
+                    name="email"
+                    type="email"
                     onChange={formHandler}
                   />
                 </div>
