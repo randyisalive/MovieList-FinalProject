@@ -15,6 +15,20 @@ def getAllMovies():
         logging.error(e)
 
 
+def get_ten_movies_random():
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        sql = "SELECT id, title, rating, image FROM movies ORDER BY RANDOM() LIMIT 5"
+        cur.execute(sql)
+        movies = cur.fetchall()
+        cur.close()
+        db.close()
+        return movies
+    except Exception as e:
+        logging.error(e)
+
+
 def getMovieById(data):
     db = db_connection()
     cur = db.cursor()
@@ -31,7 +45,10 @@ def getMovieByTitle(title):
     db = db_connection()
     cur = db.cursor()
     try:
-        cur.execute("SELECT * FROM movies WHERE title = ?", (title,))
+        cur.execute(
+            "SELECT * FROM movies LEFT JOIN list ON list.movie_id = movies.id WHERE title = ?",
+            (title,),
+        )
         movie = cur.fetchone()
         return movie
     except Exception as e:

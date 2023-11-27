@@ -9,6 +9,7 @@ from services.community_services import (
     get_comment,
     updateIsReplyOpen,
     deleteComment,
+    getRecentDiscussion,
 )
 
 
@@ -33,6 +34,14 @@ def discussion_get():
         for item in items
     ]
     return jsonify(items_list)
+
+
+@community_api.route("/discussion/get-recent")
+def getRecent():
+    discussion = getRecentDiscussion()
+    if discussion:
+        return jsonify(discussion)
+    return jsonify({"URL: ": "/api/discussion/get-recent"})
 
 
 @community_api.route("/discussion/getReviewById", methods=["POST", "GET"])

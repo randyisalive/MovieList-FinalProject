@@ -4,19 +4,20 @@ import getMoviesByGenre from "./getMoviesByGenre";
 import { useParams } from "react-router-dom";
 import getMoviesById from "./getMoviesById";
 import useTokenData from "../token/useTokenData";
-import { deleteCookies } from "../authentication/CookiesFunction";
+import UseMyListData from "../mylist/UseMyListData";
 
 function UseMoviesData() {
   const [movies, setMovies] = useState([]); // state of all movies
-  const [detail, setDetail] = useState([]); // detail on a movie
   const [rating, setRating] = useState(null); // rating for detail movie
   const [isLoading, setIsLoading] = useState(true); // set loading state
   const [similar, setSimilar] = useState([]);
+  const [detail, setDetail] = useState([]); // detail on a movie
+
   const [selectedMovie, setSelectedMovie] = useState("");
   const [filteredMovies, setFilteredMovies] = useState(null);
+  const { addMovieToList, deleteMyList } = UseMyListData();
 
-  const { GetTokensById, checkIsValid } = useTokenData();
-  const { tokens } = GetTokensById();
+  const { checkIsValid } = useTokenData();
   useEffect(() => {
     getAllMovie().then((data) => {
       setMovies(data);
@@ -27,11 +28,7 @@ function UseMoviesData() {
 
   const searchMovies = (event) => {
     // validation
-    if (!checkIsValid()) {
-      deleteCookies().then(() => {
-        window.location.href = "/login";
-      });
-    }
+
     let _filteredMovies;
 
     if (!event.query.trim().length) {
@@ -47,7 +44,6 @@ function UseMoviesData() {
 
   function GetMoviesDetail(title) {
     useEffect(() => {
-      console.log("below effect: ", checkIsValid());
       getMovieByTitle(title).then((data) => {
         setDetail(data);
         setRating(parseFloat(data.rating));
@@ -58,6 +54,21 @@ function UseMoviesData() {
         }
       });
     }, []);
+  }
+  async function addList(title) {
+    await addMovieToList(detail.id).then(() => {
+      getMovieByTitle(title).then((data) => {
+        setDetail(data);
+      });
+    });
+  }
+
+  function delList(title) {
+    deleteMyList(detail.id).then(() => {
+      getMovieByTitle(title).then((data) => {
+        setDetail(data);
+      });
+    });
   }
 
   function RandomizeArrayAndLimit() {
@@ -93,16 +104,18 @@ function UseMoviesData() {
     setMovies,
     searchMovies,
     isLoading,
-    detail,
     selectedMovie,
+    GetMoviesDetail,
     setSelectedMovie,
     filteredMovies,
     setFilteredMovies,
-    GetMoviesDetail,
     GetSingleMovieById,
     rating,
     similar,
     RandomizeArrayAndLimit,
+    addList,
+    delList,
+    detail,
   };
 }
 

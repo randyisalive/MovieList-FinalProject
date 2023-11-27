@@ -8,7 +8,7 @@ def getMyListById(user_id):
     cur = db.cursor()
     try:
         cur.execute(
-            "SELECT movies.id, movies.image, movies.title, list.status, list.id, list.isAdded, list.rating FROM list INNER JOIN movies ON list.movie_id = movies.id WHERE list.user_id = ?",
+            "SELECT movies.id, movies.image, movies.title, list.status, list.id, list.isAdded, list.rating FROM list INNER JOIN movies ON list.movie_id = movies.id WHERE list.user_id = ? ORDER BY date DESC",
             (user_id,),
         )
         mylist = cur.fetchall()

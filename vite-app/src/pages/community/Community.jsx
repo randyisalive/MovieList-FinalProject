@@ -1,8 +1,14 @@
 import { Card } from "primereact/card";
 import { MDBCol, MDBRow } from "mdb-react-ui-kit";
 import { Link } from "react-router-dom";
+import useDiscussionData from "../../functionComponent/community/useDiscussionData";
+import RecentMoviesDiscussion from "../../components/community/RecentMoviesDiscussion";
 
 function Community() {
+  const { GetRecentDiscussionFunction } = useDiscussionData();
+  const { data } = GetRecentDiscussionFunction();
+  console.log(data);
+
   const cardTitile = (title) => {
     return (
       <>
@@ -28,6 +34,9 @@ function Community() {
             </Card>
           </MDBCol>
         </MDBRow>
+        <>
+          <RecentMoviesDiscussion />
+        </>
       </div>
     </>
   );

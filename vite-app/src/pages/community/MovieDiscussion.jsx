@@ -63,7 +63,6 @@ function MovieDiscussion() {
               })}
             </select>
             {discussion.length === 0 ? null : null}
-
             <button
               className={
                 "btn btn-primary d-flex gap-2 align-items-center " +

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getLatestInMyList } from "../../api/home_api";
+import { getLatestInMyList, getRandomMovies } from "../../api/home_api";
 
 function useHomeData() {
   function LatestInMyList() {
@@ -16,9 +16,16 @@ function useHomeData() {
 
   function RandomMovieList() {
     const [movies, setMovies] = useState([]);
+    useEffect(() => {
+      getRandomMovies().then((data) => {
+        setMovies(data);
+      });
+    }, []);
+
+    return movies;
   }
 
-  return { LatestInMyList };
+  return { LatestInMyList, RandomMovieList };
 }
 
 export default useHomeData;

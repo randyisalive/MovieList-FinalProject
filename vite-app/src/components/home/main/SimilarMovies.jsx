@@ -1,16 +1,21 @@
-import { Button } from "primereact/button";
-import { Tag } from "primereact/tag";
-import { useState } from "react";
+import {
+  MDBCard,
+  MDBCardBody,
+  MDBCardText,
+  MDBContainer,
+} from "mdb-react-ui-kit";
 
 import { Carousel } from "primereact/carousel";
+import { Image } from "primereact/image";
+import Imbd_svg from "../../Imdb_svg";
+import useHomeData from "../../../functionComponent/home/useHomeData";
+import { Link } from "react-router-dom";
 
 function SimilarMovies() {
-  const [products, setProducts] = useState([
-    { id: "1", title: "title 1" },
-    { id: "1", title: "title 1" },
-    { id: "1", title: "title 1" },
-    { id: "1", title: "title 1" },
-  ]);
+  const { RandomMovieList } = useHomeData();
+
+  const movies = RandomMovieList();
+
   const responsiveOptions = [
     {
       breakpoint: "1199px",
@@ -29,26 +34,54 @@ function SimilarMovies() {
     },
   ];
 
-  const productTemplate = (product) => {
+  const productTemplate = (movie) => {
     return (
-      <div className="border-1 surface-border border-round m-2 text-center py-5 px-3">
-        <div className="mb-3">
-          <img
-            src={`https://primefaces.org/cdn/primereact/images/product/${product.image}`}
-            alt={product.name}
-            className="w-6 shadow-2"
-          />
-        </div>
-      </div>
+      <>
+        <MDBContainer>
+          <MDBCard className="my-5 p-0">
+            <MDBCardBody className="m-0 p-0">
+              <MDBCardText className="p-0 m-0 d-flex flex-column">
+                <Link to={`/movies/${movie.id}/${movie.title}`}>
+                  <Image
+                    src={`../../../../movies_data/${movie.id}/${movie.image}`}
+                    alt={movie.image}
+                  />
+                </Link>
+
+                <div
+                  className="d-flex p-3 w-100 h-100"
+                  style={{ justifyContent: "space-between" }}
+                >
+                  <p>{movie.title}</p>
+                  <div className="d-flex gap-2">
+                    <p>
+                      <Imbd_svg />
+                    </p>
+                    <p>{movie.rating}</p>
+                  </div>
+                </div>
+              </MDBCardText>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBContainer>
+      </>
     );
   };
 
   return (
     <>
+      <span className="font-semibold text-gray-700 text-base dark:text-white">
+        <div className=" d-flex" style={{ justifyContent: "space-between" }}>
+          Similar Movies
+          <Link to={`/movies`}>
+            <p className="p-0 m-0">View More</p>
+          </Link>
+        </div>
+      </span>
       <div className="card mt-3">
         <Carousel
-          value={products}
-          numVisible={3}
+          value={movies}
+          numVisible={4}
           numScroll={3}
           responsiveOptions={responsiveOptions}
           itemTemplate={productTemplate}

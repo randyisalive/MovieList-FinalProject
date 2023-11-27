@@ -36,6 +36,48 @@ def getDiscussion():
         logging.error(e)
 
 
+def get_total_comment(discussion_id):
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        cur.execute(
+            "SELECT COUNT(id) FROM comments WHERE review_id = ?", (discussion_id,)
+        )
+        result = cur.fetchone()
+        return result
+    except Exception as e:
+        logging.error(e)
+
+
+def getRecentDiscussion():
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        cur.execute(
+            "SELECT movies_discussions.id, movies_discussions.title, users.username, movies.id, users.id FROM movies_discussions INNER JOIN users ON movies_discussions.user_id = users.id INNER JOIN movies on movies_discussions.movie_id = movies.id ORDER BY movies_discussions.date DESC LIMIT 4"
+        )
+        discussions = cur.fetchall()
+        result = [get_total_comment(discussion[0])[0] for discussion in discussions]
+        print(result)
+        discussions_list = [
+            {
+                "id": i[0],
+                "title": i[1],
+                "username": i[2],
+                "movie_id": i[3],
+                "user_id": i[4],
+            }
+            for i in discussions
+        ]
+        data = [result, discussions_list]
+        print(data)
+        cur.close()
+        db.close()
+        return data
+    except Exception as e:
+        logging.error(e)
+
+
 def getDiscussionByMovieId(id):
     # table: movies_discussions, users, movies
     db = db_connection()

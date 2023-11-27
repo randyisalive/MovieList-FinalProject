@@ -1,5 +1,8 @@
 import { userIdCookie } from "../Cookies";
-import { getLatestInMyListApi } from "../functionComponent/API";
+import {
+  getLatestInMyListApi,
+  getRandomMoviesApi,
+} from "../functionComponent/API";
 
 // latest in my list table
 export async function getLatestInMyList() {
@@ -12,6 +15,16 @@ export async function getLatestInMyList() {
       },
       body: JSON.stringify({ id }),
     });
+    const data = await response.json();
+    return data;
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+export async function getRandomMovies() {
+  try {
+    const response = await fetch(getRandomMoviesApi);
     const data = await response.json();
     return data;
   } catch (e) {

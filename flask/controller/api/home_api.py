@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from services.home_services import get_newest_movies_in_list
+from services.movies import get_ten_movies_random
 
 home_api = Blueprint("home_api", __name__)
 
@@ -23,3 +24,18 @@ def newest_movies_in_list():
         ]
         return jsonify(movies_list)
     return jsonify({"URL: ": "/api/home/newest-movies-in-list"})
+
+
+@home_api.route("/random-movies", methods=["POST", "GET"])
+def random_movies():
+    movies = get_ten_movies_random()
+    movies_list = [
+        {
+            "id": i[0],
+            "title": i[1],
+            "rating": i[2],
+            "image": i[3],
+        }
+        for i in movies
+    ]
+    return jsonify(movies_list)

@@ -13,22 +13,37 @@ import {
 } from "mdb-react-ui-kit";
 
 import { Rating } from "primereact/rating";
-import { Tag } from "primereact/tag";
 
 import { Image } from "primereact/image";
 import useCastsData from "../../functionComponent/casts/useCastsData";
 import useGenresData from "../../functionComponent/genres/useGenresData";
 import MoviesByGenre from "../../components/movies/MoviesByGenre";
-import ReviewMovies from "../../components/movies/ReviewsMovies";
+import { Toast } from "primereact/toast";
+import { useRef } from "react";
+
+import { Tooltip } from "primereact/tooltip";
 
 function DetailMovies() {
+  // must add add to list feature in details movies
   const { id, title } = useParams();
-  const { GetMoviesDetail, detail, rating } = UseMoviesData();
+  const { GetMoviesDetail, rating, addList, detail } = UseMoviesData();
   const { GetCastByMovieId } = useCastsData(id);
   const { Genres } = useGenresData();
   GetMoviesDetail(title);
+  console.log(detail);
+  const addListRef = useRef(null);
+
+  const show = () => {
+    addListRef.current.show({
+      severity: "success",
+      summary: "Info",
+      detail: "Add to MyList",
+    });
+  };
+
   return (
     <>
+      <Toast ref={addListRef} />
       <MDBContainer className="mt-5">
         <MDBCard className="mb-3">
           <MDBCardBody>
@@ -47,11 +62,30 @@ function DetailMovies() {
                     src={`../../../movies_data/${detail.id}/${detail.image}`}
                     preview
                   />
-                  <Link to={`/reviews/${id}/${title}`}>
-                    <button className="btn btn-primary">
-                      Review This Movie
-                    </button>
-                  </Link>
+                  <div className="d-flex align-items-center gap-2">
+                    <Link to={`/reviews/${id}/${title}`}>
+                      <button className="btn btn-primary">
+                        Review This Movie
+                      </button>
+                    </Link>
+                    {detail.isAdded === 1 ? null : (
+                      <>
+                        {" "}
+                        <Tooltip target=".add-list" />
+                        <button
+                          className="btn btn-primary add-list"
+                          data-pr-tooltip="Add to Mylist"
+                          onClick={() => {
+                            addList(title).then(() => {
+                              show();
+                            });
+                          }}
+                        >
+                          <i className="pi pi-plus"></i>
+                        </button>
+                      </>
+                    )}
+                  </div>
                 </MDBCol>
                 <MDBCol className="d-flex flex-column gap-3">
                   <MDBRow>
@@ -166,7 +200,6 @@ function DetailMovies() {
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>
-        <ReviewMovies />
         <MoviesByGenre title={title} />
       </MDBContainer>
     </>

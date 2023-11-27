@@ -8,6 +8,7 @@ const PROXY = "http://127.0.0.1:5000/api/";
 
 // home api
 export const getLatestInMyListApi = PROXY + "home/newest-movies-in-list";
+export const getRandomMoviesApi = PROXY + "home/random-movies";
 
 // mylist api
 export const getAllListApi = PROXY + "mylist/get";
@@ -68,3 +69,4 @@ export const getCommentsApi = PROXY + "community/discussion/get-comment";
 export const addCommentReviewsApi = PROXY + "community/discussion/add-comment";
 export const updateIsReplyOpenApi = PROXY + "community/discussion/isReplyOpen";
 export const deleteCommentApi = PROXY + "community/discussion/comment/delete";
+export const getRecentApi = PROXY + "community/discussion/get-recent";

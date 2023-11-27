@@ -74,7 +74,7 @@ def add():
 def delete():
     if request.method == "POST":
         data = request.get_json()
-        id = data["id"]
+        id = data.get("id")
         if data:
             deleteList(id)
     return jsonify({"URL: ": "/api/mylist/delete"})

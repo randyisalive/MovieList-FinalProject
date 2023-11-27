@@ -35,6 +35,8 @@ def getTitle():
         "description": movie[3],
         "image": movie[4],
         "genres_id": movie[5],
+        "list_id": movie[6],
+        "isAdded": movie[10],
     }
     return jsonify(movie_list)
 
