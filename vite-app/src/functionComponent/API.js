@@ -54,9 +54,9 @@ export const getUserByIdApi = PROXY + "auth/get";
 export const createNewuserApi = PROXY + "auth/create";
 
 // friends api
-export const getFriendsApi = PROXY + "friends/get";
-export const requestFriendsApi = PROXY + "friends/request";
+export const getRequestFriendsApi = PROXY + "friends/get-request";
 export const getSingleFriendApi = PROXY + "friends/getSingle";
+export const getAllFriendsApi = PROXY + "friends/get-all";
 
 // community api
 export const getDiscussionApi = PROXY + "community/discussion/get";
@@ -70,3 +70,5 @@ export const addCommentReviewsApi = PROXY + "community/discussion/add-comment";
 export const updateIsReplyOpenApi = PROXY + "community/discussion/isReplyOpen";
 export const deleteCommentApi = PROXY + "community/discussion/comment/delete";
 export const getRecentApi = PROXY + "community/discussion/get-recent";
+export const getTotalCommentsApi =
+  PROXY + "community/discussion/get-total-comments";

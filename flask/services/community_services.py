@@ -54,11 +54,15 @@ def getRecentDiscussion():
     cur = db.cursor()
     try:
         cur.execute(
-            "SELECT movies_discussions.id, movies_discussions.title, users.username, movies.id, users.id FROM movies_discussions INNER JOIN users ON movies_discussions.user_id = users.id INNER JOIN movies on movies_discussions.movie_id = movies.id ORDER BY movies_discussions.date DESC LIMIT 4"
+            """SELECT movies_discussions.id, movies_discussions.title, users.username, movies.id, users.id 
+            FROM movies_discussions 
+            INNER JOIN users ON movies_discussions.user_id = users.id 
+            INNER JOIN movies ON movies_discussions.movie_id = movies.id
+            ORDER BY movies_discussions.date DESC LIMIT 4"""
         )
+        total = []
+
         discussions = cur.fetchall()
-        result = [get_total_comment(discussion[0])[0] for discussion in discussions]
-        print(result)
         discussions_list = [
             {
                 "id": i[0],
@@ -69,11 +73,13 @@ def getRecentDiscussion():
             }
             for i in discussions
         ]
-        data = [result, discussions_list]
-        print(data)
+        for i in discussions:
+            total.append(get_total_comment(i[0])[0])
+        result = [total, discussions_list]
+        print(result)
         cur.close()
         db.close()
-        return data
+        return result
     except Exception as e:
         logging.error(e)
 

@@ -10,6 +10,7 @@ import {
 import { Image } from "primereact/image";
 import useUsersData from "../../functionComponent/users/useUsersData";
 import { Link, useParams } from "react-router-dom";
+import { Toast } from "primereact/toast";
 
 import { Tooltip } from "primereact/tooltip";
 import useFriendsData from "../../functionComponent/friends/useFriendsData";
@@ -17,13 +18,13 @@ import useFriendsData from "../../functionComponent/friends/useFriendsData";
 function ViewProfile() {
   const { ViewUserById } = useUsersData();
   const { id } = useParams();
-  const { request_friends, CheckRequest } = useFriendsData();
+  const { request_friends, friends, reqToastRef } = useFriendsData();
   const user = ViewUserById(id);
-  console.log(user);
-  const checkReq = CheckRequest(id);
-  console.log(checkReq);
+  console.log(friends);
+
   return (
     <>
+      <Toast ref={reqToastRef} />
       <MDBContainer className="mt-5">
         <MDBCard>
           <MDBCardBody>
@@ -82,6 +83,16 @@ function ViewProfile() {
                         >
                           <button>Movie List</button>
                         </Link>
+                        <button
+                          className={`btn btn-primary ${
+                            friends.status === "Request" ? "disabled" : null
+                          }`}
+                          onClick={() => {
+                            request_friends(id);
+                          }}
+                        >
+                          Add Friend
+                        </button>
                       </>
 
                       <Tooltip target=".add-friend" />

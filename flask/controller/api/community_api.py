@@ -10,6 +10,7 @@ from services.community_services import (
     updateIsReplyOpen,
     deleteComment,
     getRecentDiscussion,
+    get_total_comment,
 )
 
 
@@ -41,7 +42,19 @@ def getRecent():
     discussion = getRecentDiscussion()
     if discussion:
         return jsonify(discussion)
-    return jsonify({"URL: ": "/api/discussion/get-recent"})
+    return jsonify({"URL: ": "/api/community/discussion/get-recent"})
+
+
+@community_api.route("/discussion/get-total-comments", methods=["POST", "GET"])
+def getTotalComment():
+    if request.method == "POST":
+        data = request.get_json()
+        id = data.get("id")
+        total = get_total_comment(id)
+        print(total)
+        if total:
+            return jsonify(total)
+    return jsonify({"URL: ": "/api/community/discussion/get-total-comments"})
 
 
 @community_api.route("/discussion/getReviewById", methods=["POST", "GET"])

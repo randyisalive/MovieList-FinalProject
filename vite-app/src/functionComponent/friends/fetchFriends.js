@@ -1,8 +1,13 @@
-import { getFriendsApi, getSingleFriendApi, requestFriendsApi } from "../API";
+import { userIdCookie } from "../../Cookies";
+import {
+  getAllFriendsApi,
+  getRequestFriendsApi,
+  getSingleFriendApi,
+} from "../API";
 
 export async function getFriends(id) {
   try {
-    const response = await fetch(getFriendsApi, {
+    const response = await fetch(getAllFriendsApi, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -16,14 +21,48 @@ export async function getFriends(id) {
   }
 }
 
-export async function getFriendsById(id, friend_id) {
+export async function getRequestFriends() {
+  const id = userIdCookie;
+  try {
+    const response = await fetch(getRequestFriendsApi, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    });
+    const data = await response.json();
+    return data;
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+export async function getAllFriends() {
+  const id = userIdCookie;
+  try {
+    const response = await fetch(getAllFriendsApi, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    });
+    const data = await response.json();
+    return data;
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+export async function getFriendsById(id) {
   try {
     const response = await fetch(getSingleFriendApi, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ id, friend_id }),
+      body: JSON.stringify({ id }),
     });
     const data = await response.json();
     return data;

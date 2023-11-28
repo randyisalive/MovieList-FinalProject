@@ -16,24 +16,6 @@ function SimilarMovies() {
 
   const movies = RandomMovieList();
 
-  const responsiveOptions = [
-    {
-      breakpoint: "1199px",
-      numVisible: 1,
-      numScroll: 1,
-    },
-    {
-      breakpoint: "991px",
-      numVisible: 2,
-      numScroll: 1,
-    },
-    {
-      breakpoint: "767px",
-      numVisible: 1,
-      numScroll: 1,
-    },
-  ];
-
   const productTemplate = (movie) => {
     return (
       <>
@@ -45,6 +27,7 @@ function SimilarMovies() {
                   <Image
                     src={`../../../../movies_data/${movie.id}/${movie.image}`}
                     alt={movie.image}
+                    width="200"
                   />
                 </Link>
 
@@ -83,7 +66,6 @@ function SimilarMovies() {
           value={movies}
           numVisible={4}
           numScroll={3}
-          responsiveOptions={responsiveOptions}
           itemTemplate={productTemplate}
         />
       </div>

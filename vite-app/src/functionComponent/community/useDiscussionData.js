@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import getDiscussion from "./getDiscussion";
 import deleteDiscussion from "./deleteDiscussion";
 import getRecentDiscussion from "./getRecentDiscussion";
+import getTotalComments from "./getTotalComments";
 
 function useDiscussionData() {
   const [discussion, setDiscussion] = useState([]);
@@ -31,25 +32,18 @@ function useDiscussionData() {
     await deleteDiscussion(reviews_id);
   }
 
-  function truncateString(str, limit) {
-    if (str.length > limit) {
-      return str.substring(0, limit) + "...";
-    } else {
-      return str;
-    }
-  }
-
   function GetRecentDiscussionFunction() {
     const [data, setData] = useState([]);
+    const [total, setTotal] = useState([]);
 
     useEffect(() => {
       getRecentDiscussion().then((data) => {
-        setData(data);
+        setData(data[1]);
+        setTotal(data[0]);
       });
     }, []);
 
-    console.log(data);
-    return { data, setData };
+    return { data, total };
   }
 
   return {
@@ -61,7 +55,6 @@ function useDiscussionData() {
     setSelectedMovies,
     ResetFilter,
     deleteReviews,
-    truncateString,
     GetRecentDiscussionFunction,
   };
 }

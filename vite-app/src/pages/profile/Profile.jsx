@@ -24,9 +24,13 @@ function Profile() {
     <>
       <MDBContainer className="mt-5">
         <MDBCard>
-          <MDBCardHeader>
-            <MDBCardTitle>
-              <h3 className="h3">Profile Settings</h3>
+          <MDBCardHeader className="bg-danger text-white">
+            <MDBCardTitle className="d-flex align-items-center gap-3">
+              <i
+                className="pi pi-user m-0 p-0"
+                style={{ fontSize: "1.5rem" }}
+              ></i>
+              <h3 className="h3 m-0 p-0">Profile Settings</h3>
             </MDBCardTitle>
           </MDBCardHeader>
           <MDBCardBody>
