@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-11-29T02:15:13.362Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="_UHuu9RraXf4bvy61jab" version="22.1.4" type="github">
+<mxfile host="app.diagrams.net" modified="2023-11-29T02:15:21.005Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="iUBea14ardA2P4Q5W5T5" version="22.1.4" type="github">
   <diagram name="Page-1" id="ZeniHqI1XKFf16gRrM0b">
     <mxGraphModel dx="1159" dy="491" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -35,16 +35,16 @@
           <mxGeometry x="420" y="320" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="0afxtpB6HyICPI6MhCGT-14" value="Rate and Reviews Movies" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="320" y="480" width="120" height="80" as="geometry" />
+          <mxGeometry x="365" y="480" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="0afxtpB6HyICPI6MhCGT-15" value="Create MyList" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="270" y="350" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="0afxtpB6HyICPI6MhCGT-17" value="Share MyList" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="280" y="640" width="120" height="80" as="geometry" />
+          <mxGeometry x="320" y="600" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="0afxtpB6HyICPI6MhCGT-20" value="Movies Recommendation" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="470" y="420" width="120" height="80" as="geometry" />
+          <mxGeometry x="490" y="370" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="0afxtpB6HyICPI6MhCGT-21" value="Manage Database" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="665" y="610" width="120" height="80" as="geometry" />
