@@ -54,7 +54,7 @@ def getRecentDiscussion():
     cur = db.cursor()
     try:
         cur.execute(
-            """SELECT movies_discussions.id, movies_discussions.title, users.username, movies.id, users.id 
+            """SELECT movies_discussions.id, movies_discussions.title, users.username, movies.id, users.id, movies_discussions.rating 
             FROM movies_discussions 
             INNER JOIN users ON movies_discussions.user_id = users.id 
             INNER JOIN movies ON movies_discussions.movie_id = movies.id
@@ -70,6 +70,7 @@ def getRecentDiscussion():
                 "username": i[2],
                 "movie_id": i[3],
                 "user_id": i[4],
+                "rating": i[5],
             }
             for i in discussions
         ]

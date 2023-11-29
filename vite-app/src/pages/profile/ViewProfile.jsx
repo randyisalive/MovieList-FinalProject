@@ -14,13 +14,17 @@ import { Toast } from "primereact/toast";
 
 import { Tooltip } from "primereact/tooltip";
 import useFriendsData from "../../functionComponent/friends/useFriendsData";
+import { fetchFriendsData } from "../../functionComponent/friends/friends_api";
 
 function ViewProfile() {
   const { ViewUserById } = useUsersData();
   const { id } = useParams();
-  const { request_friends, friends, reqToastRef } = useFriendsData();
+  const { Request_friends, reqToastRef, GetFriendsTable } = useFriendsData();
   const user = ViewUserById(id);
-  console.log(friends);
+  console.log(id);
+
+  const { data, setData } = GetFriendsTable(id);
+  console.log(data);
 
   return (
     <>
@@ -85,10 +89,14 @@ function ViewProfile() {
                         </Link>
                         <button
                           className={`btn btn-primary ${
-                            friends.status === "Request" ? "disabled" : null
-                          }`}
+                            data ? "disabled" : null
+                          } `}
                           onClick={() => {
-                            request_friends(id);
+                            Request_friends(id).then(() => {
+                              fetchFriendsData(id).then((data) => {
+                                setData(data);
+                              });
+                            });
                           }}
                         >
                           Add Friend

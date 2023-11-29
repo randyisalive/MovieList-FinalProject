@@ -9,6 +9,7 @@ from services.mylist import (
     getRatingById,
     getStatusById,
     updateStatusById,
+    getTotalMyList,
 )
 
 mylist_api = Blueprint("mylist_api", __name__)
@@ -120,3 +121,13 @@ def getById():
         ]
         return jsonify(lists_list)
     return jsonify({"URL: ": "/api/mylist/get/byId"})
+
+
+@mylist_api.route("/total", methods=["POST", "GET"])
+def total():
+    if request.method == "POST":
+        data = request.get_json()
+        id = data.get("id")
+        list_total = getTotalMyList(id)
+        return jsonify(list_total)
+    return jsonify({"URL: ": "/api/mylist/total"})

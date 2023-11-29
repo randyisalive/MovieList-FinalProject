@@ -14,6 +14,7 @@ import { userIdCookie } from "../../Cookies";
 function RecentMoviesDiscussion() {
   const { GetRecentDiscussionFunction } = useDiscussionData();
   const { data, total } = GetRecentDiscussionFunction();
+  console.log(data);
 
   return (
     <>
@@ -68,6 +69,10 @@ function RecentMoviesDiscussion() {
                                     </Link>
                                   }
                                   {` (${total[index]} Replies)`}
+                                </p>
+                                <p className="mt-3">
+                                  {" "}
+                                  {`Overall Rating: ${item.rating}`}
                                 </p>
                               </div>
                             </div>

@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import {
+  acceptInvites,
+  fetchFriendsData,
   getAllFriends,
   getFriends,
-  getFriendsById,
   getRequestFriends,
   requestFriends,
-} from "./fetchFriends";
+} from "./friends_api";
 import { userIdCookie } from "../../Cookies";
 
 function useFriendsData() {
@@ -22,6 +23,7 @@ function useFriendsData() {
 
   // toast ref
   const reqToastRef = useRef(null);
+  const acceptToastRef = useRef(null);
   const show = (toastRef, severity, msg) => {
     toastRef.current.show({
       severity: severity,
@@ -52,22 +54,48 @@ function useFriendsData() {
     return { data, setData };
   }
 
-  function request_friends(friend_id) {
-    requestFriends(user_id, friend_id).then((data) => {
+  async function Request_friends(friend_id) {
+    // Assuming GetFriendsTable returns an object with a setData method
+
+    // Assuming requestFriends and fetchFriendsData are asynchronous functions
+    await requestFriends(user_id, friend_id).then((data) => {
       console.log(data);
-      /*       RefreshData(); // refresh
-       */ show(reqToastRef, "success", "Added Friend"); // show toast
+
+      // Assuming show is a function to display a toast notification
+      show(reqToastRef, "success", "Added Friend"); // Show toast
+    }); // Assuming fetchFriendsData returns data related to the friend
+  }
+
+  function GetFriendsTable(friend_id) {
+    const [data, setData] = useState([]);
+    useEffect(() => {
+      fetchFriendsData(friend_id).then((data) => {
+        setData(data);
+      });
+    }, []);
+
+    return { data, setData };
+  }
+
+  function acceptInvitesHandler(friend_id) {
+    acceptInvites(friend_id).then((data) => {
+      console.log(data);
     });
+
+    show(acceptToastRef, "success", "Accept Invites");
   }
 
   return {
     friends,
-    request_friends,
+    Request_friends,
     setFriends,
     GetRequest,
     reqToastRef,
     show,
     GetAllFriends,
+    GetFriendsTable,
+    acceptToastRef,
+    acceptInvitesHandler,
   };
 }
 

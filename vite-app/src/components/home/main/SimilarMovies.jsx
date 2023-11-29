@@ -10,11 +10,14 @@ import { Image } from "primereact/image";
 import Imbd_svg from "../../Imdb_svg";
 import useHomeData from "../../../functionComponent/home/useHomeData";
 import { Link } from "react-router-dom";
+import LoadingPage from "../../../pages/LoadingPage";
+
+import { Skeleton } from "primereact/skeleton";
 
 function SimilarMovies() {
   const { RandomMovieList } = useHomeData();
 
-  const movies = RandomMovieList();
+  const { movies, isLoading } = RandomMovieList();
 
   const productTemplate = (movie) => {
     return (
@@ -50,6 +53,19 @@ function SimilarMovies() {
       </>
     );
   };
+
+  if (isLoading) {
+    return (
+      <>
+        <div className="d-flex mt-5 gap-3">
+          <Skeleton width="15rem" height="20rem"></Skeleton>
+          <Skeleton width="15rem" height="20rem"></Skeleton>
+          <Skeleton width="15rem" height="20rem"></Skeleton>
+          <Skeleton width="15rem" height="20rem"></Skeleton>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>

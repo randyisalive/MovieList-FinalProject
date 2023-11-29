@@ -4,8 +4,7 @@ import { addList, deleteList, updateStatusMyList } from "../../api/mylist_api";
 import updateRatingById from "./updateRatingById";
 import getCountDataInList from "./getCountDataInList";
 import getStatusById from "./getStatusById";
-import useTokenData from "../token/useTokenData";
-import { deleteCookies } from "../authentication/CookiesFunction";
+import getTotalMyList from "./getTotalMyList";
 
 function UseMyListData() {
   const [list, setList] = useState([]);
@@ -13,7 +12,6 @@ function UseMyListData() {
   const [rating, setRating] = useState();
   const [select, setSelect] = useState("");
   const [filter, setFilter] = useState("all");
-  const { checkIsValid } = useTokenData();
 
   useEffect(() => {
     getAllListById().then((data) => {
@@ -87,6 +85,17 @@ function UseMyListData() {
     return count;
   }
 
+  function GetTotalMyList() {
+    const [total, setTotal] = useState("");
+    useEffect(() => {
+      getTotalMyList().then((data) => {
+        setTotal(data);
+      });
+    }, []);
+
+    return total;
+  }
+
   function GetStatus(id) {
     useEffect(() => {
       getStatusById(id).then((data) => {
@@ -122,6 +131,7 @@ function UseMyListData() {
     setFilter,
     refreshList,
     setList,
+    GetTotalMyList,
   };
 }
 

@@ -17,6 +17,18 @@ def getMyListById(user_id):
         return logging.error(e)
 
 
+def getTotalMyList(user_id):
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        params = (user_id,)
+        cur.execute("SELECT COUNT(*) FROM list WHERE user_id = ?", params)
+        total = cur.fetchone()
+        return total
+    except Exception as e:
+        logging.error(e)
+
+
 def getRatingById(id):
     db = db_connection()
     cur = db.cursor()

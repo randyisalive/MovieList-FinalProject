@@ -20,6 +20,7 @@ export const updateRatingApi = PROXY + "mylist/update_rating";
 export const getRatingApi = PROXY + "mylist/get_rating";
 export const updateMovieStatusMyListApi = PROXY + "mylist/updateStatus";
 export const getStatusMoveMylistApi = PROXY + "mylist/getStatus";
+export const getTotalMyListApi = PROXY + "mylist/total";
 
 //genres api
 export const getGenreByMovieIdApi = PROXY + "genres/get";
@@ -57,6 +58,9 @@ export const createNewuserApi = PROXY + "auth/create";
 export const getRequestFriendsApi = PROXY + "friends/get-request";
 export const getSingleFriendApi = PROXY + "friends/getSingle";
 export const getAllFriendsApi = PROXY + "friends/get-all";
+export const sendInviteFriendsApi = PROXY + "friends/request-friend";
+export const checkInvitesApi = PROXY + "friends/check-friends";
+export const acceptInvitesApi = PROXY + "friends/accept-request";
 
 // community api
 export const getDiscussionApi = PROXY + "community/discussion/get";

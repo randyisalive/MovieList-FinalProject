@@ -3,10 +3,20 @@ import { Link } from "react-router-dom";
 import { Tag } from "primereact/tag";
 import useHomeData from "../../../functionComponent/home/useHomeData";
 import Imbd_svg from "../../Imdb_svg";
+import LoadingPage from "../../../pages/LoadingPage";
+import {
+  MDBCard,
+  MDBCardBody,
+  MDBCardHeader,
+  MDBCardText,
+  MDBCardTitle,
+} from "mdb-react-ui-kit";
 
 function LatestMyList() {
   const { LatestInMyList } = useHomeData();
-  const { data } = LatestInMyList();
+  const { data, isLoading } = LatestInMyList();
+
+  console.log("Latest MyList: ", data);
 
   const severityArray = ["success", "info", "warning", "danger"];
 
@@ -22,55 +32,73 @@ function LatestMyList() {
     }
     return 4;
   };
+
+  if (isLoading) {
+    return (
+      <>
+        <MDBCard className="mt-3">
+          <MDBCardBody>
+            <MDBCardText>
+              <LoadingPage />
+            </MDBCardText>
+          </MDBCardBody>
+        </MDBCard>
+      </>
+    );
+  }
+
   return (
     <div className="mt-10">
-      <span className="h6">Latest Movies in MyList</span>
-      <div className="mt-4 text-gray-400 text-xs space-y-3">
-        {data.map((item) => {
-          return (
-            <>
-              <li className="flex space-y-3 space-x-3 ">
-                <Image
-                  src={`../../../../movies_data/${item.id}/${item.image}`}
-                  alt="image_movies"
-                  width="100"
-                />
-                <div className="flex flex-col justify-between  ">
-                  <div className="flex flex-col space-y-1">
-                    <span className="text-gray-700 dark:text-white font-semibold">
-                      <Link
-                        to={`/movies/${item.id}/${item.title}`}
-                        className=""
-                      >
-                        {item.title}
+      <MDBCard>
+        <MDBCardHeader className="bg-danger text-white">
+          <MDBCardTitle>
+            <div
+              className="d-flex align-items-center"
+              style={{ justifyContent: "space-between" }}
+            >
+              <span className="h4">Latest Movies in MyList</span>
+              <Link to={`/mylist`}>
+                <span>View More</span>
+              </Link>
+            </div>
+          </MDBCardTitle>
+        </MDBCardHeader>
+        <MDBCardBody>
+          <MDBCardText>
+            {data.map((item) => {
+              return (
+                <>
+                  <div
+                    className="d-flex mt-3 gap-3 border-bottom p-2 "
+                    key={item.id}
+                  >
+                    <div className="" id="image-container">
+                      <Image
+                        src={`../../../movies_data/${item.id}/${item.image}`}
+                        alt="movie_image"
+                        width="80"
+                      />
+                    </div>
+                    <div className="detail-container d-flex flex-column gap-3">
+                      <Link to={`/movies/${item.id}/${item.title}`}>
+                        <p className="text-primary">{item.title}</p>
                       </Link>
-                    </span>
-                    <span>
                       <Tag
                         value={item.status}
                         severity={severityArray[getNum(item.status)]}
-                      ></Tag>
-                    </span>
+                      />
+                      <div className="d-flex gap-2">
+                        <p>{item.rating}</p>
+                        <Imbd_svg />
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex space-x-2 items-center">
-                    <Imbd_svg />
-                    <span>{item.rating}</span>
-                  </div>
-                </div>
-              </li>
-            </>
-          );
-        })}
-
-        <li className="pt-1">
-          <Link
-            to={`/mylist`}
-            className="px-5 py-2.5 bg-red-600  hover:bg-red-700 rounded-lg text-center font-medium block text-white"
-          >
-            See More
-          </Link>
-        </li>
-      </div>
+                </>
+              );
+            })}
+          </MDBCardText>
+        </MDBCardBody>
+      </MDBCard>
     </div>
   );
 }

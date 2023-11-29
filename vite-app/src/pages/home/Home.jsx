@@ -1,5 +1,4 @@
 import Main from "../../components/home/main/Main";
-import RigthSide from "../../components/home/rightSide/RightSide";
 import checkLogin from "../../functionComponent/authentication/checkIsLogin";
 
 function Home() {
@@ -8,7 +7,6 @@ function Home() {
   return (
     <>
       <Main />
-      <RigthSide />
     </>
   );
 }

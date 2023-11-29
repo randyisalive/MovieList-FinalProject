@@ -20,8 +20,8 @@ function Login() {
           }}
         >
           <MDBCard>
-            <MDBCardHeader className="bg-danger">
-              <MDBCardTitle className=" d-flex">
+            <MDBCardHeader className="bg-danger text-white">
+              <MDBCardTitle className=" d-flex align-items-center gap-2">
                 <h1 className="h3 m-0 p-0">Login</h1>
               </MDBCardTitle>
             </MDBCardHeader>
@@ -44,8 +44,11 @@ function Login() {
                   onChange={formHandler}
                 />
               </div>
-              <div className="d-flex justify-content-center">
-                <a href="/create">Create Account</a>| Contact Us
+              <div className="d-flex justify-content-center gap-2">
+                <a href="/create" className="text-primary">
+                  Create Account
+                </a>
+                | Contact Us
               </div>
               <div className="d-flex justify-content-center">
                 <button

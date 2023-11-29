@@ -6,8 +6,10 @@ import UseMyListData from "../../functionComponent/mylist/UseMyListData";
 function ProfileStatistics() {
   const [chartData, setChartData] = useState({});
   const [chartOptions, setChartOptions] = useState({});
-  const { GetCountData } = UseMyListData();
+  const { GetCountData, GetTotalMyList } = UseMyListData();
   const count = GetCountData();
+  const total = GetTotalMyList();
+  console.log(total);
   useEffect(() => {
     const documentStyle = getComputedStyle(document.documentElement);
     const data = {
@@ -60,7 +62,7 @@ function ProfileStatistics() {
                 id="bar-chart-container"
                 className="d-flex flex-column gap-2 "
               >
-                <p className="m-0">Mean Score: {"7.70"}</p>
+                <p className="m-0">Total MyList: {total[0]}</p>
                 <div className="d-flex justify-content-center">
                   <Chart
                     type="pie"

@@ -71,16 +71,6 @@ function Friends() {
                       );
                     }}
                   />
-                  <Column
-                    header="Status"
-                    body={(item) => {
-                      return (
-                        <>
-                          <p>{item.status}</p>
-                        </>
-                      );
-                    }}
-                  />
                 </DataTable>
               )}
             </MDBCardText>
