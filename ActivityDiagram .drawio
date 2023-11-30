@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-11-30T03:17:14.244Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="oLFNMHrjCbwtBFJPmq6J" version="22.1.4" type="github">
+<mxfile host="app.diagrams.net" modified="2023-11-30T03:21:35.078Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="l7KDc_T1-PmMv9fcDi34" version="22.1.4" type="github">
   <diagram name="Page-1" id="M_UugY_NXWPGBNVr_hrX">
     <mxGraphModel dx="766" dy="345" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -22,8 +22,14 @@
         <mxCell id="zU0l_08LZlELBBx7HQ0t-26" value="Receive username and password&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="zU0l_08LZlELBBx7HQ0t-21">
           <mxGeometry x="140" y="120" width="120" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="zU0l_08LZlELBBx7HQ0t-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="zU0l_08LZlELBBx7HQ0t-21" source="zU0l_08LZlELBBx7HQ0t-32" target="zU0l_08LZlELBBx7HQ0t-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="zU0l_08LZlELBBx7HQ0t-32" value="Save id and token in cookies" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="zU0l_08LZlELBBx7HQ0t-21">
           <mxGeometry x="140" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zU0l_08LZlELBBx7HQ0t-34" value="Request movies data, discussion data, and MyList data" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="zU0l_08LZlELBBx7HQ0t-21">
+          <mxGeometry x="140" y="360" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="zU0l_08LZlELBBx7HQ0t-22" value="Back End" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="800" y="40" width="320" height="760" as="geometry" />
