@@ -35,15 +35,17 @@ function useDiscussionData() {
   function GetRecentDiscussionFunction() {
     const [data, setData] = useState([]);
     const [total, setTotal] = useState([]);
+    const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
       getRecentDiscussion().then((data) => {
         setData(data[1]);
         setTotal(data[0]);
+        setLoading(false);
       });
     }, []);
 
-    return { data, total };
+    return { data, total, isLoading };
   }
 
   return {

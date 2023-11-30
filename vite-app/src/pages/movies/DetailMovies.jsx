@@ -31,7 +31,10 @@ function DetailMovies() {
   const { Genres } = useGenresData();
   GetMoviesDetail(title);
   console.log(detail);
+
+  // toast
   const addListRef = useRef(null);
+  const developmentRef = useRef(null);
 
   const show = () => {
     addListRef.current.show({
@@ -40,9 +43,17 @@ function DetailMovies() {
       detail: "Add to MyList",
     });
   };
+  const showDev = () => {
+    developmentRef.current.show({
+      severity: "error",
+      summary: "Info",
+      detail: "Under Development",
+    });
+  };
 
   return (
     <>
+      <Toast ref={developmentRef} />
       <Toast ref={addListRef} />
       <MDBContainer className="mt-5">
         <MDBCard className="mb-3">
@@ -117,7 +128,13 @@ function DetailMovies() {
                             <p className="h4 p-0 m-0 text-white">CAST & CREW</p>
                           </div>
                           <div className="d-flex align-items-center">
-                            <Link className="text-white" to={"all-actors"}>
+                            <Link
+                              className="text-white d-flex gap-1 align-items-center"
+                              onClick={() => {
+                                showDev();
+                              }}
+                            >
+                              <i className="pi pi-wrench"></i>
                               View More
                             </Link>
                           </div>

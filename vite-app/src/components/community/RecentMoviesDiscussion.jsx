@@ -10,11 +10,20 @@ import {
 import useDiscussionData from "../../functionComponent/community/useDiscussionData";
 import { Link } from "react-router-dom";
 import { userIdCookie } from "../../Cookies";
+import LoadingPage from "../../pages/LoadingPage";
 
 function RecentMoviesDiscussion() {
   const { GetRecentDiscussionFunction } = useDiscussionData();
-  const { data, total } = GetRecentDiscussionFunction();
+  const { data, total, isLoading } = GetRecentDiscussionFunction();
   console.log(data);
+
+  if (isLoading) {
+    return (
+      <>
+        <LoadingPage />
+      </>
+    );
+  }
 
   return (
     <>

@@ -41,6 +41,7 @@ function ReviewsMoviesForm() {
                 className="my-3"
                 name="title"
                 onChange={(e) => HandleForm(e, id)}
+                required
               />
               <MDBTextArea
                 placeholder="body..."
@@ -48,30 +49,32 @@ function ReviewsMoviesForm() {
                 style={{ height: "250px" }}
                 name="body"
                 onChange={(e) => HandleForm(e, id)}
+                required
               />
+
+              <div className="d-flex gap-3 align-items-center">
+                Rating:{" "}
+                <Rating
+                  cancel={false}
+                  name="rating"
+                  stars={5}
+                  onChange={(e) => HandleForm(e, id)}
+                  value={form.rating}
+                  pt={{
+                    // this is for coloring the stars
+                    onIcon: {
+                      className:
+                        form.rating <= 2.5 ? "text-danger" : "text-success",
+                    },
+                  }}
+                />
+                {form.rating <= 2.5 ? (
+                  <p className="text-danger"> {form.rating}</p>
+                ) : (
+                  <p className="text-success"> {form.rating}</p>
+                )}
+              </div>
             </form>
-            <div className="d-flex gap-3 align-items-center">
-              Rating:{" "}
-              <Rating
-                cancel={false}
-                name="rating"
-                stars={5}
-                onChange={(e) => HandleForm(e, id)}
-                value={form.rating}
-                pt={{
-                  // this is for coloring the stars
-                  onIcon: {
-                    className:
-                      form.rating <= 2.5 ? "text-danger" : "text-success",
-                  },
-                }}
-              />
-              {form.rating <= 2.5 ? (
-                <p className="text-danger"> {form.rating}</p>
-              ) : (
-                <p className="text-success"> {form.rating}</p>
-              )}
-            </div>
           </MDBCardBody>
         </MDBCard>
         <div className="mt-4 justify-content-center d-flex">
