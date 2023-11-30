@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-11-30T04:59:41.710Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="QCz2hn1abJOWRxIvGhJC" version="22.1.4" type="github">
+<mxfile host="app.diagrams.net" modified="2023-11-30T06:05:11.613Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="90-E61ms_0QerM_SbP9E" version="22.1.4" type="github">
   <diagram name="Page-1" id="M_UugY_NXWPGBNVr_hrX">
-    <mxGraphModel dx="795" dy="385" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1088" dy="526" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -28,8 +28,14 @@
         <mxCell id="zU0l_08LZlELBBx7HQ0t-49" value="Browse movies" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="zU0l_08LZlELBBx7HQ0t-20">
           <mxGeometry x="120" y="630" width="120" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="zU0l_08LZlELBBx7HQ0t-64" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="zU0l_08LZlELBBx7HQ0t-20" source="zU0l_08LZlELBBx7HQ0t-61" target="zU0l_08LZlELBBx7HQ0t-63">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="zU0l_08LZlELBBx7HQ0t-61" value="Receive the displayed data" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="zU0l_08LZlELBBx7HQ0t-20">
           <mxGeometry x="120" y="720" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zU0l_08LZlELBBx7HQ0t-63" value="See movie detail" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="zU0l_08LZlELBBx7HQ0t-20">
+          <mxGeometry x="120" y="830" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="zU0l_08LZlELBBx7HQ0t-21" value="Front End" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="400" y="40" width="400" height="1600" as="geometry" />
@@ -54,6 +60,9 @@
         </mxCell>
         <mxCell id="zU0l_08LZlELBBx7HQ0t-57" value="Display all movies data" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="zU0l_08LZlELBBx7HQ0t-21">
           <mxGeometry x="140" y="720" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zU0l_08LZlELBBx7HQ0t-65" value="Send reques&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="zU0l_08LZlELBBx7HQ0t-21">
+          <mxGeometry x="140" y="830" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="zU0l_08LZlELBBx7HQ0t-22" value="Back End" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="800" y="40" width="320" height="1600" as="geometry" />
