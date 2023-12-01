@@ -12,6 +12,8 @@ import { Link } from "react-router-dom";
 import { userIdCookie } from "../../Cookies";
 import LoadingPage from "../../pages/LoadingPage";
 
+import { Skeleton } from "primereact/skeleton";
+
 function RecentMoviesDiscussion() {
   const { GetRecentDiscussionFunction } = useDiscussionData();
   const { data, total, isLoading } = GetRecentDiscussionFunction();
@@ -20,7 +22,37 @@ function RecentMoviesDiscussion() {
   if (isLoading) {
     return (
       <>
-        <LoadingPage />
+        <MDBCard className="mt-5">
+          <MDBCardHeader className="bg-danger text-white">
+            <MDBCardTitle>
+              <h4 className="h4">Recent Movies Discussion</h4>
+            </MDBCardTitle>
+          </MDBCardHeader>
+          <MDBCardBody>
+            <MDBCardText>
+              <div className="d-flex flex-column mt-3">
+                <Skeleton className="mb-2" width="20rem"></Skeleton>
+                <Skeleton className="mb-2" width="10rem"></Skeleton>
+                <Skeleton className="mb-2" width="5rem"></Skeleton>
+              </div>
+              <div className="d-flex flex-column mt-3">
+                <Skeleton className="mb-2" width="20rem"></Skeleton>
+                <Skeleton className="mb-2" width="10rem"></Skeleton>
+                <Skeleton className="mb-2" width="5rem"></Skeleton>
+              </div>
+              <div className="d-flex flex-column mt-3">
+                <Skeleton className="mb-2" width="20rem"></Skeleton>
+                <Skeleton className="mb-2" width="10rem"></Skeleton>
+                <Skeleton className="mb-2" width="5rem"></Skeleton>
+              </div>
+              <div className="d-flex flex-column mt-3">
+                <Skeleton className="mb-2" width="20rem"></Skeleton>
+                <Skeleton className="mb-2" width="10rem"></Skeleton>
+                <Skeleton className="mb-2" width="5rem"></Skeleton>
+              </div>
+            </MDBCardText>
+          </MDBCardBody>
+        </MDBCard>
       </>
     );
   }

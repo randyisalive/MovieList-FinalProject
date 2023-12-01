@@ -11,15 +11,27 @@ import { DataTable } from "primereact/datatable";
 import useFriendsData from "../../functionComponent/friends/useFriendsData";
 import { Image } from "primereact/image";
 import { Link } from "react-router-dom";
+import { Avatar } from "primereact/avatar";
+import LoadingFriends from "./LoadingFriends";
+
+import { Ripple } from "primereact/ripple";
 
 function Friends() {
   const { friends, GetAllFriends } = useFriendsData();
-  const { items, setItems } = GetAllFriends();
+  const { items, isLoading } = GetAllFriends();
   console.log("items:", items);
+
+  if (isLoading) {
+    return (
+      <>
+        <LoadingFriends />
+      </>
+    );
+  }
 
   return (
     <>
-      <MDBContainer className="mt-5">
+      <MDBContainer className="mt-5 mb-5">
         <Link to={`/friends/request`}>
           <button className="btn btn-primary mb-3">Request</button>
         </Link>
@@ -32,47 +44,32 @@ function Friends() {
           </MDBCardHeader>
           <MDBCardBody>
             <MDBCardText>
-              {items.length <= 0 ? (
-                <>
-                  <p className="h3">No Data</p>
-                </>
-              ) : (
-                <DataTable value={items} paginator rows={10}>
-                  <Column
-                    header="Profile Picture"
-                    body={(item) => {
-                      return (
-                        <>
-                          <MDBContainer>
-                            <Image
-                              src={
-                                item.image === "default.jpg"
-                                  ? `../../../actors_data/default.jpg`
-                                  : `../../../user_data/picture/${item.user_id}/${item.image}`
-                              }
-                              width="100"
-                              preview
-                            />
-                          </MDBContainer>
-                        </>
-                      );
-                    }}
-                  />
-                  <Column
-                    header="Username"
-                    field="username"
-                    body={(item) => {
-                      return (
-                        <>
-                          <div className="d-flex">
-                            <h1>{item.username}</h1>
+              {items.map((item) => {
+                return (
+                  <>
+                    <MDBCard className="">
+                      <MDBCardBody>
+                        <MDBCardText>
+                          <div className="d-flex gap-3">
+                            <div className="d-flex m-0 p-0">
+                              <Image
+                                src={`../../../user_data/picture/${item.user_id}/${item.image}`}
+                                alt="profile_picture"
+                                width="120"
+                              />
+                            </div>
+
+                            <div className="d-flex flex-column gap-2">
+                              <b>{item.username}</b>
+                              <p className="">{item.biography}</p>
+                            </div>
                           </div>
-                        </>
-                      );
-                    }}
-                  />
-                </DataTable>
-              )}
+                        </MDBCardText>
+                      </MDBCardBody>
+                    </MDBCard>
+                  </>
+                );
+              })}
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>

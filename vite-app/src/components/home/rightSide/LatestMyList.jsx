@@ -11,6 +11,7 @@ import {
   MDBCardText,
   MDBCardTitle,
 } from "mdb-react-ui-kit";
+import { Skeleton } from "primereact/skeleton";
 
 function LatestMyList() {
   const { LatestInMyList } = useHomeData();
@@ -37,9 +38,53 @@ function LatestMyList() {
     return (
       <>
         <MDBCard className="mt-3">
+          <MDBCardHeader className="bg-danger text-white">
+            <MDBCardTitle>
+              <div
+                className="d-flex align-items-center"
+                style={{ justifyContent: "space-between" }}
+              >
+                <span className="h4">Latest Movies in MyList</span>
+                <Link to={`/mylist`}>
+                  <span>View More</span>
+                </Link>
+              </div>
+            </MDBCardTitle>
+          </MDBCardHeader>
           <MDBCardBody>
-            <MDBCardText>
-              <LoadingPage />
+            <MDBCardText className="d-flex flex-column gap-3">
+              <div className="d-flex gap-3">
+                <Skeleton height="8rem" width="6rem" />
+                <div className="d-flex flex-column gap-4">
+                  <Skeleton width="8rem" />
+                  <Skeleton width="7rem" />
+                  <Skeleton width="5rem" />
+                </div>
+              </div>
+              <div className="d-flex gap-3">
+                <Skeleton height="8rem" width="6rem" />
+                <div className="d-flex flex-column gap-4">
+                  <Skeleton width="8rem" />
+                  <Skeleton width="7rem" />
+                  <Skeleton width="5rem" />
+                </div>
+              </div>
+              <div className="d-flex gap-3">
+                <Skeleton height="8rem" width="6rem" />
+                <div className="d-flex flex-column gap-4">
+                  <Skeleton width="8rem" />
+                  <Skeleton width="7rem" />
+                  <Skeleton width="5rem" />
+                </div>
+              </div>
+              <div className="d-flex gap-3">
+                <Skeleton height="8rem" width="6rem" />
+                <div className="d-flex flex-column gap-4">
+                  <Skeleton width="8rem" />
+                  <Skeleton width="7rem" />
+                  <Skeleton width="5rem" />
+                </div>
+              </div>
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>

@@ -34,24 +34,28 @@ function useFriendsData() {
 
   function GetAllFriends() {
     const [items, setItems] = useState([]);
+    const [isLoading, setLoading] = useState(true);
     useEffect(() => {
       getAllFriends().then((data) => {
+        setLoading(false);
         setItems(data);
       });
     }, []);
 
-    return { items, setItems };
+    return { items, setItems, isLoading };
   }
 
   function GetRequest() {
     const [data, setData] = useState([]);
+    const [isLoading, setLoading] = useState(true);
     useEffect(() => {
       getRequestFriends().then((data) => {
         setData(data);
+        setLoading(true);
       });
     }, []);
 
-    return { data, setData };
+    return { data, setData, isLoading };
   }
 
   async function Request_friends(friend_id) {
