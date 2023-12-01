@@ -20,9 +20,7 @@ def get_all():
         datas = get_all_friends_by_user_id(id)
         if datas:
             return jsonify(datas)
-        else:
-            return jsonify([{"msg": "No Data"}])
-    return jsonify({"URL: ": "/api/friends/get-all"})
+    return None
 
 
 ## get friends request

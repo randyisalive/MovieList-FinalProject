@@ -21,7 +21,6 @@ import ViewList from "./pages/mylist/ViewList";
 import ViewProfile from "./pages/profile/ViewProfile";
 import Friends from "./pages/friends/Friends";
 import RequestFriends from "./pages/friends/RequestFriends";
-import CheckStatus from "./pages/friends/CheckStatus";
 
 function App() {
   return (
@@ -59,7 +58,6 @@ function App() {
               <Route path="/profile/view/:id" element={<ViewProfile />} />
               <Route path="/friends" element={<Friends />} />
               <Route path="/friends/request" element={<RequestFriends />} />
-              <Route path="/friends/check" element={<CheckStatus />} />
             </Routes>
           </div>
         </body>

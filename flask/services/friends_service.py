@@ -20,6 +20,10 @@ def get_all_friends_by_user_id(id):
         CASE
             WHEN friends.user_1_id = ? THEN users2.id
             WHEN friends.user_2_id = ? THEN users1.id
+        END as user_id,
+        CASE
+            WHEN friends.user_1_id = ? THEN users2.biography
+            WHEN friends.user_2_id = ? THEN users1.biography
         END as user_id
         FROM friends
         INNER JOIN users AS users1 ON friends.user_1_id = users1.id
@@ -27,12 +31,18 @@ def get_all_friends_by_user_id(id):
         WHERE (friends.user_1_id = ? AND friends.status = 'accepted')
         OR (friends.user_2_id = ? AND friends.status = 'accepted');
         """
-        params = (id, id, id, id, id, id, id, id)
+        params = (id, id, id, id, id, id, id, id, id, id)
         cur.execute(sql, params)
         datas = cur.fetchall()
         print(datas)
         data_list = [
-            {"id": i[0], "username": i[1], "image": i[2], "user_id": i[3]}
+            {
+                "id": i[0],
+                "username": i[1],
+                "image": i[2],
+                "user_id": i[3],
+                "biography": i[4],
+            }
             for i in datas
         ]
         return data_list
