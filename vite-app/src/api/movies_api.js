@@ -2,8 +2,8 @@ import {
   addMoviesApi,
   getAllMovieApi,
   getMovieByTitleApi,
+  getWhereToWatchByMovieApi,
 } from "../functionComponent/API";
-import { deleteCookies } from "../functionComponent/authentication/CookiesFunction";
 
 // get all movies function
 export async function getAllMovie() {
@@ -42,6 +42,22 @@ export function addMovies(title, rating, description, image) {
       },
       body: JSON.stringify({ title, rating, description, image }),
     });
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+export async function getWhereToWatchByMovie(movie_id) {
+  try {
+    const response = await fetch(getWhereToWatchByMovieApi, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ movie_id }),
+    });
+    const data = await response.json();
+    return data;
   } catch (e) {
     console.error(e);
   }

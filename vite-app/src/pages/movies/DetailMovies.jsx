@@ -1,7 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import UseMoviesData from "../../functionComponent/movies/useMoviesData";
 import {
-  MDBBtn,
   MDBCard,
   MDBCardBody,
   MDBCardHeader,
@@ -22,11 +21,20 @@ import { Toast } from "primereact/toast";
 import { useRef } from "react";
 
 import { Tooltip } from "primereact/tooltip";
+import useWhereToWatchData from "../../functionComponent/where_to_watch/useWhereToWatchData";
 
 function DetailMovies() {
   // must add add to list feature in details movies
   const { id, title } = useParams();
   const { GetMoviesDetail, rating, addList, detail } = UseMoviesData();
+
+  // where to watch
+  const { GetDataByMovie } = useWhereToWatchData();
+  const { data } = GetDataByMovie(id);
+  console.log(data);
+
+  // where to watch
+
   const { GetCastByMovieId } = useCastsData(id);
   const { Genres } = useGenresData();
   GetMoviesDetail(title);
@@ -73,9 +81,9 @@ function DetailMovies() {
                     src={`../../../movies_data/${detail.id}/${detail.image}`}
                     preview
                   />
-                  <div className="d-flex align-items-center gap-2">
+                  <div className="d-flex align-items-center gap-2 mb-4">
                     <Link to={`/reviews/${id}/${title}`}>
-                      <button className="btn btn-primary">
+                      <button className="btn rounded-5 border btn-danger ">
                         Review This Movie
                       </button>
                     </Link>
@@ -84,7 +92,7 @@ function DetailMovies() {
                         {" "}
                         <Tooltip target=".add-list" />
                         <button
-                          className="btn btn-primary add-list"
+                          className="btn btn-danger rounded-5 add-list"
                           data-pr-tooltip="Add to Mylist"
                           onClick={() => {
                             addList(title).then(() => {
@@ -210,6 +218,47 @@ function DetailMovies() {
                           </MDBCardBody>
                         </MDBCard>
                       )}
+                      <MDBCard className="mt-3">
+                        <MDBCardHeader className="bg-danger text-white">
+                          <MDBCardTitle className="m-0 p-0 d-flex align-items-center gap-2">
+                            <Image
+                              src="../../../public/5340270_cast_feed_rss_streaming_icon.png"
+                              width="28"
+                            />
+                            <h3 className="h3 m-0 p-0">Where To Watch</h3>
+                          </MDBCardTitle>
+                        </MDBCardHeader>
+                        <MDBCardBody>
+                          <MDBCardText className="">
+                            {data.map((item) => {
+                              return (
+                                <>
+                                  <div
+                                    className="d-flex  align-items-center my-3 border-bottom pb-3"
+                                    style={{ justifyContent: "space-between" }}
+                                  >
+                                    <div className="d-flex gap-2 align-items-center">
+                                      <Image
+                                        src={`../../../public/${item.icon}`}
+                                        width="35"
+                                      />
+                                      <p>{item.platform}</p>
+                                    </div>
+
+                                    <Link
+                                      to={item.link}
+                                      className=" btn btn-light d-flex align-items-center border rounded-5"
+                                    >
+                                      <i className="pi pi-play"></i>
+                                      Watch
+                                    </Link>
+                                  </div>
+                                </>
+                              );
+                            })}
+                          </MDBCardText>
+                        </MDBCardBody>
+                      </MDBCard>
                     </MDBCol>
                   </MDBRow>
                 </MDBCol>

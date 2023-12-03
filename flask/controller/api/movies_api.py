@@ -1,5 +1,11 @@
 from flask import Blueprint, request, jsonify
-from services.movies import getAllMovies, addMovies, getMovieByTitle, getMovieById
+from services.movies import (
+    getAllMovies,
+    addMovies,
+    getMovieByTitle,
+    getMovieById,
+    get_where_to_watch_by_movie,
+)
 
 movies_api = Blueprint("movies_api", __name__)
 
@@ -73,3 +79,13 @@ def getId():
 
         return jsonify(movie_list)
     return jsonify({"URL: ": "/api/movies/getId"})
+
+
+@movies_api.route("/get_where_to_watch", methods=["POST", "GET"])
+def get_where_watch():
+    if request.method == "POST":
+        data = request.get_json()
+        movie_id = data.get("movie_id")
+        item = get_where_to_watch_by_movie(movie_id)
+        print(item)
+        return jsonify(item)

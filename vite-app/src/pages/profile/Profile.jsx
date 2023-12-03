@@ -50,7 +50,7 @@ function Profile() {
                     <div className="d-flex">
                       <button
                         className={
-                          "btn btn-primary d-flex align-items-center gap-2 "
+                          "btn btn-danger rounded-5 d-flex align-items-center gap-2 "
                         }
                         onClick={() => setSetting(!setting)}
                       >

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Tag } from "primereact/tag";
 import useHomeData from "../../../functionComponent/home/useHomeData";
 import Imbd_svg from "../../Imdb_svg";
-import LoadingPage from "../../../pages/LoadingPage";
 import {
   MDBCard,
   MDBCardBody,
@@ -44,7 +43,7 @@ function LatestMyList() {
                 className="d-flex align-items-center"
                 style={{ justifyContent: "space-between" }}
               >
-                <span className="h4">Latest Movies in MyList</span>
+                <span className="h4 p-0 m-0">Latest Movies in MyList</span>
                 <Link to={`/mylist`}>
                   <span>View More</span>
                 </Link>

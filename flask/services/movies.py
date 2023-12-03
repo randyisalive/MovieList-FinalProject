@@ -55,6 +55,35 @@ def getMovieByTitle(title):
         logging.error(e)
 
 
+def get_where_to_watch_by_movie(movie_id):
+    db = db_connection()
+    cur = db.cursor()
+    try:
+        sql = """
+        SELECT where_to_watch.id, where_to_watch.platform, where_to_watch.link, movies_where.id, where_to_watch.icon
+        FROM movies_where
+        INNER JOIN movies ON movies.id = movies_where.movie_id
+        INNER JOIN where_to_watch ON where_to_watch.id = movies_where.where_to_watch_id
+        WHERE movies_where.movie_id = ?
+        """
+        params = (movie_id,)
+        cur.execute(sql, params)
+        data = cur.fetchall()
+        data_list = [
+            {
+                "where_to_watch_id": i[0],
+                "platform": i[1],
+                "link": i[2],
+                "id": i[3],
+                "icon": i[4],
+            }
+            for i in data
+        ]
+        return data_list
+    except Exception as e:
+        logging.error(e)
+
+
 def getMoviesByGenre(genre_id):
     db = db_connection()
     cur = db.cursor()

@@ -37,10 +37,12 @@ export const getCountDataInListApi = PROXY + "profile/total";
 export const getTotalRatingApi = PROXY + "profile/total_rating";
 
 // movies api
+// movies/
 export const getAllMovieApi = PROXY + "movies/get";
 export const addMoviesApi = PROXY + "movies/add";
 export const getMovieByTitleApi = PROXY + "movies/getTitle";
 export const getMovieByIdApi = PROXY + "movies/getId";
+export const getWhereToWatchByMovieApi = PROXY + "movies/get_where_to_watch";
 
 // cast api
 export const getActorsByMovieApi = PROXY + "cast/getByMovieId";
@@ -76,3 +78,6 @@ export const deleteCommentApi = PROXY + "community/discussion/comment/delete";
 export const getRecentApi = PROXY + "community/discussion/get-recent";
 export const getTotalCommentsApi =
   PROXY + "community/discussion/get-total-comments";
+
+// where to watch api
+export const getWhereToWatchApi = PROXY + "where_to_watch/get";
