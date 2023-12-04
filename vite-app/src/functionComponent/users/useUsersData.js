@@ -21,7 +21,7 @@ function useUsersData() {
       });
     }, []);
 
-    return user;
+    return { user };
   }
 
   function ViewUserById(user_id) {

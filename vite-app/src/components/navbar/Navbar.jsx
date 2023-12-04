@@ -8,7 +8,7 @@ import useUsersData from "../../functionComponent/users/useUsersData";
 
 function Navbar() {
   const { GetUser } = useUsersData();
-  const user = GetUser();
+  const { user } = GetUser();
   const location = useLocation();
   const path = location.pathname;
 

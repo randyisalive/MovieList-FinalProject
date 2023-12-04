@@ -16,9 +16,8 @@ import ProfileStatistics from "../../components/profile/ProfileStatistics";
 
 function Profile() {
   const { GetUser } = useUsersData();
+  const { user } = GetUser();
   const [setting, setSetting] = useState(true);
-
-  const user = GetUser();
 
   return (
     <>

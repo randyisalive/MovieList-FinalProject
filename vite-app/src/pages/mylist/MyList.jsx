@@ -38,6 +38,7 @@ function MyList() {
     filterMyList,
   } = UseMyListData();
   const { GetUser } = useUsersData();
+  const { user } = GetUser();
   const { status } = useStatusData();
 
   const [visible, setVisible] = useState({});
@@ -61,13 +62,12 @@ function MyList() {
     return (
       <>
         <div className="d-flex flex-column gap-3 align-items-center">
-          <Tag value={list_status} severity={severityArray[getNum()]}></Tag>
-
           <Image
             src={`../../../movies_data/${movie_id}/${movie_image}`}
             width="100"
             preview
           />
+          <Tag value={list_status} severity={severityArray[getNum()]}></Tag>
         </div>
       </>
     );
@@ -188,8 +188,18 @@ function MyList() {
     <>
       <Toast />
       <MDBContainer className="mt-5">
-        <div className="bg-danger text-white h-25 card mb-3 d-flex justify-content-center align-items-center">
-          <p className="h1">{`${GetUser().username} List`}</p>
+        <div
+          className="bg-danger text-white h-25 card mb-3 d-flex justify-content-center align-items-center"
+          style={{
+            backgroundImage: "url('https://source.unsplash.com/random')",
+            backgroundSize: "cover",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            color: "#ffffff",
+          }}
+        >
+          <p className="h1">{`${user.username} List`}</p>
         </div>
         <MDBCard>
           <MDBCardBody>
@@ -253,13 +263,14 @@ function MyList() {
           className="mt-4"
         >
           <Column
-            header="Image"
             body={(item) =>
               imageTemplate(item.movie_id, item.movie_image, item.list_status)
             }
           />
           <Column
             header="Movie Title"
+            field="movie_title"
+            sortable
             body={(item) => {
               return (
                 <>

@@ -21,47 +21,53 @@ import ViewList from "./pages/mylist/ViewList";
 import ViewProfile from "./pages/profile/ViewProfile";
 import Friends from "./pages/friends/Friends";
 import RequestFriends from "./pages/friends/RequestFriends";
+import Footer from "./pages/footer/Footer";
+
+// _app.js
+import { PrimeReactProvider } from "primereact/api";
 
 function App() {
   return (
     <>
-      <Router>
-        <body className="font-montserrat text-sm bg-white dark:bg-zinc-900 ">
-          <div className="flex min-h-screen  2xl:max-w-screen-2xl 2xl:mx-auto 2xl:border-x-2 2xl:border-gray-200 dark:2xl:border-zinc-700 ">
-            {isLogin() ? <Navbar /> : null}
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/create" element={<Create />} />
-              <Route path="/community" element={<Community />} />
-              <Route
-                path="/community/Movie Discussion"
-                element={<MovieDiscussion />}
-              />
-              <Route
-                path="/community/Movie Discussion/:id/:movie_id/:title"
-                element={<ReviewsMoviesDetails />}
-              />
-              <Route path="/movies" element={<AllMovies />} />
-              <Route path="/movies/:id/:title" element={<DetailMovies />} />
-              <Route
-                path="/movies/:id/:title/all-actors"
-                element={<AllActors />}
-              />
-              <Route
-                path="/reviews/:id/:title"
-                element={<ReviewsMoviesForm />}
-              />
-              <Route path="/mylist" element={<MyList />} />
-              <Route path="/mylist/view/user/:id" element={<ViewList />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/profile/view/:id" element={<ViewProfile />} />
-              <Route path="/friends" element={<Friends />} />
-              <Route path="/friends/request" element={<RequestFriends />} />
-            </Routes>
-          </div>
-        </body>
-      </Router>
+      <PrimeReactProvider value={{ unstyled: false }}>
+        <Router>
+          <body className="font-montserrat text-sm bg-white dark:bg-zinc-900 ">
+            <div className="d-flex">
+              {isLogin() ? <Navbar /> : null}
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/create" element={<Create />} />
+                <Route path="/community" element={<Community />} />
+                <Route
+                  path="/community/Movie Discussion"
+                  element={<MovieDiscussion />}
+                />
+                <Route
+                  path="/community/Movie Discussion/:id/:movie_id/:title"
+                  element={<ReviewsMoviesDetails />}
+                />
+                <Route path="/movies" element={<AllMovies />} />
+                <Route path="/movies/:id/:title" element={<DetailMovies />} />
+                <Route
+                  path="/movies/:id/:title/all-actors"
+                  element={<AllActors />}
+                />
+                <Route
+                  path="/reviews/:id/:title"
+                  element={<ReviewsMoviesForm />}
+                />
+                <Route path="/mylist" element={<MyList />} />
+                <Route path="/mylist/view/user/:id" element={<ViewList />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/profile/view/:id" element={<ViewProfile />} />
+                <Route path="/friends" element={<Friends />} />
+                <Route path="/friends/request" element={<RequestFriends />} />
+              </Routes>
+            </div>
+          </body>
+        </Router>
+      </PrimeReactProvider>
     </>
   );
 }

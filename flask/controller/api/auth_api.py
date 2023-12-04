@@ -86,6 +86,7 @@ def get():
                 "biography": user[5],
                 "birthday": user[6],
                 "gender": user[7],
+                "banner": user[8],
             }
             return jsonify(user_list)
         else:
