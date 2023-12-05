@@ -5,6 +5,7 @@ import updateRatingById from "./updateRatingById";
 import getCountDataInList from "./getCountDataInList";
 import getStatusById from "./getStatusById";
 import getTotalMyList from "./getTotalMyList";
+import getListByUserId from "./getListByUserId";
 
 function UseMyListData() {
   const [list, setList] = useState([]);
@@ -27,6 +28,19 @@ function UseMyListData() {
     getAllListById().then((data) => {
       setList(data);
     });
+  }
+
+  function ViewList(user_id) {
+    const [list, setList] = useState([]);
+    const [isLoading, setLoading] = useState(true);
+    useEffect(() => {
+      getListByUserId(user_id).then((data) => {
+        setList(data);
+        setLoading(false);
+      });
+    }, []);
+
+    return { list, setList, isLoading };
   }
 
   function filteringIf(data) {
@@ -132,6 +146,7 @@ function UseMyListData() {
     refreshList,
     setList,
     GetTotalMyList,
+    ViewList,
   };
 }
 

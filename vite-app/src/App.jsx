@@ -17,14 +17,13 @@ import MovieDiscussion from "./pages/community/MovieDiscussion";
 import ReviewsMoviesForm from "./pages/reviews/ReviewsMoviesForm";
 import ReviewsMoviesDetails from "./pages/reviews/ReviewsMoviesDetails";
 import Create from "./pages/authentication/Create";
-import ViewList from "./pages/mylist/ViewList";
 import ViewProfile from "./pages/profile/ViewProfile";
 import Friends from "./pages/friends/Friends";
 import RequestFriends from "./pages/friends/RequestFriends";
-import Footer from "./pages/footer/Footer";
 
 // _app.js
 import { PrimeReactProvider } from "primereact/api";
+import ForgotPassword from "./pages/authentication/ForgotPassword";
 
 function App() {
   return (
@@ -38,6 +37,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/create" element={<Create />} />
+                <Route path="/forgot" element={<ForgotPassword />} />
                 <Route path="/community" element={<Community />} />
                 <Route
                   path="/community/Movie Discussion"
@@ -58,9 +58,8 @@ function App() {
                   element={<ReviewsMoviesForm />}
                 />
                 <Route path="/mylist" element={<MyList />} />
-                <Route path="/mylist/view/user/:id" element={<ViewList />} />
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/profile/view/:id" element={<ViewProfile />} />
+                <Route path="/view/:id" element={<ViewProfile />} />
                 <Route path="/friends" element={<Friends />} />
                 <Route path="/friends/request" element={<RequestFriends />} />
               </Routes>

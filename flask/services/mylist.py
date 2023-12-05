@@ -94,11 +94,26 @@ def getListById(user_id):
     db = db_connection()
     cur = db.cursor()
     try:
-        cur.execute(
-            "SELECT movies.id, movies.image, movies.title, list.status, list.id, list.isWatched FROM list INNER JOIN movies ON list.movie_id = movies.id WHERE list.user_id = ?"
-        )
+        sql = """
+        SELECT movies.id, movies.image, movies.title, list.status, list.id 
+        FROM list 
+        INNER JOIN movies 
+        ON list.movie_id = movies.id 
+        WHERE list.user_id = ?"""
+        params = (user_id,)
+        cur.execute(sql, params)
         lists = cur.fetchall()
-        return lists
+        data_list = [
+            {
+                "movie_id": i[0],
+                "movie_image": i[1],
+                "movie_title": i[2],
+                "list_status": i[3],
+                "list_id": i[4],
+            }
+            for i in lists
+        ]
+        return data_list
     except Exception as e:
         logging.error(e)
 

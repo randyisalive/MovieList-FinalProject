@@ -27,7 +27,7 @@ function Create() {
       <Toast ref={emptyRef} />
       <Toast ref={successRef} />
 
-      <div className=" w-100 justify-content-center d-flex align-items-center">
+      <div className=" w-100 justify-content-center d-flex align-items-center vh-100">
         <MDBCard>
           <MDBCardHeader className="bg-danger text-white">
             <MDBCardTitle>

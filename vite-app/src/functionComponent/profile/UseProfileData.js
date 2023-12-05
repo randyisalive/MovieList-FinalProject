@@ -5,7 +5,7 @@ import { userIdCookie } from "../../Cookies";
 
 function UseProfileData() {
   const { GetUser } = useUsersData();
-  const user = GetUser();
+  const { user } = GetUser();
   const [form, setForm] = useState({
     username: "",
     birthday: "",

@@ -131,3 +131,13 @@ def total():
         list_total = getTotalMyList(id)
         return jsonify(list_total)
     return jsonify({"URL: ": "/api/mylist/total"})
+
+
+@mylist_api.route("/view-mylist", methods=["POST", "GET"])
+def view_profile():
+    if request.method == "POST":
+        data = request.get_json()
+        id = data.get("id")
+        datas = getListById(id)
+        return jsonify(datas)
+    return jsonify({"url: ": "/api/mylist/view-mylist"})

@@ -1,260 +1,22 @@
-import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardText,
-  MDBCol,
-  MDBContainer,
-  MDBRow,
-} from "mdb-react-ui-kit";
+import { MDBContainer } from "mdb-react-ui-kit";
 import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
-import UseMyListData from "../../functionComponent/mylist/UseMyListData";
-import { Image } from "primereact/image";
 import { Link } from "react-router-dom";
-import useUsersData from "../../functionComponent/users/useUsersData";
-import { Dialog } from "primereact/dialog";
-import { useState } from "react";
-import { Rating } from "primereact/rating";
-import useStatusData from "../../functionComponent/status/useStatusData";
 import { Toast } from "primereact/toast";
-import getRating from "../../functionComponent/mylist/getRating";
-import { updateStatusMyList } from "../../api/mylist_api";
-import getStatusById from "../../functionComponent/mylist/getStatusById";
-
-import { Tag } from "primereact/tag";
+import ImageTemplateMyList from "./ImageTemplateMyList";
+import BtnListMyList from "./BtnListMyList";
+import MyListFilterItem from "./MyListFilterItem";
+import MyListHeader from "./MyListHeader";
 
 function MyList() {
-  const {
-    list,
-    getList,
-    deleteMyList,
+  const { list, TemplateFilterItem } = MyListFilterItem();
 
-    rating,
-    setRating,
-    update_rating,
-    select,
-    setSelect,
-    refreshList,
-    filterMyList,
-  } = UseMyListData();
-  const { GetUser } = useUsersData();
-  const { user } = GetUser();
-  const { status } = useStatusData();
-
-  const [visible, setVisible] = useState({});
-
-  const imageTemplate = (movie_id, movie_image, list_status) => {
-    const severityArray = ["success", "info", "warning", "danger"];
-
-    const getNum = () => {
-      if (list_status === "Watching") {
-        return 1;
-      } else if (list_status === "Completed") {
-        return 0;
-      } else if (list_status === "Dropped") {
-        return 3;
-      } else if (list_status === "Plan to Watch") {
-        return 2;
-      }
-      return 4;
-    };
-
-    return (
-      <>
-        <div className="d-flex flex-column gap-3 align-items-center">
-          <Image
-            src={`../../../movies_data/${movie_id}/${movie_image}`}
-            width="100"
-            preview
-          />
-          <Tag value={list_status} severity={severityArray[getNum()]}></Tag>
-        </div>
-      </>
-    );
-  };
-
-  const BtnList = (list_id, movie_title) => {
-    const isVisible = visible[list_id] || false;
-
-    return (
-      <>
-        <button
-          onClick={() => {
-            setVisible({ ...visible, [list_id]: true });
-            getRating(list_id).then((data) => {
-              setRating(data);
-            });
-
-            getStatusById(list_id).then((data) => {
-              setSelect(data[0]);
-            });
-
-            console.log(select);
-          }}
-          className="btn btn-primary"
-        >
-          More
-        </button>
-        <Dialog
-          header={"Edit Movie"}
-          visible={isVisible}
-          style={{ width: "50vw" }}
-          onHide={() => setVisible({ ...visible, [list_id]: false })}
-        >
-          <div className="d-flex gap-2 flex-column">
-            <div className="">
-              <MDBCard className="mb-3">
-                <MDBCardBody>
-                  <MDBCardText>
-                    <MDBRow className="mb-3">
-                      <MDBCol className="col-xl-3">Movie Title:</MDBCol>
-                      <MDBCol>{movie_title}</MDBCol>
-                    </MDBRow>
-                    <MDBRow className="mb-3">
-                      <MDBCol className="col-xl-3">Watched:</MDBCol>
-                      <MDBCol>
-                        <select
-                          name=""
-                          id=""
-                          className="form-control m-0 p-0 p-1 ps-2"
-                          onChange={(e) => {
-                            updateStatusMyList(e.target.value, list_id).then(
-                              (data) => {
-                                console.log(data);
-                                refreshList();
-                              }
-                            );
-                          }}
-                        >
-                          {status.map((item) => {
-                            return (
-                              <>
-                                <option
-                                  key={item.status} // Add a unique key
-                                  value={item.status}
-                                  selected={item.status === select}
-                                >
-                                  {item.status}
-                                </option>
-                              </>
-                            );
-                          })}
-                        </select>
-                      </MDBCol>
-                    </MDBRow>
-                    <MDBRow className="mb-3">
-                      <MDBCol className="col-xl-3">Rated:</MDBCol>
-                      <MDBCol>
-                        <div className="d-flex align-items-center gap-2">
-                          <Rating
-                            cancel={false}
-                            value={rating}
-                            stars={5}
-                            onChange={(e) => update_rating(list_id, e)}
-                          />
-                          <p
-                            className={
-                              rating <= 2.5 ? "text-danger" : "text-success"
-                            }
-                          >
-                            {rating}
-                          </p>
-                        </div>
-                      </MDBCol>
-                    </MDBRow>
-                  </MDBCardText>
-                </MDBCardBody>
-              </MDBCard>
-            </div>
-            <div className="d-flex gap-2">
-              <button
-                className="btn btn-danger d-flex align-items-center gap-2"
-                onClick={() => {
-                  deleteMyList(list_id).then(() => {
-                    getList();
-                  });
-                }}
-              >
-                <i className="pi pi-trash"></i>
-                Delete
-              </button>
-            </div>
-          </div>
-        </Dialog>
-      </>
-    );
-  };
   return (
     <>
       <Toast />
       <MDBContainer className="mt-5">
-        <div
-          className="bg-danger text-white h-25 card mb-3 d-flex justify-content-center align-items-center"
-          style={{
-            backgroundImage: "url('https://source.unsplash.com/random')",
-            backgroundSize: "cover",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            color: "#ffffff",
-          }}
-        >
-          <p className="h1">{`${user.username} List`}</p>
-        </div>
-        <MDBCard>
-          <MDBCardBody>
-            <MDBCardText>
-              <div className="d-flex justify-content-center align-items-center gap-5">
-                <p
-                  className="h4 border-bottom border-primary p-1"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => {
-                    filterMyList("all");
-                  }}
-                >
-                  All Movies
-                </p>
-
-                <p
-                  className="h4 border-bottom border-primary p-1"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => {
-                    filterMyList("watching");
-                  }}
-                >
-                  Watching
-                </p>
-                <p
-                  className="h4 border-bottom border-primary p-1"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => {
-                    filterMyList("completed");
-                  }}
-                >
-                  Completed
-                </p>
-                <p
-                  className="h4 border-bottom border-primary p-1"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => {
-                    filterMyList("dropped");
-                  }}
-                >
-                  Dropped
-                </p>
-                <p
-                  className="h4 border-bottom border-primary p-1"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => {
-                    filterMyList("plan");
-                  }}
-                >
-                  Plan to Watched
-                </p>
-              </div>
-            </MDBCardText>
-          </MDBCardBody>
-        </MDBCard>
+        <MyListHeader />
+        <TemplateFilterItem />
         <DataTable
           value={list}
           paginator
@@ -264,7 +26,11 @@ function MyList() {
         >
           <Column
             body={(item) =>
-              imageTemplate(item.movie_id, item.movie_image, item.list_status)
+              ImageTemplateMyList(
+                item.movie_id,
+                item.movie_image,
+                item.list_status
+              )
             }
           />
           <Column
@@ -288,7 +54,7 @@ function MyList() {
           />
           <Column
             body={(item) =>
-              BtnList(item.list_id, item.movie_title, item.list_status)
+              BtnListMyList(item.list_id, item.movie_title, item.list_status)
             }
           />
         </DataTable>

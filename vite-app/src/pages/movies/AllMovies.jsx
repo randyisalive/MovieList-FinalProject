@@ -10,16 +10,10 @@ import { getAllMovie } from "../../api/movies_api";
 import { Toast } from "primereact/toast";
 import { useRef } from "react";
 import Imbd_svg from "../../components/Imdb_svg";
+import SearchAllMovies from "./SearchAllMovies";
 
 function AllMovies() {
-  const {
-    movies,
-    setMovies,
-    selectedMovie,
-    filteredMovies,
-    setSelectedMovie,
-    searchMovies,
-  } = UseMoviesData();
+  const { movies, setMovies } = UseMoviesData();
   const { addMovieToList, deleteMyList } = UseMyListData();
 
   // toast
@@ -57,24 +51,7 @@ function AllMovies() {
       <Toast ref={addListToastRef} />
       <Toast ref={deleteListToastRef} />
       <div className="d-flex flex-column m-4 mt-5 gap-4">
-        <div className="d-flex gap-2">
-          <div className="card flex justify-content-center">
-            <AutoComplete
-              field="title"
-              value={selectedMovie}
-              suggestions={filteredMovies}
-              completeMethod={searchMovies}
-              onChange={(e) => setSelectedMovie(e.value)}
-            />
-          </div>
-          <Link to={`/movies/${selectedMovie.id}/${selectedMovie.title}`}>
-            <Button
-              label="Search"
-              icon="pi pi-search"
-              className="btn btn-primary"
-            />
-          </Link>
-        </div>
+        <SearchAllMovies />
         <DataTable
           value={movies}
           paginator

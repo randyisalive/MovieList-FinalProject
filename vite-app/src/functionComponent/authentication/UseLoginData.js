@@ -75,15 +75,6 @@ function UseLoginData() {
     console.log(form);
   }
 
-  function GeneratePassword() {
-    useEffect(() => {
-      generateHashPassword("admin").then((data) => {
-        console.log(data);
-        setStatus(data["status"]);
-      });
-    }, []);
-  }
-
   function CreateUser() {
     console.log(form);
 
@@ -123,7 +114,6 @@ function UseLoginData() {
     form,
     setForm,
     formHandler,
-    GeneratePassword,
     CreateUser,
     status,
     usernameRef,

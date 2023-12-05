@@ -3,6 +3,7 @@ from flask_cors import CORS
 from services.homeServices import homeServices
 from controller.home_controller import home_controller
 from services.userServices import userServices
+from controller.users_controller import users_controller
 
 ## api controller
 from controller.api.mylist_api import mylist_api
@@ -31,7 +32,7 @@ app.debug = True
 
 app.register_blueprint(home_controller)
 app.register_blueprint(homeServices)
-app.register_blueprint(userServices)
+app.register_blueprint(users_controller)
 
 # api controller #
 app.register_blueprint(home_api, url_prefix="/api/home")

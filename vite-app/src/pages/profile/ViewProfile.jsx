@@ -9,12 +9,13 @@ import {
 } from "mdb-react-ui-kit";
 import { Image } from "primereact/image";
 import useUsersData from "../../functionComponent/users/useUsersData";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Toast } from "primereact/toast";
 
 import { Tooltip } from "primereact/tooltip";
 import useFriendsData from "../../functionComponent/friends/useFriendsData";
 import { fetchFriendsData } from "../../functionComponent/friends/friends_api";
+import ViewListPages from "./ViewListPages";
 
 function ViewProfile() {
   const { ViewUserById } = useUsersData();
@@ -77,16 +78,6 @@ function ViewProfile() {
                   <MDBRow>
                     <MDBCol className="d-flex gap-3 justify-content-center">
                       <>
-                        <Tooltip target=".movielist" />
-
-                        <Link
-                          to={`/mylist/view/user/${user.id}`}
-                          className="btn btn-primary movielist "
-                          data-pr-tooltip="See User MovieList"
-                          data-pr-position="bottom"
-                        >
-                          <button>Movie List</button>
-                        </Link>
                         <button
                           className={`btn btn-primary ${
                             data ? "disabled" : null
@@ -119,6 +110,7 @@ function ViewProfile() {
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>
+        <ViewListPages />
       </MDBContainer>
     </>
   );

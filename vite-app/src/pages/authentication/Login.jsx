@@ -12,7 +12,7 @@ function Login() {
 
   return (
     <>
-      <div className=" w-100 justify-content-center align-items-center d-flex">
+      <div className=" w-100 justify-content-center align-items-center d-flex vh-100">
         <form
           action=""
           onSubmit={(e) => {
@@ -21,8 +21,10 @@ function Login() {
         >
           <MDBCard>
             <MDBCardHeader className="bg-danger text-white">
-              <MDBCardTitle className=" d-flex align-items-center gap-2">
-                <h1 className="h3 m-0 p-0">Login</h1>
+              <MDBCardTitle className=" d-flex align-items-center gap-3">
+                <i className="pi pi-sign-in" style={{ fontSize: "1.5rem" }}></i>
+
+                <h3 className="h3 m-0 p-0">Login</h3>
               </MDBCardTitle>
             </MDBCardHeader>
             <MDBCardBody className="d-flex flex-column gap-3">
@@ -48,7 +50,10 @@ function Login() {
                 <a href="/create" className="text-primary">
                   Create Account
                 </a>
-                | Contact Us
+                |
+                <a href="/forgot" className="text-primary">
+                  Forgot Password?
+                </a>
               </div>
               <div className="d-flex justify-content-center">
                 <button

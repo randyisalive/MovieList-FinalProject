@@ -48,6 +48,7 @@ function useFriendsData() {
   function GetRequest() {
     const [data, setData] = useState([]);
     const [isLoading, setLoading] = useState(true);
+    const total = data.length;
     useEffect(() => {
       getRequestFriends().then((data) => {
         setData(data);
@@ -55,7 +56,7 @@ function useFriendsData() {
       });
     }, []);
 
-    return { data, setData, isLoading };
+    return { data, setData, isLoading, total };
   }
 
   async function Request_friends(friend_id) {

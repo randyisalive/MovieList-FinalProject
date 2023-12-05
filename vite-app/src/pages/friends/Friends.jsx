@@ -6,19 +6,16 @@ import {
   MDBCardTitle,
   MDBContainer,
 } from "mdb-react-ui-kit";
-import { Column } from "primereact/column";
-import { DataTable } from "primereact/datatable";
 import useFriendsData from "../../functionComponent/friends/useFriendsData";
 import { Image } from "primereact/image";
 import { Link } from "react-router-dom";
-import { Avatar } from "primereact/avatar";
 import LoadingFriends from "./LoadingFriends";
-
-import { Ripple } from "primereact/ripple";
+import { Badge } from "primereact/badge";
 
 function Friends() {
-  const { friends, GetAllFriends } = useFriendsData();
+  const { friends, GetAllFriends, GetRequest } = useFriendsData();
   const { items, isLoading } = GetAllFriends();
+  const { data } = GetRequest();
   console.log("items:", items);
 
   if (isLoading) {
@@ -33,7 +30,12 @@ function Friends() {
     <>
       <MDBContainer className="mt-5 mb-5">
         <Link to={`/friends/request`}>
-          <button className="btn btn-primary mb-3">Request</button>
+          <button className="btn btn-primary mb-3 p-overlay-badge">
+            {data.length === 0 ? null : (
+              <Badge value={data.length} severity={`danger`} />
+            )}
+            Request
+          </button>
         </Link>
         <MDBCard>
           <MDBCardHeader className="bg-danger">
@@ -59,9 +61,18 @@ function Friends() {
                               />
                             </div>
 
-                            <div className="d-flex flex-column gap-2">
-                              <b>{item.username}</b>
-                              <p className="">{item.biography}</p>
+                            <div className="d-flex flex-column gap-2 w-100">
+                              <div className="d-flex flex-column gap-2">
+                                <b>{item.username}</b>
+                                <p className="">{item.biography}</p>
+                              </div>
+                              <div className="d-flex  h-100 align-items-end justify-content-end">
+                                <Link to={`/view/${item.user_id}`}>
+                                  <button className="text-primary">
+                                    View MyList
+                                  </button>
+                                </Link>
+                              </div>
                             </div>
                           </div>
                         </MDBCardText>
