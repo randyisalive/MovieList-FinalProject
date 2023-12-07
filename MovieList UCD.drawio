@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-12-07T01:26:11.613Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="-01_gFc4kYOwjmlAaQq_" version="22.1.7" type="github">
+<mxfile host="app.diagrams.net" modified="2023-12-07T01:27:46.083Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="_SUwU71WOWv3quuPHEF5" version="22.1.7" type="github">
   <diagram name="Page-1" id="ZeniHqI1XKFf16gRrM0b">
-    <mxGraphModel dx="1366" dy="722" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1304" dy="689" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -8,16 +8,16 @@
           <mxGeometry x="30" y="190" width="200" height="40" as="geometry" />
         </mxCell>
         <mxCell id="bou8E0x_bsbhckv4ZRoX-2" value="MovieList UI" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="800" y="50" width="200" height="200" as="geometry" />
+          <mxGeometry x="830" y="70" width="200" height="50" as="geometry" />
         </mxCell>
         <mxCell id="bou8E0x_bsbhckv4ZRoX-3" value="API UI" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="20" y="60" width="200" height="40" as="geometry" />
         </mxCell>
         <mxCell id="bou8E0x_bsbhckv4ZRoX-4" value="User" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="630" y="260" width="200" height="56" as="geometry" />
+          <mxGeometry x="770" y="310" width="200" height="56" as="geometry" />
         </mxCell>
         <mxCell id="bou8E0x_bsbhckv4ZRoX-5" value="Manage Users" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="420" y="340" width="200" height="50" as="geometry" />
+          <mxGeometry x="480" y="389" width="200" height="50" as="geometry" />
         </mxCell>
         <mxCell id="bou8E0x_bsbhckv4ZRoX-6" value="Add Users" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="150" y="350" width="200" height="50" as="geometry" />
@@ -32,10 +32,22 @@
           <mxGeometry x="690" y="440" width="200" height="50" as="geometry" />
         </mxCell>
         <mxCell id="bou8E0x_bsbhckv4ZRoX-10" value="View Movies" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="340" y="50" width="200" height="50" as="geometry" />
+          <mxGeometry x="340" y="50" width="200" height="40" as="geometry" />
         </mxCell>
         <mxCell id="bou8E0x_bsbhckv4ZRoX-11" value="Manage MyList" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" vertex="1" parent="1">
-          <mxGeometry x="350" y="170" width="200" height="50" as="geometry" />
+          <mxGeometry x="290" y="220" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bou8E0x_bsbhckv4ZRoX-13" value="Delete MyList" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" vertex="1" parent="1">
+          <mxGeometry x="560" y="80" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bou8E0x_bsbhckv4ZRoX-12" value="Add MyList" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" vertex="1" parent="1">
+          <mxGeometry x="640" y="150" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bou8E0x_bsbhckv4ZRoX-14" value="Edit MyList" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" vertex="1" parent="1">
+          <mxGeometry x="430" y="276" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bou8E0x_bsbhckv4ZRoX-15" value="View MyList" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" vertex="1" parent="1">
+          <mxGeometry x="450" y="170" width="200" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
