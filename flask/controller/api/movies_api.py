@@ -13,20 +13,23 @@ movies_api = Blueprint("movies_api", __name__)
 ## url_prefix =  /api/movies
 @movies_api.route("/get", methods=["POST", "GET"])
 def get():
-    movies = getAllMovies()
-    movie_list = [
-        {
-            "id": movie[0],
-            "title": movie[1],
-            "rating": movie[2],
-            "description": movie[3],
-            "image": movie[4],
-            "isAdded": movie[5],
-            "list_id": movie[6],
-        }
-        for movie in movies
-    ]
-    return jsonify(movie_list)
+    if request.method == "POST":
+        data = request.get_json()
+        id = data.get("id")
+        movies = getAllMovies(id)
+        movie_list = [
+            {
+                "id": movie[0],
+                "title": movie[1],
+                "rating": movie[2],
+                "description": movie[3],
+                "image": movie[4],
+                "isAdded": movie[5],
+                "list_id": movie[6],
+            }
+            for movie in movies
+        ]
+        return jsonify(movie_list)
 
 
 @movies_api.route("/getTitle", methods=["POST", "GET"])

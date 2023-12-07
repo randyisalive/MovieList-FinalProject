@@ -1,3 +1,4 @@
+import { userIdCookie } from "../Cookies";
 import {
   addMoviesApi,
   getAllMovieApi,
@@ -8,7 +9,14 @@ import {
 // get all movies function
 export async function getAllMovie() {
   try {
-    const response = await fetch(getAllMovieApi);
+    const id = userIdCookie;
+    const response = await fetch(getAllMovieApi, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    });
     const data = await response.json();
     return data;
   } catch (e) {

@@ -2,17 +2,21 @@ from db import db_connection
 import logging
 
 
-def getAllMovies():
+def getAllMovies(id):
     db = db_connection()
     cur = db.cursor()
     try:
         cur.execute(
-            "SELECT movies.id, movies.title, movies.rating, movies.description, movies.image, list.isAdded, list.id FROM movies LEFT JOIN list ON movies.id = list.movie_id ORDER BY title ASC"
+            "SELECT movies.id, movies.title, movies.rating, movies.description, movies.image, list.isAdded, list.id, list.user_id FROM movies LEFT JOIN list ON movies.id = list.movie_id AND list.user_id = ? ORDER BY title ASC",
+            (id,),
         )
         movies = cur.fetchall()
         return movies
     except Exception as e:
         logging.error(e)
+    finally:
+        cur.close()
+        db.close()
 
 
 def get_ten_movies_random():
