@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-12-08T01:02:10.684Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="1f29AhJoF0mtWqp7Pu0h" version="22.1.7" type="github">
+<mxfile host="app.diagrams.net" modified="2023-12-08T01:20:13.226Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="X5LPOJatuXygx_S4M2b0" version="22.1.7" type="github">
   <diagram name="Page-1" id="ZeniHqI1XKFf16gRrM0b">
-    <mxGraphModel dx="1034" dy="466" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="862" dy="388" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -13,20 +13,14 @@
         <mxCell id="bou8E0x_bsbhckv4ZRoX-10" value="View Movies" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="340" y="50" width="200" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="bou8E0x_bsbhckv4ZRoX-11" value="Manage MyList" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" parent="1" vertex="1">
-          <mxGeometry x="290" y="220" width="200" height="40" as="geometry" />
+        <mxCell id="bou8E0x_bsbhckv4ZRoX-11" value="&amp;lt;&amp;lt;control&amp;gt;&amp;gt;&lt;br&gt;Manage MyList" style="swimlane;whiteSpace=wrap;html=1;startSize=40;" parent="1" vertex="1">
+          <mxGeometry x="610" y="280" width="200" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="bou8E0x_bsbhckv4ZRoX-13" value="Delete MyList" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" parent="1" vertex="1">
-          <mxGeometry x="560" y="80" width="200" height="40" as="geometry" />
+        <mxCell id="bou8E0x_bsbhckv4ZRoX-12" value="&amp;lt;&amp;lt;control&amp;gt;&amp;gt;&lt;br&gt;Add MyList" style="swimlane;whiteSpace=wrap;html=1;startSize=36;" parent="1" vertex="1">
+          <mxGeometry x="880" y="374" width="200" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="bou8E0x_bsbhckv4ZRoX-12" value="Add MyList" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" parent="1" vertex="1">
-          <mxGeometry x="640" y="150" width="200" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="bou8E0x_bsbhckv4ZRoX-14" value="Edit MyList" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" parent="1" vertex="1">
-          <mxGeometry x="460" y="460" width="200" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="bou8E0x_bsbhckv4ZRoX-15" value="View MyList" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" parent="1" vertex="1">
-          <mxGeometry x="340" y="130" width="200" height="40" as="geometry" />
+        <mxCell id="bou8E0x_bsbhckv4ZRoX-14" value="&amp;lt;&amp;lt;control&amp;gt;&amp;gt;&lt;br&gt;Edit MyList" style="swimlane;whiteSpace=wrap;html=1;startSize=40;" parent="1" vertex="1">
+          <mxGeometry x="460" y="460" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="bou8E0x_bsbhckv4ZRoX-28" value="" style="group" parent="1" vertex="1" connectable="0">
           <mxGeometry x="2100" y="100" width="760" height="483" as="geometry" />
@@ -119,6 +113,12 @@
         </mxCell>
         <mxCell id="5YAnPsfXHZ9A6MLN7WG7-1" value="&amp;lt;&amp;lt;control&amp;gt;&amp;gt;&lt;br&gt;View Movies" style="swimlane;whiteSpace=wrap;html=1;startSize=40;" vertex="1" parent="5YAnPsfXHZ9A6MLN7WG7-4">
           <mxGeometry y="140" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5YAnPsfXHZ9A6MLN7WG7-5" value="&amp;lt;&amp;lt;control&amp;gt;&amp;gt;&lt;br&gt;Delete MyList" style="swimlane;whiteSpace=wrap;html=1;startSize=36;" vertex="1" parent="1">
+          <mxGeometry x="950" y="484" width="200" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="5YAnPsfXHZ9A6MLN7WG7-6" value="&amp;lt;&amp;lt;control&amp;gt;&amp;gt;&lt;br&gt;View MyList" style="swimlane;whiteSpace=wrap;html=1;startSize=36;" vertex="1" parent="1">
+          <mxGeometry x="690" y="358" width="200" height="56" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
