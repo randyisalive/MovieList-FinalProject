@@ -23,8 +23,15 @@
 
 ### Overview
 MovieList is a web application that allows users to discover, search, and manage their favorite movies. The application is built using Flask for the backend and React for the frontend, providing a seamless and responsive user experience.
-- Technologies Used
-- Features
+### Technologies Used
+- Backend (Flask)
+  - Flask: A lightweight and versatile Python web framework for building the backend of the application.
+  - Database: Utilizes a database (e.g., SQLite or PostgreSQL) to store movie information and user data.
+Frontend (React)
+  - React JS: A JavaScript library for building user interfaces, enabling the creation of dynamic and interactive frontend components.
+  - React Router: Manages navigation within the application, facilitating a smooth user experience.
+
+### Features
 
 ## 2. Getting Started
 
