@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-12-08T02:01:32.955Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="z8C2TvKcNzB44Vr0JMG8" version="22.1.7" type="github">
+<mxfile host="app.diagrams.net" modified="2023-12-08T02:07:31.840Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="Fctiuh1r8vbzSvB-jFCb" version="22.1.7" type="github">
   <diagram name="Page-1" id="ZeniHqI1XKFf16gRrM0b">
     <mxGraphModel dx="899" dy="405" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -36,13 +36,13 @@
           <mxGeometry x="525" y="50" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="5YAnPsfXHZ9A6MLN7WG7-31" value="Manage Reviews" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="525" y="560" width="120" height="80" as="geometry" />
+          <mxGeometry x="525" y="490" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="5YAnPsfXHZ9A6MLN7WG7-32" value="Add Reviews" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="140" y="680" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="5YAnPsfXHZ9A6MLN7WG7-33" value="Delete Reviews" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="360" y="540" width="120" height="80" as="geometry" />
+          <mxGeometry x="400" y="570" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="5YAnPsfXHZ9A6MLN7WG7-34" value="View Reviews" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="250" y="590" width="120" height="80" as="geometry" />
@@ -68,7 +68,7 @@
         <mxCell id="5YAnPsfXHZ9A6MLN7WG7-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5YAnPsfXHZ9A6MLN7WG7-41" target="5YAnPsfXHZ9A6MLN7WG7-30">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="5YAnPsfXHZ9A6MLN7WG7-41" value="View MyList" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="5YAnPsfXHZ9A6MLN7WG7-41" value="Browse MyList" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="240" y="150" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="5YAnPsfXHZ9A6MLN7WG7-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="5YAnPsfXHZ9A6MLN7WG7-44" target="5YAnPsfXHZ9A6MLN7WG7-30">
