@@ -81,3 +81,9 @@ export const getTotalCommentsApi =
 
 // where to watch api
 export const getWhereToWatchApi = PROXY + "where_to_watch/get";
+
+// gender api
+export const getGenderApi = PROXY + "/gender/get";
+
+// forgot password api
+export const changePasswordApi = PROXY + "forgot/change-password";

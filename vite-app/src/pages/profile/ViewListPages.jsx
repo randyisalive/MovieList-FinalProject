@@ -6,7 +6,7 @@ import {
   MDBCardTitle,
   MDBContainer,
 } from "mdb-react-ui-kit";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { Image } from "primereact/image";
 import { Tag } from "primereact/tag";
@@ -54,51 +54,57 @@ function ViewListPages() {
           </MDBCardHeader>
           <MDBCardBody>
             <MDBCardText>
-              {list.length < 0 ? null : (
+              {list.length <= 0 ? (
                 <>
                   <h3 className="h3 text-danger">No Data</h3>
                 </>
-              )}
-              {list.map((item) => {
-                return (
-                  <>
-                    <MDBCard className="mt-3">
-                      <MDBCardBody>
-                        <MDBCardText>
-                          <div
-                            className="d-flex"
-                            style={{ justifyContent: "space-between" }}
-                          >
-                            <div className="d-flex gap-2 w-100">
-                              <div className="d-flex flex-column align-items-center gap-3">
-                                <Image
-                                  src={`../../../movies_data/${item.movie_id}/${item.movie_image}`}
-                                  alt="movie_image"
-                                  width="50"
-                                />
-                              </div>
-                              <div className="d-flex flex-column gap-3">
-                                <h5 className="h5 text-primary">
-                                  {item.movie_title}
-                                </h5>
-                                <div className="d-flex">
-                                  <Tag
-                                    severity={
-                                      severityArray[getNum(item.list_status)]
-                                    }
-                                    value={`${item.list_status}`}
+              ) : (
+                list.map((item) => {
+                  return (
+                    <>
+                      <MDBCard className="mt-3">
+                        <MDBCardBody>
+                          <MDBCardText>
+                            <div
+                              className="d-flex"
+                              style={{ justifyContent: "space-between" }}
+                            >
+                              <div className="d-flex gap-2 w-100">
+                                <div className="d-flex flex-column align-items-center gap-3">
+                                  <Image
+                                    src={`../../../movies_data/${item.movie_id}/${item.movie_image}`}
+                                    alt="movie_image"
+                                    width="50"
                                   />
                                 </div>
+                                <div className="d-flex flex-column gap-3">
+                                  <Link
+                                    to={`/movies/${item.movie_id}/${item.movie_title}`}
+                                  >
+                                    <h5 className="h5 text-primary">
+                                      {item.movie_title}
+                                    </h5>
+                                  </Link>
+
+                                  <div className="d-flex">
+                                    <Tag
+                                      severity={
+                                        severityArray[getNum(item.list_status)]
+                                      }
+                                      value={`${item.list_status}`}
+                                    />
+                                  </div>
+                                </div>
                               </div>
+                              <div className="d-flex"></div>
                             </div>
-                            <div className="d-flex"></div>
-                          </div>
-                        </MDBCardText>
-                      </MDBCardBody>
-                    </MDBCard>
-                  </>
-                );
-              })}
+                          </MDBCardText>
+                        </MDBCardBody>
+                      </MDBCard>
+                    </>
+                  );
+                })
+              )}
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>

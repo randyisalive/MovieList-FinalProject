@@ -22,7 +22,7 @@ function SearchAllMovies() {
           <Button
             label="Search"
             icon="pi pi-search"
-            className="btn btn-primary"
+            className="btn btn-danger rounded-5"
           />
         </Link>
       </div>

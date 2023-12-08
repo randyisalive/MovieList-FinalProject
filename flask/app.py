@@ -20,9 +20,10 @@ from controller.api.status_api import status_api
 from controller.api.friends_api import friends_api
 from controller.api.home_api import home_api
 from controller.api.where_to_watch_api import where_to_watch
+from controller.api.gender_api import gender_api
+from controller.api.forgot_password_api import forgot_password_api
 
 ## api controller
-
 
 app = Flask(__name__)
 CORS(app)
@@ -49,6 +50,9 @@ app.register_blueprint(profile_api, url_prefix="/api/profile")
 app.register_blueprint(status_api, url_prefix="/api/status")
 app.register_blueprint(friends_api, url_prefix="/api/friends")
 app.register_blueprint(where_to_watch, url_prefix="/api/where_to_watch")
+app.register_blueprint(gender_api, url_prefix="/api/gender")
+app.register_blueprint(forgot_password_api, url_prefix="/api/forgot")
+
 # api controller #
 
 if __name__ == "__main__":

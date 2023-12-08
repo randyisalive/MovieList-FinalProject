@@ -56,7 +56,17 @@ function useFriendsData() {
       });
     }, []);
 
-    return { data, setData, isLoading, total };
+    function acceptInvitesHandler(friend_id) {
+      acceptInvites(friend_id).then((data) => {
+        console.log(data);
+        show(acceptToastRef, "success", "Accept Invites");
+        getRequestFriends().then((data) => {
+          setData(data);
+        });
+      });
+    }
+
+    return { data, setData, isLoading, total, acceptInvitesHandler };
   }
 
   async function Request_friends(friend_id) {
@@ -82,14 +92,6 @@ function useFriendsData() {
     return { data, setData };
   }
 
-  function acceptInvitesHandler(friend_id) {
-    acceptInvites(friend_id).then((data) => {
-      console.log(data);
-    });
-
-    show(acceptToastRef, "success", "Accept Invites");
-  }
-
   return {
     friends,
     Request_friends,
@@ -100,7 +102,6 @@ function useFriendsData() {
     GetAllFriends,
     GetFriendsTable,
     acceptToastRef,
-    acceptInvitesHandler,
   };
 }
 

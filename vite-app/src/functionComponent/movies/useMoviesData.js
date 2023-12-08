@@ -27,8 +27,6 @@ function UseMoviesData() {
   }, []);
 
   const searchMovies = (event) => {
-    // validation
-
     let _filteredMovies;
 
     if (!event.query.trim().length) {

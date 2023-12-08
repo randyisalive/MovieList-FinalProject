@@ -56,7 +56,7 @@ def get_request(id):
     cur = db.cursor()
     try:
         sql = """
-        SELECT friends.id, friends.status, users.username, users.id
+        SELECT friends.id, friends.status, users.username, users.id, users.image
         FROM friends
         INNER JOIN users ON friends.user_1_id = users.id 
         WHERE friends.user_2_id = ?
@@ -66,7 +66,13 @@ def get_request(id):
         cur.execute(sql, params)
         datas = cur.fetchall()
         data_list = [
-            {"id": i[0], "status": i[1], "username": i[2], "user_id": i[3]}
+            {
+                "id": i[0],
+                "status": i[1],
+                "username": i[2],
+                "user_id": i[3],
+                "user_image": i[4],
+            }
             for i in datas
         ]
         return data_list

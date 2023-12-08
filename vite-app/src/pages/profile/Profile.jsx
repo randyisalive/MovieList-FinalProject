@@ -21,7 +21,7 @@ function Profile() {
 
   return (
     <>
-      <MDBContainer className="mt-5">
+      <MDBContainer className="mt-5 mb-5">
         <MDBCard>
           <MDBCardHeader className="bg-danger text-white">
             <MDBCardTitle className="d-flex align-items-center gap-3">

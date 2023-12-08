@@ -29,35 +29,45 @@ function Friends() {
   return (
     <>
       <MDBContainer className="mt-5 mb-5">
-        <Link to={`/friends/request`}>
-          <button className="btn btn-primary mb-3 p-overlay-badge">
-            {data.length === 0 ? null : (
-              <Badge value={data.length} severity={`danger`} />
-            )}
-            Request
-          </button>
-        </Link>
         <MDBCard>
-          <MDBCardHeader className="bg-danger">
+          <MDBCardHeader
+            className="bg-danger d-flex align-items-center"
+            style={{ justifyContent: "space-between" }}
+          >
             <MDBCardTitle className="m-0 d-flex align-items-center gap-3 text-white">
               <i className="pi pi-users" style={{ fontSize: "2rem" }}></i>
               <p className="m-0 h3">Friends List</p>
             </MDBCardTitle>
+            <div className="d-flex">
+              <Link to={`/friends/request`}>
+                <button className="btn text-white rounded-5 p-overlay-badge">
+                  {data.length === 0 ? null : (
+                    <Badge value={data.length} severity={`secondary`} />
+                  )}
+                  Request
+                </button>
+              </Link>
+            </div>
           </MDBCardHeader>
           <MDBCardBody>
             <MDBCardText>
               {items.map((item) => {
                 return (
                   <>
-                    <MDBCard className="">
+                    <MDBCard className="mb-4 border-0 border-bottom">
                       <MDBCardBody>
                         <MDBCardText>
                           <div className="d-flex gap-3">
                             <div className="d-flex m-0 p-0">
                               <Image
-                                src={`../../../user_data/picture/${item.user_id}/${item.image}`}
+                                src={
+                                  item.image === "default.jpg"
+                                    ? "../../../actors_data/default.jpg"
+                                    : `../../../user_data/picture/${item.user_id}/${item.image}`
+                                }
                                 alt="profile_picture"
                                 width="120"
+                                preview
                               />
                             </div>
 
@@ -69,7 +79,7 @@ function Friends() {
                               <div className="d-flex  h-100 align-items-end justify-content-end">
                                 <Link to={`/view/${item.user_id}`}>
                                   <button className="text-primary">
-                                    View MyList
+                                    View Profile
                                   </button>
                                 </Link>
                               </div>

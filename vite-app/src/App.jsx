@@ -24,6 +24,7 @@ import RequestFriends from "./pages/friends/RequestFriends";
 // _app.js
 import { PrimeReactProvider } from "primereact/api";
 import ForgotPassword from "./pages/authentication/ForgotPassword";
+import Error404 from "./pages/404/Error404";
 
 function App() {
   return (
@@ -52,6 +53,10 @@ function App() {
                 <Route
                   path="/movies/:id/:title/all-actors"
                   element={<AllActors />}
+                />
+                <Route
+                  path="/movies/undefined/undefined"
+                  element={<Error404 />}
                 />
                 <Route
                   path="/reviews/:id/:title"

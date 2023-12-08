@@ -47,6 +47,7 @@ def updateProfileNoImage(username, biography, birthday, gender, user_id):
         logging.error(e)
 
 
+# get total in user MyList
 def get_count(status, id):
     db = db_connection()
     cur = db.cursor()

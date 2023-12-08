@@ -49,9 +49,9 @@ function ReviewsMoviesDetails() {
       <Toast ref={toastRefSuccess} />
       <MDBContainer className="mt-5">
         <MDBCard>
-          <MDBCardHeader className="bg-white">
+          <MDBCardHeader className="bg-danger text-white">
             <MDBCardTitle>
-              <h3 className="h3">{reviews.title}</h3>
+              <h3 className="h3 m-0">{reviews.title}</h3>
             </MDBCardTitle>
           </MDBCardHeader>
           <MDBCardBody>
@@ -101,13 +101,13 @@ function ReviewsMoviesDetails() {
           </MDBCardBody>
         </MDBCard>
         <MDBCard className="mt-5 mb-5">
-          <MDBCardHeader className="bg-white">
+          <MDBCardHeader className="bg-danger text-white">
             <MDBCardTitle>
               <div
                 className="d-flex"
                 style={{ justifyContent: "space-between" }}
               >
-                <h3 className="h3">Comments</h3>
+                <h3 className="h3 m-0">Comments</h3>
                 <div className="d-flex m-0 p-0 align-items-center gap-2">
                   <button
                     onClick={() => {
@@ -146,70 +146,57 @@ function ReviewsMoviesDetails() {
             </MDBCardTitle>
           </MDBCardHeader>
           <MDBCardBody>
-            {comments.map((item) => {
-              return (
-                <>
-                  <MDBCard className="mt-3">
-                    <MDBCardBody>
-                      <MDBCardText>
-                        <MDBRow>
-                          <MDBCol>
-                            <div className="d-flex p-3 justify-content-center gap-2 flex-column h-100">
-                              <h5 className="h5"> {item.username}</h5>
-                              <Image
-                                alt="profile_picture"
-                                src={
-                                  item.user_image === "default.jpg"
-                                    ? `../../../../actors_data/default.jpg`
-                                    : `../../../../user_data/picture/${item.user_id}/${item.user_image}`
-                                }
-                                width="100"
-                              />
-                              <div className="d-flex gap-2">
-                                {item.isReplyOpen === 1 ? (
-                                  <p
-                                    className="text-primary"
-                                    style={{ cursor: "pointer" }}
-                                    onClick={() => openReply(item.id, 0, id)}
-                                  >
-                                    Close
-                                  </p>
-                                ) : (
-                                  <p
-                                    className="text-primary"
-                                    style={{ cursor: "pointer" }}
-                                    onClick={() => openReply(item.id, 1, id)}
-                                  >
-                                    Reply...
-                                  </p>
-                                )}
+            {comments.length <= 0 ? (
+              <>
+                <h3 className="h3">No Comments</h3>
+              </>
+            ) : (
+              comments.map((item) => {
+                return (
+                  <>
+                    <MDBCard className="mt-3">
+                      <MDBCardBody>
+                        <MDBCardText>
+                          <MDBRow>
+                            <MDBCol className="border-end">
+                              <div className="d-flex p-3 justify-content-center gap-2 flex-column h-100 align-items-center">
+                                <h5 className="h5 m-0"> {item.username}</h5>
+                                <Image
+                                  alt="profile_picture"
+                                  src={
+                                    item.user_image === "default.jpg"
+                                      ? `../../../../actors_data/default.jpg`
+                                      : `../../../../user_data/picture/${item.user_id}/${item.user_image}`
+                                  }
+                                  width="100"
+                                />
                               </div>
-                            </div>
-                          </MDBCol>
-                          <MDBCol className="col-xl-9">
-                            <h6 className="h6">{item.body}</h6>
-                          </MDBCol>
-                          <MDBCol className="col-xl-1">
-                            {item.user_id === userIdCookie ? (
-                              <i
-                                className="pi pi-times text-danger"
-                                style={{
-                                  fontSize: "1.2rem",
-                                  cursor: "pointer",
-                                }}
-                                onClick={() => {
-                                  deleteCommentHandler(item.id, id);
-                                }}
-                              ></i>
-                            ) : null}
-                          </MDBCol>
-                        </MDBRow>
-                      </MDBCardText>
-                    </MDBCardBody>
-                  </MDBCard>
-                </>
-              );
-            })}
+                            </MDBCol>
+                            <MDBCol className="col-xl-9">
+                              <h6 className="h6">{item.body}</h6>
+                            </MDBCol>
+                            <MDBCol className="col-xl-1">
+                              {item.user_id === userIdCookie ? (
+                                <i
+                                  className="pi pi-times text-danger"
+                                  style={{
+                                    fontSize: "1.2rem",
+                                    cursor: "pointer",
+                                  }}
+                                  onClick={() => {
+                                    deleteCommentHandler(item.id, id);
+                                  }}
+                                ></i>
+                              ) : null}
+                            </MDBCol>
+                          </MDBRow>
+                        </MDBCardText>
+                      </MDBCardBody>
+                    </MDBCard>
+                  </>
+                );
+              })
+            )}
           </MDBCardBody>
         </MDBCard>
       </MDBContainer>

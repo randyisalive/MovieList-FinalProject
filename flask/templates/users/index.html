@@ -10,10 +10,29 @@
   </div>
   <div class="card-body">
     <div class="card-text">
-      {% for item in iterable %} {% endfor %} Lorem ipsum dolor sit amet
-      consectetur, adipisicing elit. Nostrum quasi asperiores provident eos, cum
-      aspernatur, in quisquam quibusdam hic, consectetur quod nulla similique.
-      Dicta cumque voluptatibus facilis. Enim, eveniet eius.
+      {% for user in users %}
+      <div class="card my-3">
+        <div class="card-body">
+          <div class="cated-text">
+            <div class="d-flex gap-3">
+              <div class="d-flex">
+                <img
+                  src="{{url_for('static', filename='user_data/picture/1/IMG-20231013-WA0007.jpg')}}"
+                  alt="profile_picture"
+                />
+              </div>
+              <div class="d-flex flex-column">
+                <span>Username</span>
+                <h4>{{user.username}}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %} Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+      Nostrum quasi asperiores provident eos, cum aspernatur, in quisquam
+      quibusdam hic, consectetur quod nulla similique. Dicta cumque voluptatibus
+      facilis. Enim, eveniet eius.
     </div>
   </div>
 </div>

@@ -11,9 +11,11 @@ import UseLoginData from "../../functionComponent/authentication/useLoginData";
 import { useRef } from "react";
 import { Toast } from "primereact/toast";
 import { Link } from "react-router-dom";
+import useForgotData from "../../functionComponent/forgot-password/useForgotData";
 
 function ForgotPassword() {
-  const { form, formHandler } = UseLoginData();
+  const { form, formHandler, changePasswordBtn } = useForgotData();
+
   const refConfirmToast = useRef(null);
   const show = (ref) => {
     ref.current.show({
@@ -52,13 +54,26 @@ function ForgotPassword() {
                     </div>
                     <div className="d-flex align-items-center justify-content-center gap-3">
                       <i
-                        className="pi pi-at"
+                        className="pi pi-key"
                         style={{ fontSize: "1.5rem" }}
                       ></i>
                       <MDBInput
-                        name="email"
-                        placeholder="email..."
-                        type="email"
+                        name="password"
+                        placeholder="new password..."
+                        type="password"
+                        required
+                        onChange={(e) => formHandler(e)}
+                      />
+                    </div>
+                    <div className="d-flex align-items-center justify-content-center gap-3">
+                      <i
+                        className="pi pi-refresh"
+                        style={{ fontSize: "1.5rem" }}
+                      ></i>
+                      <MDBInput
+                        name="retype"
+                        placeholder="retype new password..."
+                        type="text"
                         required
                         onChange={(e) => formHandler(e)}
                       />
@@ -77,6 +92,7 @@ function ForgotPassword() {
                         className="btn btn-danger"
                         onClick={() => {
                           show(refConfirmToast);
+                          changePasswordBtn();
                         }}
                       >
                         Send Request

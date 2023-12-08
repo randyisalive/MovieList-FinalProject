@@ -21,11 +21,13 @@ def login():
         users = getAllUser()
         try:
             for user in users:
-                if usernameValue == user[1] and verify_password(passwordValue, user[2]):
+                if usernameValue == user["username"] and verify_password(
+                    passwordValue, user["password"]
+                ):
                     token = secrets.token_hex(16)
-                    addToken(user[0], token)
+                    addToken(user["id"], token)
                     return jsonify(
-                        {"status": "success", "token": token, "user_id": user[0]}
+                        {"status": "success", "token": token, "user_id": user["id"]}
                     )
         except Exception as e:
             logging.error(e)

@@ -6,9 +6,26 @@ def getAllUser():
     db = db_connection()
     cur = db.cursor()
     try:
-        cur.execute("SELECT * FROM users")
+        cur.execute(
+            "SELECT id, username, image, joined, biography, birthday, gender, email, banner, password  FROM users"
+        )
         users = cur.fetchall()
-        return users
+        user_list = [
+            {
+                "id": i[0],
+                "username": i[1],
+                "image": i[2],
+                "joined": i[3],
+                "biography": i[4],
+                "birthday": i[5],
+                "gender": i[6],
+                "email": i[7],
+                "banner": i[8],
+                "password": i[9],
+            }
+            for i in users
+        ]
+        return user_list
     except Exception as e:
         logging.error(e)
 

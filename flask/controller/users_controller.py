@@ -1,7 +1,9 @@
 from flask import Blueprint, request, jsonify, render_template
 from services.users_services import getAllUser
+import os
 
 
+current_directory = os.getcwd()
 users_controller = Blueprint("users_controller", __name__)
 
 

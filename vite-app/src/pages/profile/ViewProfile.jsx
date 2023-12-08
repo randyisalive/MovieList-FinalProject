@@ -79,7 +79,7 @@ function ViewProfile() {
                     <MDBCol className="d-flex gap-3 justify-content-center">
                       <>
                         <button
-                          className={`btn btn-primary ${
+                          className={`btn btn-light rounded-5 ${
                             data ? "disabled" : null
                           } `}
                           onClick={() => {

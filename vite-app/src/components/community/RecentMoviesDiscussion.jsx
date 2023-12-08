@@ -103,7 +103,7 @@ function RecentMoviesDiscussion() {
                                       to={
                                         item.user_id === userIdCookie
                                           ? `/profile/`
-                                          : `/profile/view/${item.user_id}`
+                                          : `/view/${item.user_id}`
                                       }
                                     >
                                       {` ${item.username}`}
