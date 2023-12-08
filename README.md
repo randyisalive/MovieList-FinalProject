@@ -1,80 +1,116 @@
 # MovieList Website Documentation
 
-Table of Contents
-Introduction
+## Table of Contents
 
-Overview
-Technologies Used
-Features
-Getting Started
+1. [Introduction](#introduction)
+2. [Getting Started](#getting-started)
+3. [Backend (Flask)](#backend-flask)
+4. [Frontend (React)](#frontend-react)
+5. [Integration](#integration)
+6. [Deployment](#deployment)
+7. [Additional Features](#additional-features)
+8. [Troubleshooting](#troubleshooting)
+9. [Contributing](#contributing)
+10. [License](#license)
+11. [Usage Examples](#usage-examples)
+12. [Development Environment](#development-environment)
+13. [Resources](#resources)
+14. [Conclusion](#conclusion)
+15. [Version History](#version-history)
+16. [Support and Contact](#support-and-contact)
 
-Prerequisites
-Installation
-Backend (Flask)
+## 1. Introduction
 
-Project Structure
-Setting up Flask
-Creating Routes
-Database Models (if applicable)
-CRUD Operations
-API Endpoints
-Authentication (if applicable)
-Testing
-Frontend (React)
+- Overview
+- Technologies Used
+- Features
 
-Project Structure
-Setting up React
-Components
-State Management (e.g., using React Context or Redux)
-Handling API Requests
-Routing (React Router)
-User Interface
-Styling (CSS or a preprocessor like SCSS)
-Testing
-Integration
+## 2. Getting Started
 
-Connecting Backend and Frontend
-API Calls from React to Flask
-Data Flow
-Deployment
+- Prerequisites
+- Installation
 
-Configuring for Production
-Building React App
-Deploying Flask App
-Hosting Options (e.g., Heroku, AWS, etc.)
-Additional Features
+## 3. Backend (Flask)
 
-Search Functionality
-Sorting and Filtering
-User Authentication and Authorization
-Favorites or Watchlist
-Reviews and Ratings
-Responsive Design
-Troubleshooting
+- Project Structure
+- Setting up Flask
+- Creating Routes
+- CRUD Operations
+- API Endpoints
+- Authentication (if applicable)
+- Testing
 
-Common Issues and Solutions
-Contributing
+## 4. Frontend (React)
 
-Guidelines for Contributors
-Code of Conduct
-License
+- Project Structure
+- Setting up React
+- Components
+- State Management (e.g., using React Context or Redux)
+- Handling API Requests
+- Routing (React Router)
+- User Interface
+- Styling (CSS or a preprocessor like SCSS)
+- Testing
 
-License Information
-Usage Examples
-Provide examples of how to use your MovieList website, including code snippets for API requests and interactions with the frontend components.
+## 5. Integration
 
-Development Environment
-Explain how to set up a development environment for contributors, including any necessary tools, libraries, and configurations.
+- Connecting Backend and Frontend
+- API Calls from React to Flask
+- Data Flow
 
-Resources
-Include links to relevant documentation, tutorials, and external libraries/frameworks used in your project.
+## 6. Deployment
 
-Conclusion
-Summarize the key points of your documentation and express gratitude to contributors.
+- Configuring for Production
+- Building React App
+- Deploying Flask App
+- Hosting Options (e.g., Heroku, AWS, etc.)
 
-Version History
-Keep a record of changes, updates, and new features in your project.
+## 7. Additional Features
 
-Support and Contact
-Provide information on how users and contributors can get support and reach out for questions or issues.
- 
+- Search Functionality
+- Sorting and Filtering
+- User Authentication and Authorization
+- Favorites or Watchlist
+- Reviews and Ratings
+- Responsive Design
+
+## 8. Troubleshooting
+
+- Common Issues and Solutions
+
+## 9. Contributing
+
+- Guidelines for Contributors
+- Code of Conduct
+
+## 10. License
+
+- License Information
+
+## 11. Usage Examples
+
+- Examples of API requests
+- Interactions with frontend components
+
+## 12. Development Environment
+
+- Set up a development environment for contributors
+- Tools, libraries, and configurations
+
+## 13. Resources
+
+- Links to relevant documentation, tutorials, and libraries/frameworks
+
+## 14. Conclusion
+
+- Summary of key points
+- Gratitude to contributors
+
+## 15. Version History
+
+- Record of changes, updates, and new features
+
+## 16. Support and Contact
+
+- How to get support
+- Contact information
