@@ -21,7 +21,8 @@
 
 ## 1. Introduction
 
-- Overview
+### Overview
+MovieList is a web application that allows users to discover, search, and manage their favorite movies. The application is built using Flask for the backend and React for the frontend, providing a seamless and responsive user experience.
 - Technologies Used
 - Features
 
