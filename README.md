@@ -19,7 +19,7 @@
 15. [Version History](#version-history)
 16. [Support and Contact](#support-and-contact)
 
-## 1. Introduction
+## Introduction
 
 ### Overview
 MovieList is a web application that allows users to discover, search, and manage their favorite movies. The application is built using Flask for the backend and React for the frontend, providing a seamless and responsive user experience.
@@ -39,12 +39,12 @@ MovieList is a web application that allows users to discover, search, and manage
 - MyList: Users can add movies to their personal "MyList," providing a convenient way to keep track of watched and upcoming films.
 - Reviews and Ratings: Contribute to the community by leaving reviews and ratings for movies, and sharing opinions with fellow users.
 
-## 2. Getting Started
+## Getting Started
 
 - Prerequisites
 - Installation
 
-## 3. Backend (Flask)
+### Backend (Flask)
 
 - Project Structure
 - Setting up Flask
