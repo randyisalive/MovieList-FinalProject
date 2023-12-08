@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-1. [Introduction](#1-introduction)
+1. [Introduction](#Introduction)
 2. [Getting Started](#getting-started)
 3. [Backend (Flask)](#backend-flask)
 4. [Frontend (React)](#frontend-react)
