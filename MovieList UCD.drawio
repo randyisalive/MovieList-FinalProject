@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-12-08T01:20:46.096Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="i6tdNtSg-uahOwG2799m" version="22.1.7" type="github">
+<mxfile host="app.diagrams.net" modified="2023-12-08T01:20:54.725Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="tdB3oyxCgLsV4iV3BcKh" version="22.1.7" type="github">
   <diagram name="Page-1" id="ZeniHqI1XKFf16gRrM0b">
     <mxGraphModel dx="1034" dy="466" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -9,9 +9,6 @@
         </mxCell>
         <mxCell id="bou8E0x_bsbhckv4ZRoX-3" value="&amp;lt;&amp;lt;boundary&amp;gt;&amp;gt;&lt;br&gt;API UI" style="swimlane;whiteSpace=wrap;html=1;startSize=40;" parent="1" vertex="1">
           <mxGeometry x="70" y="300" width="200" height="56" as="geometry" />
-        </mxCell>
-        <mxCell id="bou8E0x_bsbhckv4ZRoX-10" value="View Movies" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="340" y="50" width="200" height="40" as="geometry" />
         </mxCell>
         <mxCell id="bou8E0x_bsbhckv4ZRoX-11" value="&amp;lt;&amp;lt;control&amp;gt;&amp;gt;&lt;br&gt;Manage MyList" style="swimlane;whiteSpace=wrap;html=1;startSize=40;" parent="1" vertex="1">
           <mxGeometry x="610" y="280" width="200" height="60" as="geometry" />
