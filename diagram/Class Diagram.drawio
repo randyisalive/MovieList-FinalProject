@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-12-13T01:10:52.138Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="fjYsjx207DUex55IQOX8" version="22.1.8" type="github">
+<mxfile host="app.diagrams.net" modified="2023-12-13T01:15:08.830Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="BZvNxvTo0JWKpZyh17kb" version="22.1.8" type="github">
   <diagram name="Page-1" id="U44AKlqPYRK6XK5reMsL">
-    <mxGraphModel dx="862" dy="388" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1293" dy="583" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -14,10 +14,25 @@
           <mxGeometry x="760" y="364" width="200" height="50" as="geometry" />
         </mxCell>
         <mxCell id="hbKF5pfbyNxAoD32uOXb-4" value="&amp;lt;&amp;lt;entity&amp;gt;&amp;gt;&lt;br&gt;MyList" style="swimlane;whiteSpace=wrap;html=1;startSize=40;" vertex="1" parent="1">
-          <mxGeometry x="370" y="430" width="200" height="50" as="geometry" />
+          <mxGeometry x="1270" y="640" width="200" height="50" as="geometry" />
         </mxCell>
         <mxCell id="hbKF5pfbyNxAoD32uOXb-5" value="&amp;lt;&amp;lt;entity&amp;gt;&amp;gt;&lt;br&gt;Friends" style="swimlane;whiteSpace=wrap;html=1;startSize=40;" vertex="1" parent="1">
           <mxGeometry x="610" y="460" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="hbKF5pfbyNxAoD32uOXb-6" value="&amp;lt;&amp;lt;control&amp;gt;&amp;gt;&lt;br&gt;Add MyList" style="swimlane;whiteSpace=wrap;html=1;startSize=40;" vertex="1" parent="1">
+          <mxGeometry x="1290" y="350" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="hbKF5pfbyNxAoD32uOXb-7" value="&amp;lt;&amp;lt;control&amp;gt;&amp;gt;&lt;br&gt;Manage MyList" style="swimlane;whiteSpace=wrap;html=1;startSize=40;" vertex="1" parent="1">
+          <mxGeometry x="1270" y="270" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="hbKF5pfbyNxAoD32uOXb-8" value="&amp;lt;&amp;lt;control&amp;gt;&amp;gt;&lt;br&gt;Edit MyList" style="swimlane;whiteSpace=wrap;html=1;startSize=40;" vertex="1" parent="1">
+          <mxGeometry x="150" y="364" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="hbKF5pfbyNxAoD32uOXb-9" value="&amp;lt;&amp;lt;control&amp;gt;&amp;gt;&lt;br&gt;Edit MyList" style="swimlane;whiteSpace=wrap;html=1;startSize=40;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="560" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="hbKF5pfbyNxAoD32uOXb-10" value="&amp;lt;&amp;lt;control&amp;gt;&amp;gt;&lt;br&gt;Delete MyList" style="swimlane;whiteSpace=wrap;html=1;startSize=40;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="460" width="200" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
