@@ -31,9 +31,10 @@ function Create() {
           position: "absolute",
           width: "100vw",
           height: "100vh",
-          backgroundPosition: "center",
-          backgroundImage: "url(/icon.jpg)",
+          backgroundImage:
+            "url(/360_F_583569487_wWVhbCEqcKNmvEJExkfXRiRnB4RZqcaO.jpg)",
           backgroundSize: "cover",
+          backgroundPosition: "center",
           zIndex: "0",
           filter: "blur(6px)",
         }}
@@ -46,6 +47,7 @@ function Create() {
         >
           <MDBCardBody>
             <MDBCardText className="d-flex gap-2">
+              <Image src="/icon.jpg" width="100" />
               <h1 className="display-1 text-white">MovieList</h1>
             </MDBCardText>
           </MDBCardBody>
