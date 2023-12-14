@@ -8,6 +8,7 @@ import {
 } from "mdb-react-ui-kit";
 import UseLoginData from "../../functionComponent/authentication/useLoginData";
 import { Toast } from "primereact/toast";
+import { Image } from "primereact/image";
 
 function Create() {
   const {
@@ -25,9 +26,32 @@ function Create() {
       <Toast ref={passwordRef} />
       <Toast ref={emptyRef} />
       <Toast ref={successRef} />
+      <div
+        style={{
+          position: "absolute",
+          width: "100vw",
+          height: "100vh",
+          backgroundImage:
+            "url(/360_F_583569487_wWVhbCEqcKNmvEJExkfXRiRnB4RZqcaO.jpg)",
+          backgroundSize: "cover",
+          zIndex: "0",
+          filter: "blur(6px)",
+        }}
+      ></div>
 
-      <div className=" w-100 justify-content-center d-flex align-items-center vh-100">
-        <MDBCard>
+      <div className=" w-100 flex-column justify-content-center d-flex align-items-center vh-100">
+        <MDBCard
+          className="my-5 border-0 justify-content-center align-items-center"
+          style={{ background: "none" }}
+        >
+          <MDBCardBody>
+            <MDBCardText className="d-flex gap-2">
+              <Image src="/icon.jpg" width="100" />
+              <h1 className="display-1 text-white">MovieList</h1>
+            </MDBCardText>
+          </MDBCardBody>
+        </MDBCard>
+        <MDBCard className="">
           <MDBCardHeader className="bg-danger text-white">
             <MDBCardTitle>
               <h3 className="h3">Create Account</h3>
@@ -77,7 +101,7 @@ function Create() {
 
                 <div className="d-flex justify-content-center mt-5 align-items-center">
                   <button
-                    className="btn btn-primary"
+                    className="btn btn-danger"
                     onClick={() => {
                       CreateUser();
                     }}
