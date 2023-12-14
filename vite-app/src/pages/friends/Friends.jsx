@@ -13,7 +13,7 @@ import LoadingFriends from "./LoadingFriends";
 import { Badge } from "primereact/badge";
 
 function Friends() {
-  const { friends, GetAllFriends, GetRequest } = useFriendsData();
+  const { GetAllFriends, GetRequest } = useFriendsData();
   const { items, isLoading } = GetAllFriends();
   const { data } = GetRequest();
   console.log("items:", items);

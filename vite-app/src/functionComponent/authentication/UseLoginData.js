@@ -5,6 +5,7 @@ import {
 } from "../../api/authentication_api";
 import Cookies from "js-cookie";
 import createUser from "./createUser";
+import Login from "../../pages/authentication/Login";
 
 function UseLoginData() {
   const [form, setForm] = useState({
@@ -20,12 +21,13 @@ function UseLoginData() {
   const passwordRef = useRef(null);
   const emptyRef = useRef(null);
   const successRef = useRef(null);
+  const LoginRef = useRef(null);
 
   const showUsernameToast = () => {
     usernameRef.current.show({
       severity: "error",
       summary: "Error",
-      detail: "Username too short (min 5 characters)",
+      detail: "Username too short (should be above 5 characters)",
     });
   };
   const showEmptyToast = () => {
@@ -50,6 +52,13 @@ function UseLoginData() {
       detail: "User Created Successfully",
     });
   };
+  const wrongPassUsernameToast = () => {
+    LoginRef.current.show({
+      severity: "error",
+      summary: "Error",
+      detail: "Password or Username not match",
+    });
+  };
 
   function formHandler(e) {
     setForm((prev) => ({
@@ -68,8 +77,10 @@ function UseLoginData() {
           Cookies.set("auth_token", token);
           Cookies.set("user_id", user_id);
           window.location.href = "/";
+        } else {
+          console.log(status);
+          wrongPassUsernameToast();
         }
-        console.log(status);
       });
     }
     console.log(form);
@@ -88,7 +99,7 @@ function UseLoginData() {
       (data) => {
         console.log(data);
 
-        // if username less than 5 character
+        // if username less/or than 5 character
         if (data["error"] == "Username too short (min 5 characters)") {
           showUsernameToast();
           return null;
@@ -120,6 +131,8 @@ function UseLoginData() {
     passwordRef,
     emptyRef,
     successRef,
+    LoginRef,
+    wrongPassUsernameToast,
   };
 }
 

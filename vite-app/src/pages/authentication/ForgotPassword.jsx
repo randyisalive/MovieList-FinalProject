@@ -14,16 +14,8 @@ import { Link } from "react-router-dom";
 import useForgotData from "../../functionComponent/forgot-password/useForgotData";
 
 function ForgotPassword() {
-  const { form, formHandler, changePasswordBtn } = useForgotData();
+  const { formHandler, changePasswordBtn, refConfirmToast } = useForgotData();
 
-  const refConfirmToast = useRef(null);
-  const show = (ref) => {
-    ref.current.show({
-      severity: "error",
-      summary: "Info",
-      detail: "Under Development",
-    });
-  };
   return (
     <>
       <Toast ref={refConfirmToast} />
@@ -91,7 +83,6 @@ function ForgotPassword() {
                       <button
                         className="btn btn-danger"
                         onClick={() => {
-                          show(refConfirmToast);
                           changePasswordBtn();
                         }}
                       >

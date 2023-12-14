@@ -6,12 +6,15 @@ import {
   MDBInput,
 } from "mdb-react-ui-kit";
 import UseLoginData from "../../functionComponent/authentication/useLoginData";
+import { Toast } from "primereact/toast";
+import { useRef } from "react";
 
 function Login() {
-  const { formHandler, LoginBtnHandler } = UseLoginData();
+  const { formHandler, LoginBtnHandler, LoginRef } = UseLoginData();
 
   return (
     <>
+      <Toast ref={LoginRef} />
       <div className=" w-100 justify-content-center align-items-center d-flex vh-100">
         <form
           action=""
@@ -57,7 +60,7 @@ function Login() {
               </div>
               <div className="d-flex justify-content-center">
                 <button
-                  className="btn btn-primary"
+                  className="btn btn-danger"
                   onClick={() => {
                     LoginBtnHandler();
                   }}

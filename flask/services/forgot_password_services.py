@@ -1,6 +1,7 @@
 from db import db_connection
 import logging
 from bcrypt_services import generate_hash
+from .users_services import getAllUser
 
 
 def change_password(password, username):

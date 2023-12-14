@@ -13,7 +13,6 @@ function Create() {
   const {
     formHandler,
     CreateUser,
-    form,
     usernameRef,
     passwordRef,
     emptyRef,

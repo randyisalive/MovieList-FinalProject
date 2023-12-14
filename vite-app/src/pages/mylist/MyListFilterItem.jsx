@@ -1,7 +1,6 @@
 import { MDBCard, MDBCardBody, MDBCardText } from "mdb-react-ui-kit";
 import UseMyListData from "../../functionComponent/mylist/UseMyListData";
 import { userIdCookie } from "../../Cookies";
-import { TabPanel, TabView } from "primereact/tabview";
 
 function MyListFilterItem() {
   const user_id = userIdCookie;

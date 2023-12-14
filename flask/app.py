@@ -2,7 +2,6 @@ from flask import Flask
 from flask_cors import CORS
 from services.homeServices import homeServices
 from controller.home_controller import home_controller
-from services.userServices import userServices
 from controller.users_controller import users_controller
 
 ## api controller
@@ -52,7 +51,6 @@ app.register_blueprint(friends_api, url_prefix="/api/friends")
 app.register_blueprint(where_to_watch, url_prefix="/api/where_to_watch")
 app.register_blueprint(gender_api, url_prefix="/api/gender")
 app.register_blueprint(forgot_password_api, url_prefix="/api/forgot")
-
 # api controller #
 
 if __name__ == "__main__":
